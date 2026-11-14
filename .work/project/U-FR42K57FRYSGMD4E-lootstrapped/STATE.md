@@ -40,3 +40,4 @@ Metabolize the riff: the first milestone and its fixed slices, the flexible slic
 - 2026-11-15 initialized
 - 2026-11-15 phase initialize → execute
 - 2026-11-15 riff-261114-1 moved in as DESIGN.md
+- 2026-11-15 bounce added: Wyrm Combinator is a dragon's fund, the angels its LPs

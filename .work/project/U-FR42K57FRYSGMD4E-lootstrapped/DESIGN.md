@@ -28,6 +28,7 @@
 - **Customers are skelly mobs.** Whoever is at the counter is a rigged mob with clips (idle, impatient, pleased), so the asset pipeline also provides the cast.
 - **The investors are literal angels, and each has a mandate.** One wants growth, one wants piety ("no necromantic goods"), one wants Seraphic ESG. Their wishes conflict, so pleasing all of them is the puzzle.
 - **Closing Day is the board meeting.** You present the ledger, and the investors react to it. Disappoint them and they dilute your share, impose terms or send an auditor. Lose the board entirely and you're fired from your own shop: the run is over.
+- **Wyrm Combinator is a fund run by a dragon.** The dragon hoards like a VC, and the angels are its LPs. It stays offstage until a bad Closing Day, so the threat above the board is felt before it is seen.
 - **A demon investor as the later temptation.** It offers easy capital at a soul-shaped interest rate.
 - **Renewal can come with conditions.** A clean renewal, a renewal with terms (which constrain next season), or probation. The terms carry into the next season, so a career has momentum.
 - **Score a career by consecutive renewals.** Your epitaph is "Held the charter for 7 seasons".
