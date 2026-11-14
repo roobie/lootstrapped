@@ -9,17 +9,17 @@
 - Deceptively complex yet simple.
 
 ## Decisions
-- **Name: Lootstrapped.** Tagline: *Make Something People Loot.* The board of angel investors is **Wyrm Combinator**. The Hacker News and YC references land with the indie audience on itch.io, and stay clear of the "Rogue Trader" trademark.
-- **Tone: grim-comic.** Being dissolved by a great dungeon jelly is just another day on the job.
-- **Bounded seasons.** A season is the working period between the guild's collective vacations, when no adventurer works (as in Swedish *industrisemester*). Bounding the season gives it a natural end and a reason to come back.
-- **Presentation: a mix.** A 3D scene where it carries the feel (the counter, the item, the customer). Everything else is UI.
-- **The shop is backed by angel investors who must be pleased.** Someone you owe is the cheapest way to add stakes, and it doubles as a running joke.
-- **A season is won when the board renews the charter.** Profit is only one of the angels' concerns, so winning means satisfying the board, not hitting a number.
-- **Charter renewal is graded:** clean, with terms, or probation. The terms carry into the next season, so each season inherits the last one's mess.
-- **Session target: about 30 wall-clock minutes that feel like an accomplishment.** What that means exactly gets refined once it can be played.
-- **Appraisal: the player reads clues, and finite tools reveal them (A + C below).** The shopkeeper has no stats. Because tools are limited, which item to inspect, and with which tool, is a real decision.
-- **One session is one season:** about 10–12 shop days of roughly 2–3 minutes each, ending at the board meeting. "I got my charter renewed" is the accomplishment.
-- **Scope: start simple, stay extensible.** The counter comes first. Anything beyond it plugs in as data and panels, with no rewrite.
+- **Name: Lootstrapped.** (D-UZWR7E6PRMOYIZR5) Tagline: *Make Something People Loot.* The board of angel investors is **Wyrm Combinator**. The Hacker News and YC references land with the indie audience on itch.io, and stay clear of the "Rogue Trader" trademark.
+- **Tone: grim-comic.** (D-IGZD65FTBWFT5FBJ) Being dissolved by a great dungeon jelly is just another day on the job.
+- **Bounded seasons.** (D-CSQFNAVMFBMTACBM) A season is the working period between the guild's collective vacations, when no adventurer works (as in Swedish *industrisemester*). Bounding the season gives it a natural end and a reason to come back.
+- **Presentation: a mix.** (D-H574L6YSCOZIDEGL) A 3D scene where it carries the feel (the counter, the item, the customer). Everything else is UI.
+- **The shop is backed by angel investors who must be pleased.** (D-G5VL7QCXV5IGX4IY) Someone you owe is the cheapest way to add stakes, and it doubles as a running joke.
+- **A season is won when the board renews the charter.** (D-G5VL7QCXV5IGX4IY) Profit is only one of the angels' concerns, so winning means satisfying the board, not hitting a number.
+- **Charter renewal is graded** (D-G5VL7QCXV5IGX4IY): clean, with terms, or probation. The terms carry into the next season, so each season inherits the last one's mess.
+- **Session target: about 30 wall-clock minutes that feel like an accomplishment.** (D-CHOZUNNOBQ6CITEE) What that means exactly gets refined once it can be played.
+- **Appraisal: the player reads clues, and finite tools reveal them (A + C below).** (D-YX3IUCV2YUN7CT7X) The shopkeeper has no stats. Because tools are limited, which item to inspect, and with which tool, is a real decision.
+- **One session is one season** (D-CHOZUNNOBQ6CITEE): about 10–12 shop days of roughly 2–3 minutes each, ending at the board meeting. "I got my charter renewed" is the accomplishment.
+- **Scope: start simple, stay extensible.** (D-FSULJNRFYK4Z43SE) The counter comes first. Anything beyond it plugs in as data and panels, with no rewrite.
 
 ## Bounces (proposals, not decisions)
 - **The pre-vacation rush.** Late in the season, adventurers sell gear cheap to fund their holidays, and parties take on riskier delves for one last big haul. The tension builds by itself, with no extra mechanics.
@@ -56,13 +56,15 @@
 | C | **Tools.** Loupe, curse candle, scales, scrying bowl, each revealing one class of trait and costing time or consumables | Choosing which tool to use on which item is a decision; investor money buys progression; data rows | Needs a time budget to make choices matter |
 | D | **Staff.** Hired appraisers with specialities, wages and unreliability (they err or lie) | Characters and jokes | Another whole system |
 
-**Lean: A + C, with no character stats.** Tools reveal clues, and the player interprets them. A codex in the ledger records what the player has learned, so knowledge persists without stats. D is the first extension.
+**Decided (D-YX3IUCV2YUN7CT7X): A + C, with no character stats.** Tools reveal clues, and the player interprets them. A codex in the ledger records what the player has learned, so knowledge persists without stats. D is the first extension.
 
 **Finite tools, per tool:** a curse candle burns down; a loupe cracks when it meets a strong enchantment; a scrying bowl needs a reagent bought from a supplier. Tool supply becomes a second economy that the investors fund and audit ("why did you spend 400 on candles?").
 
 **Time is the budget.** Every inspection uses up part of the shop day. That bounds how many actions a day holds, and so how long a session lasts.
 
 ## Two-week build plan (draft)
+**Decided (D-AR7QAXJTT2FNYDPN):** the fixed slices, the playtest gates and the cut order. The slices themselves are tracked as units and backlog items.
+
 The first four slices are fixed, because they are what makes the game exist at all. After them comes playtesting, and the later slices are expected to be reordered, reshaped or replaced by what the playtests show.
 
 ### Fixed slices
@@ -87,15 +89,17 @@ The first four slices are fixed, because they are what makes the game exist at a
 **Cut order if it slips:** S6 polish first, then S5 reputation, then the richness of provenance logs. S0–S3 are never cut, because without them there is no game.
 
 ### Tech stack
-- **TypeScript, Jsonnet and CEL, as in skelly and deadvox.** The lessons and tooling from those projects carry straight over.
-- **The simulation is deterministic.** A seed plus the player's inputs reproduce a season exactly, which makes bugs replayable and makes the logic tests meaningful.
-- **Jsonnet is evaluated in the browser.** Mods need no toolchain, which is what "content is moddable" means for a player on itch.io.
+- **TypeScript, Jsonnet and CEL, as in skelly and deadvox.** (D-T7MNEN4NJXAJ3P56) The lessons and tooling from those projects carry straight over.
+- **The simulation is deterministic.** (D-2Q5ZKHIVF2C6ZP2C) A seed plus the player's inputs reproduce a season exactly, which makes bugs replayable and makes the logic tests meaningful.
+- **Jsonnet is evaluated in the browser.** (D-T7MNEN4NJXAJ3P56) Mods need no toolchain, which is what "content is moddable" means for a player on itch.io.
   - *Caveat:* skelly compiles with the go-jsonnet binary at build time, so the browser needs its own evaluator. To prevent drift, the build and the runtime should use the **same** evaluator (e.g. go-jsonnet compiled to wasm).
   - *Caveat:* a wasm evaluator adds download weight and startup time. Base content can still ship precompiled, with the evaluator loaded lazily for mods. Decide this in S1 by measuring.
 
 ### Testing policy
+**Decided (D-2H4SJGQLQ72BWTKE).**
+
 - **From the start: logic invariants only.** Determinism under a seed, ledger arithmetic, data-row schemas, state transitions. These protect the code while the design is still moving.
 - **Not until approaching v1.0-BETA: gameplay and balance.** Prices, odds, investor thresholds, session length. Pinning them earlier would freeze tuning that playtests are supposed to change.
 
 ### Where it lives
-Riff here; when S1 starts, it gets promoted to its own repo (as ahg3 was).
+Riff here; when S1 starts, it gets promoted to its own repo (as ahg3 was). (Done: this repo, with the riff as the project's DESIGN.md.)

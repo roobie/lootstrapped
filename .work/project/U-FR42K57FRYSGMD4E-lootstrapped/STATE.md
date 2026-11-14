@@ -42,3 +42,4 @@ Promoted from riff 2026-11-14 #1, which is now DESIGN.md (what is decided, and w
 - 2026-11-15 bounce added: Wyrm Combinator is a dragon's fund, the angels its LPs
 - 2026-11-15 milestone/first-season spawned with slices S0–S3
 - 2026-11-15 flexible slices S4–S7 recorded as provisional backlog items
+- 2026-11-15 decision records for the riff's decided items; DESIGN.md points at them
