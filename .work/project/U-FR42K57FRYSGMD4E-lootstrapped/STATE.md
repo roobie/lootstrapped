@@ -23,7 +23,6 @@ Out: rendering the dungeon; shopkeeper stats; anything that needs a rewrite to p
 Promoted from riff 2026-11-14 #1, which is now DESIGN.md (what is decided, and what is still a bounce). Builds on skelly-assets (weapons, armour and props as `.glb`, and its showcase turntable) and on the TypeScript, Jsonnet and CEL tooling and browser-game lessons of skelly and deadvox. Ships to itch.io. The simulation stays deterministic. The two-week plan's first four slices are fixed; what comes after them is decided by playtests. Nothing is built yet.
 
 ## Next
-Metabolize the riff: the first milestone and its fixed slices, the flexible slices as backlog, decision records for what is decided.
 
 ## Evidence
 <!-- Proof against success_criteria: test runs, commits, measurements. -->
@@ -41,3 +40,4 @@ Metabolize the riff: the first milestone and its fixed slices, the flexible slic
 - 2026-11-15 phase initialize → execute
 - 2026-11-15 riff-261114-1 moved in as DESIGN.md
 - 2026-11-15 bounce added: Wyrm Combinator is a dragon's fund, the angels its LPs
+- 2026-11-15 milestone/first-season spawned with slices S0–S3
