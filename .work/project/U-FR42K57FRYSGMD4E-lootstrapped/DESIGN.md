@@ -1,4 +1,4 @@
-# Riff 2026-11-14 #1: Lootstrapped
+# Design: Lootstrapped (from riff 2026-11-14 #1)
 
 ## The seed
 - A game that is **complete within ~2 weeks** of AI-assisted development, then extended and polished incrementally.
