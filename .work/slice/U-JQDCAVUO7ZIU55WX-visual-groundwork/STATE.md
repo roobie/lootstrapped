@@ -43,9 +43,8 @@ Storyboard awaits owner review, chiefly its open questions Q1–Q15 (art/storybo
 - [x] decision: the look, motifs, seven gameplay ideas (candle clock with unasked clues merged) and legibility rules, recorded during execute as the owner settled them
 - [ ] backlog: the moodboard's sound mood (Plate VIII) as input to S6 juice-and-voice (B-MGJ5SWSBRA4IPHHQ)
 - [ ] backlog: itch.io cover from the moodboard's title page, the three balls with one pastel sticker
-- [ ] decision: where the ledger sits while the counter is in view (storyboard Q2), once the mockups settle it
-- [ ] decision: the shop day's structure: phased by customer kind or one queue, and what an hour ring does (storyboard Q4, Q9), before S2
-- [ ] decision: how an offer is entered and where tells and patience show (storyboard Q6), before S2's haggle
+- [x] decision: owner's storyboard answers Q1–Q6: D-ZP5DV46R5P7JMJL2 (candle lit by the player), D-N4SCF64EZZG5535L (ledger is the lifted book), D-FRYXG6INJL354CU2 (static figure before S5), D-WMOVKUFJH5UB6LBE (phased day), D-5YSEEY37NHL6JFEW (finiteness per tool), D-HF6NDSJJ3ESNI7NE (drag offers, margin tells); backlog B-UM2COURKPFGCX7A4 (v1.1 mixed queue), B-S24HIJ2AC3PWDWTL (v2.0 faces)
+- [ ] decision: what an hour ring does beyond the light, and what happens when the candle gutters (storyboard Q4 remainder, Q9), before S2
 - [ ] decision: how each angel's judgement is made legible, whether the player acts in the meeting, and whether fired is a fourth outcome (storyboard Q12–Q14), before S3
 - [ ] backlog: investor messages during shop days and tool restocking at night (storyboard Q8, Q10), if the owner keeps them out of S2–S3
 
