@@ -25,7 +25,7 @@ S0 of the fixed slices, about day 1. Presentation is a mix: 3D where it carries 
 
 
 ## Next
-Storyboard awaits owner review, chiefly its open questions Q1–Q15 (art/storyboard/storyboard.html, end of page). Next: mock up the counter scene and the ledger UI, testing the toon outline and key light on real skelly-assets meshes and where the ledger sits beside the 3D counter (Q2). Mockups and storyboard go to the owner; the 3D/UI split needs their agreement.
+Owner reviews the mockups in art/mockups and agrees the 3D/UI split, chiefly answering M1–M12
 
 ## Evidence
 <!-- Proof against success_criteria: test runs, commits, measurements. -->
@@ -33,6 +33,7 @@ Storyboard awaits owner review, chiefly its open questions Q1–Q15 (art/storybo
 - Owner's moodboard choices recorded: D-AW7FZBF73LOHPLXO (look), D-OOYE4Y67O567LLKP (motifs), D-34WHPVTJ6MRKUSXM (candle clock), D-MHAAIXRXHKHH4G77 (tools as light), D-3ZWBI6KBBWBWWXDJ (cold rim), D-XZKESRNAOR3QIXHK (ink-blot uncertainty), D-JZVD7DBPLJP2XKT2 (haggle crossings-out), D-UB7AU7KR5QBMYH4C (knotted provenance), D-2NRZXEUWY2RFLDXF (legibility).
 - Storyboard: art/storyboard/storyboard.html (static, moodboard's look and IM Fell), render art/storyboard/storyboard.webp. Fifteen panels: one shop day (open, seller, inspect, loupe, curse candle, haggle, sale, investor toast, candle gutters, tally) then Closing Day (cut, dashboard, three angels, graded verdict, shuttered shop with stickers); each caption names what the player sees and does, what is 3D and what UI, and the light/sound beat, with the decisions it rests on. Fifteen open questions tagged on their panels and listed at the end for the owner.
 - Counter renders: art/mockups/counter-neutral.webp, counter-loupe.webp, counter-curse.webp (1920×1080, three.js r186 on skelly-assets meshes: helmet_barbute on the counter, player_bust + jacket_leather_worn_body + hood_ninja as the static customer, shelf stock; candle and curse candle are primitives). Candle key light, cold rim on what came in through the door, depth-edge ink outline; loupe as a tight warm circle lifting a maker's mark, curse candle swapping the key to verdigris.
+- Ledger mockup: art/mockups/ledger.html (static, IM Fell; ?split overlays the 3D/UI split; below 700px the phone layout), renders art/mockups/ledger.webp (1920×1080 mid-haggle over the helm: item page with asked and unasked clues and their two prices, blot and dragged offer on the number line, margin with crossings-out and tells), ledger-split.webp (3D in blue, UI in amber), ledger-phone.webp (390 wide, one page at a time under a band of the counter); background ledger-scene.webp. Twelve open questions M1–M12 tagged and listed on the page.
 
 ## Harvest
 <!-- Candidates found along the way. Finalize promotes or drops every unchecked item:
@@ -49,6 +50,10 @@ Storyboard awaits owner review, chiefly its open questions Q1–Q15 (art/storybo
 - [ ] decision: what an hour ring does beyond the light (storyboard Q4 remainder), before S2
 - [x] backlog: storyboard Q14, fired as a fourth outcome: owner put it after the first season; the first season keeps three grades (B-OCWXWFL7ZVVK3QLN)
 - [ ] decision: the second opinion's design points (blot vs codex, what may be struck in a haggle, what the first season's board may judge, what spends candle besides inspecting), with the owner
+- [ ] decision: the mockups' open questions M1–M12 (lift transition, who holds the book, tool light on the page, two prices per clue row, tool life on the counter, release-to-offer, what a strike undoes, standing ask on the line, how much the book hides, 720p, portrait phone, cold rim look), with the owner
+- [ ] backlog: candle, curse candle, loupe, scales and knife meshes for skelly-assets; the mockups used primitives
+- [ ] learning: skelly-assets metal materials read black under a lone point light with no environment map; the counter needs a dim warm environment or clamped metalness
+- [ ] learning: on voxel meshes a normal-based outline draws every step; ink from depth edges only, and a screen-space rim from an outside-object mask, since back light barely grazes flat voxel faces
 
 ## Log
 - 2026-11-15 initialized
@@ -58,3 +63,4 @@ Storyboard awaits owner review, chiefly its open questions Q1–Q15 (art/storybo
 - 2026-11-15 storyboard of one shop day and the board meeting landed in art/storyboard, with fifteen open questions for the owner
 - 2026-11-15 storyboard contradictions fixed after the second opinion: no percentage in the shop, offers in upright figures, the buyer's request on vellum, the day's candle and a tool's charge told apart on clue rows
 - 2026-11-15 counter scene rendered from skelly-assets meshes: neutral appraisal, loupe, curse candle
+- 2026-11-15 ledger mockup over the counter landed in art/mockups, with the 3D/UI split and twelve open questions

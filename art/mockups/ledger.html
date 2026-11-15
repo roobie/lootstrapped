@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lootstrapped ledger mockup</title>
+<style>
+@font-face{font-family:"Fell";src:url(../fonts/im-fell/IMFellEnglish-Regular.woff2) format("woff2");font-weight:400;font-style:normal}
+@font-face{font-family:"Fell";src:url(../fonts/im-fell/IMFellEnglish-Italic.woff2) format("woff2");font-weight:400;font-style:italic}
+@font-face{font-family:"Fell SC";src:url(../fonts/im-fell/IMFellEnglishSC-Regular.woff2) format("woff2")}
+@font-face{font-family:"Fell Canon";src:url(../fonts/im-fell/IMFellFrenchCanon-Regular.woff2) format("woff2")}
+
+:root{
+  /* Ledger Noir */
+  --lampblack:#120e0a; --oak:#4a301c; --tallow:#ffe2a0; --amber:#e9a23b;
+  --vellum:#ead9b6; --foxed:#cdb485; --gall:#2a2320; --hand:#3b2f52; --rubric:#a8321f; --verdigris:#4c8f80;
+  --doorcold:#6f8fa8; --oxblood:#4a1d14; --skin:#c9a079;
+  /* Startup Heaven, for the one pill that crosses */
+  --mist:#eeeafc; --seraph:#7b5cff;
+  --fell:"Fell","IM Fell English",Georgia,"Liberation Serif",serif;
+  --sc:"Fell SC","Fell",Georgia,serif;
+  --canon:"Fell Canon","Fell",Georgia,serif;
+  --saas:"Inter","Helvetica Neue",Helvetica,Arial,"Liberation Sans",sans-serif;
+}
+*{box-sizing:border-box}
+html{background:var(--lampblack)}
+body{margin:0;background:var(--lampblack);color:var(--vellum);font-family:var(--fell);font-size:18px;line-height:1.4}
+h1,h2,h3,p,ul,ol{margin:0}
+
+/* ---------- the screen: one 1920×1080 game frame ---------- */
+.screen{position:relative;width:1920px;height:1080px;overflow:hidden;background:#0d0a07}
+.scene{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:30% 50%}
+
+/* The lifted book: flat to the screen so Fell keeps its size, lit warm from the candle side. */
+.book{position:absolute;left:944px;top:316px;width:948px;height:752px;padding:14px;border-radius:6px 6px 10px 10px;
+  background:linear-gradient(90deg,#5a2418,#3a140d 48%,#2a0e09 52%,#4a1d14);
+  box-shadow:0 30px 70px rgba(0,0,0,.85),0 0 120px rgba(233,162,59,.10),inset 0 0 0 2px #2a0e09}
+.spread{position:relative;display:grid;grid-template-columns:1fr 1fr;height:100%;border-radius:3px;overflow:hidden}
+.page{position:relative;padding:30px 34px 26px;color:var(--gall);background-color:var(--vellum);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .22 0 0 0 0 .08 0 0 0 .22 0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E"),
+  radial-gradient(180px 120px at 12% 92%,rgba(150,100,40,.22),transparent 70%)}
+/* the gutter's curve and the candle's fall-off across the spread */
+.page.l{box-shadow:inset -38px 0 40px -30px rgba(70,40,15,.55)}
+.page.r{box-shadow:inset 38px 0 40px -30px rgba(70,40,15,.55)}
+.page.r::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(520px 640px at 0% 40%,transparent 55%,rgba(40,22,8,.20))}
+.page.l::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(700px 500px at -20% 60%,rgba(255,200,120,.10),transparent 70%)}
+
+.run{font-family:var(--sc);font-size:16px;letter-spacing:.12em;color:#6f5326;display:flex;justify-content:space-between}
+.title{font-family:var(--canon);font-weight:400;font-size:38px;line-height:1.05;margin:10px 0 4px}
+.hand{font-style:italic;color:var(--hand);font-size:19px}
+.lbl{font-family:var(--sc);font-size:16px;letter-spacing:.1em;color:#6f5326;margin:18px 0 6px;border-bottom:1px solid rgba(42,35,32,.3);padding-bottom:3px;display:flex;justify-content:space-between;align-items:baseline}
+.lbl small{font-family:var(--fell);font-style:italic;letter-spacing:0;font-size:16px;color:#6f5326}
+
+/* clue rows: what was asked is written; what was not is listed greyed with its two prices */
+.clue{display:grid;grid-template-columns:30px 1fr auto;gap:2px 10px;padding:8px 0;border-bottom:1px dotted rgba(42,35,32,.35);align-items:start}
+.clue .g{width:26px;height:26px;margin-top:1px}
+.clue .t{font-size:18px;line-height:1.3}
+.clue .tool{grid-column:2;font-family:var(--sc);font-size:15px;letter-spacing:.06em;color:#6f5326}
+.clue .cost{grid-row:1 / span 2;grid-column:3;text-align:right;font-size:18px;line-height:1.3;white-space:nowrap}
+.cost .day{color:var(--rubric)}
+.cost .wear{display:block;color:var(--gall);font-size:16px}
+.cost svg{width:12px;height:18px;vertical-align:-3px;margin-right:3px}
+.clue.asked .cost{opacity:.55}
+.clue.unasked .t,.clue.unasked .g{opacity:.5}
+.clue.unasked{cursor:pointer}
+.trait{color:#2f6a5d}
+.clue.asked.cursed{background:linear-gradient(90deg,rgba(76,143,128,.12),transparent 80%)}
+
+/* the number line and its blots */
+.line{display:block;width:100%;height:auto;margin-top:2px}
+.line text{font-family:var(--fell);font-size:20px;fill:var(--gall)}
+.line .cap{font-family:var(--fell);font-style:italic;font-size:17px;fill:var(--hand)}
+
+/* the haggle: the column and the margin */
+.deal{display:grid;grid-template-columns:1fr 200px;gap:0 18px;margin-top:6px}
+.col .row{display:flex;justify-content:space-between;align-items:baseline;padding:6px 0;border-bottom:1px solid rgba(42,35,32,.22)}
+.col .row b{font-weight:400;font-family:var(--sc);letter-spacing:.06em;font-size:16px;color:#6f5326}
+.col .row span{font-size:24px}
+.col .paid span{color:rgba(42,35,32,.35)}
+.margin{border-left:1.5px solid rgba(168,50,31,.55);padding-left:14px}
+.entry{display:flex;align-items:baseline;gap:8px;line-height:1.15;margin:5px 0 0}
+.entry .who{font-style:italic;color:var(--hand);font-size:17px;width:34px}
+.entry .n{font-size:25px;color:var(--hand)}
+.entry .n.x{text-decoration:line-through;text-decoration-thickness:2px;text-decoration-color:var(--hand);opacity:.62}
+.entry.wet .n{color:#24163f;text-shadow:0 0 1px rgba(36,22,63,.45)}
+.tell{font-style:italic;color:var(--hand);font-size:17px;line-height:1.2;margin:0 0 4px 42px}
+.acts{display:flex;gap:22px;margin-top:16px;font-family:var(--sc);font-size:16px;letter-spacing:.08em;color:#6f5326}
+.acts span{border-bottom:1px solid rgba(111,83,38,.5)}
+
+/* the board's tab: the one Heaven pill allowed on the book */
+.tab{position:absolute;top:-30px;right:60px;font-family:var(--saas);font-size:14px;font-weight:700;padding:6px 12px 14px;border-radius:8px 8px 0 0;background:var(--mist);color:var(--seraph);transform:rotate(1.5deg);box-shadow:0 -2px 10px rgba(0,0,0,.4)}
+
+/* hands at the book's lower corners: the shopkeeper has no face */
+.hands{position:absolute;left:0;top:0;width:1920px;height:1080px;pointer-events:none}
+
+/* open-question tags, as in the storyboard */
+.oq{display:inline-block;font-family:var(--sc);font-style:normal;letter-spacing:.08em;font-size:14px;line-height:1.2;padding:1px 7px;border:1.5px solid var(--rubric);color:#f0a08e;background:rgba(40,12,6,.82);white-space:nowrap;text-decoration:none}
+.page .oq{color:var(--rubric);background:rgba(168,50,31,.08)}
+.pin{position:absolute;z-index:5}
+
+/* ---------- the split overlay: what is 3D and what is UI ---------- */
+.split{position:absolute;inset:0;display:none;pointer-events:none;z-index:6}
+body.show-split .split{display:block}
+body.show-split .pin{display:none}
+.split .r{position:absolute;border:2.5px dashed;border-radius:4px}
+.split .r i{position:absolute;left:-2px;top:-30px;font-style:normal;font-family:var(--sc);font-size:17px;letter-spacing:.08em;padding:2px 9px;white-space:nowrap}
+.split .d3{border-color:#8fb4d6;background:rgba(111,143,168,.10)}
+.split .d3 i{background:#8fb4d6;color:#0d141a}
+.split .ui{border-color:var(--amber);background:rgba(233,162,59,.07)}
+.split .ui i{background:var(--amber);color:#1a1006}
+.split .key{position:absolute;left:28px;top:24px;padding:14px 18px;background:rgba(13,10,7,.88);border:1px solid #3a2a1a;font-size:17px;line-height:1.45;max-width:520px}
+.split .key b{font-weight:400;font-family:var(--sc);letter-spacing:.08em}
+
+/* ---------- below the frame: the notes for the owner ---------- */
+.notes{width:1000px;margin:0 auto;padding:56px 0 70px}
+.plate{display:flex;align-items:baseline;gap:14px;border-bottom:1px solid rgba(234,217,182,.25);padding-bottom:8px;margin:40px 0 18px}
+.plate .no{font-family:var(--sc);color:var(--amber);letter-spacing:.12em;font-size:15px;white-space:nowrap}
+.plate h2{font-family:var(--canon);font-weight:400;font-size:32px;line-height:1.1}
+.stills{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.stills figure{margin:0}
+.stills img{display:block;width:100%;border:1px solid #3a2a1a;box-shadow:0 14px 34px #000}
+.stills figcaption{margin-top:8px;font-size:16px;color:var(--foxed)}
+.stills figcaption b{font-weight:400;font-family:var(--sc);letter-spacing:.06em;color:var(--tallow)}
+.qs{padding:26px 34px 30px;color:var(--gall);background:var(--vellum)}
+.qs li{display:grid;grid-template-columns:52px 1fr;gap:10px;padding:8px 0;border-bottom:1px dotted rgba(42,35,32,.4);font-size:17px;line-height:1.38;list-style:none}
+.qs ol{padding:0}
+.qs li .k{font-family:var(--sc);letter-spacing:.08em;color:var(--rubric)}
+.qs li i{color:#5b4a37;font-size:16px}
+.howto{font-style:italic;color:var(--foxed);font-size:16px}
+.howto a{color:var(--tallow)}
+
+/* ---------- phone, portrait: the counter as a band, one page at a time ---------- */
+.ptabs{display:none}
+@media (max-width:700px){
+  body{font-size:17px}
+  .screen{width:100vw;height:auto;min-height:100vh;overflow:visible}
+  .scene{position:relative;display:block;height:30vh;object-position:22% 62%}
+  .book{position:relative;left:auto;top:auto;width:auto;height:auto;margin:-26px 8px 0;padding:8px}
+  .spread{display:block}
+  .page{padding:18px 18px 20px;box-shadow:none}
+  .page.l{display:none}
+  .ptabs{display:flex;gap:6px;margin:0 0 4px 6px}
+  .ptabs span:not(.oq){font-family:var(--sc);font-size:15px;letter-spacing:.08em;padding:5px 12px 4px;background:#3a140d;color:var(--foxed);border-radius:5px 5px 0 0}
+  .ptabs span.on{background:var(--vellum);color:var(--gall)}
+  .tab{top:-34px;right:14px}
+  .deal{grid-template-columns:1fr 150px;gap:0 12px}
+  .entry .who{width:auto}
+  .tell{margin-left:0}
+  .hands,.split,.pin{display:none}
+  .notes{width:auto;padding:30px 16px}
+  .stills{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <filter id="blot" x="-20%" y="-60%" width="140%" height="220%">
+      <feTurbulence type="fractalNoise" baseFrequency=".06" numOctaves="3" seed="3" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="9"/>
+    </filter>
+    <radialGradient id="wide"><stop offset="0" stop-color="#2a2320" stop-opacity=".40"/><stop offset=".7" stop-color="#2a2320" stop-opacity=".2"/><stop offset="1" stop-color="#2a2320" stop-opacity="0"/></radialGradient>
+    <radialGradient id="tight"><stop offset="0" stop-color="#1c1714" stop-opacity=".92"/><stop offset=".55" stop-color="#2a2320" stop-opacity=".62"/><stop offset="1" stop-color="#2a2320" stop-opacity="0"/></radialGradient>
+    <!-- woodcut glyphs: every trait colour goes with one -->
+    <symbol id="g-anvil" viewBox="0 0 26 26"><path d="M3 8h17c0 3-3 5-6 5v3h3v4H7v-4h3v-3C6 13 3 11 3 8z" fill="currentColor"/></symbol>
+    <symbol id="g-rune" viewBox="0 0 26 26"><path d="M13 3v20M13 3l-7 9M13 3l7 9M8 17l10 0" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+    <symbol id="g-ask" viewBox="0 0 26 26"><circle cx="13" cy="13" r="10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-dasharray="3 2.4"/><path d="M10 10.5c0-2 1.4-3 3-3s3 1 3 2.7c0 2.2-3 2.3-3 4.6M13 18.2v.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="g-candle" viewBox="0 0 12 18"><path d="M6 1c1.6 2 1.6 3.4 0 4.6C4.4 4.4 4.4 3 6 1z" fill="#e9a23b"/><rect x="3" y="6" width="6" height="11" fill="none" stroke="#a8321f" stroke-width="1.4"/><path d="M3 11h6" stroke="#a8321f" stroke-width="1.4"/></symbol>
+  </defs>
+</svg>
+
+<main class="screen" aria-label="The shop counter with the ledger lifted, mid-haggle over a helm">
+  <img class="scene" src="ledger-scene.webp" alt="The counter by candlelight: the helm, the candle past its first ring, the seller behind, the door cold.">
+
+  <div class="book">
+    <div class="tab">Board · 5d</div>
+    <div class="ptabs" aria-hidden="true"><span>The helm</span><span class="on">The haggle</span><span class="oq">M11</span></div>
+    <div class="spread">
+
+      <!-- left page: the item -->
+      <section class="page l" aria-label="Item page">
+        <div class="run"><span>Day the Seventh</span><span>Bought in · i</span></div>
+        <h1 class="title">Helm, “lightly used”</h1>
+        <p class="hand">brought up this morning by Wenna, of the Gilt Weasels; still cold from the stair</p>
+
+        <div class="lbl">What it tells <small>asked, then not</small></div>
+
+        <div class="clue asked">
+          <svg class="g"><use href="#g-anvil"/></svg>
+          <div class="t">Mark of the Drowned Forge. Its smiths sank with it, so nobody makes these any more.</div>
+          <div class="tool">by the loupe</div>
+          <div class="cost"><span class="day"><svg><use href="#g-candle"/></svg>⅒ day</span><span class="wear">no wear</span></div>
+        </div>
+        <div class="clue asked cursed">
+          <svg class="g trait"><use href="#g-rune"/></svg>
+          <div class="t"><span class="trait">A mild curse:</span> the wearer agrees with whoever spoke last.</div>
+          <div class="tool">by the curse candle</div>
+          <div class="cost"><span class="day"><svg><use href="#g-candle"/></svg>¼ day</span><span class="wear">a third of the stub</span></div>
+        </div>
+        <div class="clue unasked">
+          <svg class="g"><use href="#g-ask"/></svg>
+          <div class="t">Heft</div>
+          <div class="tool">by the scales</div>
+          <div class="cost"><span class="day"><svg><use href="#g-candle"/></svg>⅒ day</span><span class="wear">no wear</span></div>
+        </div>
+        <div class="clue unasked">
+          <svg class="g"><use href="#g-ask"/></svg>
+          <div class="t">The lining</div>
+          <div class="tool">by the knife</div>
+          <div class="cost"><span class="day"><svg><use href="#g-candle"/></svg>⅛ day</span><span class="wear">dulls the blade a notch</span></div>
+        </div>
+        <div class="clue unasked">
+          <svg class="g"><use href="#g-ask"/></svg>
+          <div class="t">Who wore it last</div>
+          <div class="tool">by the bone dice · two throws left</div>
+          <div class="cost"><span class="day"><svg><use href="#g-candle"/></svg>⅓ day</span><span class="wear">one throw</span></div>
+        </div>
+        <span class="oq pin" style="left:34px;top:672px">open question M4</span>
+      </section>
+
+      <!-- right page: the estimate and the haggle -->
+      <section class="page r" aria-label="Haggle page">
+        <div class="run"><span>Bot · helm</span><span>ii</span></div>
+        <div class="lbl" style="margin-top:12px">Worth, by my blot <small>drag the mark to offer</small></div>
+        <svg class="line" viewBox="0 0 400 128" role="img" aria-label="Number line 0 to 100 gold; a wide pale blot from the first look, a tight dark blot about 12 to 30, the offer mark at 14, her ask at 20">
+          <!-- the first, pale look stays beneath the second -->
+          <ellipse cx="140" cy="58" rx="120" ry="26" fill="url(#wide)" filter="url(#blot)"/>
+          <ellipse cx="96" cy="58" rx="36" ry="19" fill="url(#tight)" filter="url(#blot)"/>
+          <path d="M14 58H386" stroke="#2a2320" stroke-width="1.6"/>
+          <g stroke="#2a2320" stroke-width="1.4">
+            <path d="M14 51v14M88.4 53v10M162.8 51v14M237.2 53v10M311.6 51v14M386 51v14"/>
+          </g>
+          <text x="14" y="94" text-anchor="middle">0</text><text x="162.8" y="94" text-anchor="middle">40</text><text x="311.6" y="94" text-anchor="middle">80</text><text x="386" y="94" text-anchor="end">100</text>
+          <!-- her standing ask -->
+          <path d="M88.4 34v16" stroke="#3b2f52" stroke-width="2"/><text x="94" y="28" class="cap" text-anchor="start">her ask, 20</text>
+          <!-- the player's mark, mid-drag, with the trail from where it was -->
+          <path d="M57 74 C60 80, 61 80, 64 74" fill="none" stroke="#3b2f52" stroke-width="1.2" stroke-dasharray="2 3"/>
+          <g transform="translate(64.7 58)">
+            <path d="M0 0 L-8 -26 Q0 -34 8 -26 Z" fill="#24163f"/>
+            <circle cx="0" cy="-23" r="2.6" fill="#ead9b6"/>
+            <rect x="-16" y="10" width="32" height="26" rx="3" fill="#ead9b6" stroke="#24163f" stroke-width="1.4"/>
+            <text x="0" y="30" text-anchor="middle" style="font-size:21px;fill:#24163f">14</text>
+          </g>
+          <text x="392" y="124" class="cap" text-anchor="end">gold</text>
+        </svg>
+        <span class="oq pin" style="left:300px;top:96px">open question M8</span>
+
+        <div class="deal">
+          <div class="col">
+            <div class="lbl" style="margin-top:6px">The column</div>
+                        <div class="row"><b>Her first ask</b><span>40</span></div>
+            <div class="row"><b>Offers made</b><span>3</span></div>
+            <div class="row paid"><b>Paid</b><span>— —</span></div>
+            <p class="hand" style="margin-top:12px;font-size:18px">touched the visor twice when I said the Forge was drowned</p>
+          </div>
+          <div class="margin">
+            <div class="lbl" style="margin-top:6px">Margin</div>
+            <div class="entry"><span class="who">she</span><span class="n x">40</span></div>
+            <p class="tell">glanced at the door</p>
+            <div class="entry"><span class="who">I</span><span class="n x">8</span></div>
+            <p class="tell">laughed too loudly</p>
+            <div class="entry"><span class="who">she</span><span class="n x">30</span></div>
+            <div class="entry"><span class="who">I</span><span class="n x">12</span></div>
+            <div class="entry"><span class="who">she</span><span class="n">20</span></div>
+            <p class="tell">“it was my uncle's”</p>
+            <div class="entry wet"><span class="who">I</span><span class="n">14</span><span class="hand" style="font-size:16px">← moving</span></div>
+          </div>
+        </div>
+        <div class="acts"><span>strike the last</span><span>let her walk</span></div>
+        <span class="oq pin" style="left:28px;top:648px">open question M7</span>
+        <span class="oq pin" style="left:250px;top:648px">open question M6</span>
+      </section>
+    </div>
+  </div>
+
+  <!-- the shopkeeper's thumbs over the book's lower edge -->
+  <svg class="hands" viewBox="0 0 1920 1080" aria-hidden="true">
+    <g stroke="#24130a" stroke-width="2.5" stroke-linejoin="round">
+      <path d="M1000 1080 l6 -46 c2 -14 18 -20 30 -12 l40 28 c10 8 4 22 -10 20 l-26 -6 l-6 16z" fill="#c9a079"/>
+      <path d="M1840 1080 l-6 -46 c-2 -14 -18 -20 -30 -12 l-40 28 c-10 8 -4 22 10 20 l26 -6 l6 16z" fill="#b48a66"/>
+    </g>
+  </svg>
+
+  <!-- tags for what the decisions do not settle -->
+  <span class="oq pin wide" style="left:1500px;top:282px">open question M1 · M9</span>
+  <span class="oq pin wide" style="left:850px;top:1040px">open question M2</span>
+  <span class="oq pin wide" style="left:60px;top:880px">open question M3</span>
+  <span class="oq pin wide" style="left:1190px;top:150px">open question M12</span>
+
+  <!-- the split: blue for the 3D scene, amber for the UI -->
+  <div class="split" aria-hidden="true">
+    <div class="r d3" style="left:0;top:0;width:1920px;height:1080px;border:0;background:none"></div>
+    <div class="r d3" style="left:20px;top:600px;width:200px;height:258px"><i>3D · the day's candle: the clock, hour rings</i></div>
+    <div class="r d3" style="left:612px;top:526px;width:330px;height:366px"><i>3D · the item, turnable; tools light it</i></div>
+    <div class="r d3" style="left:874px;top:200px;width:428px;height:116px"><i>3D · the customer, static figure</i></div>
+    <div class="r d3" style="left:1356px;top:4px;width:346px;height:296px"><i style="top:auto;bottom:-2px;left:-2px">3D · the door: cold spill</i></div>
+    <div class="r d3" style="left:4px;top:704px;width:936px;height:372px;border-style:dotted"><i style="top:auto;bottom:-2px;left:250px">3D · the counter</i></div>
+    <div class="r d3" style="left:60px;top:230px;width:720px;height:210px;border-style:dotted"><i style="top:auto;bottom:-2px;left:auto;right:-2px">3D · shelf stock, dressing</i></div>
+    <div class="r ui" style="left:944px;top:316px;width:948px;height:752px"><i style="left:auto;right:-2px">UI · the lifted ledger, a flat page</i></div>
+    <div class="r ui" style="left:978px;top:392px;width:424px;height:648px;border-style:dotted"><i>UI · clue rows, two prices each</i></div>
+    <div class="r ui" style="left:1430px;top:390px;width:428px;height:150px;border-style:dotted"><i style="left:auto;right:-2px">UI · blot and number line, an input</i></div>
+    <div class="r ui" style="left:1650px;top:560px;width:208px;height:440px;border-style:dotted"><i style="top:auto;bottom:-30px;left:auto;right:-2px">UI · the margin</i></div>
+    <div class="r ui" style="left:1770px;top:282px;width:114px;height:36px"><i style="left:auto;right:-2px;top:-30px">UI · Heaven's tab</i></div>
+    <div class="key">
+      <b style="color:#8fb4d6">3D</b> is what carries the feel: the counter, the item, the customer, the candle and every light, the door. Its lights change at run time, and a tool reveals by its light.<br>
+      <b style="color:var(--amber)">UI</b> is everything read or decided: the book's pages, drawn flat in the scene's warmth, never tilted. The book is held up from the counter, not laid over the screen.
+    </div>
+  </div>
+</main>
+
+<section class="notes">
+  <p class="howto">The frame above is one 1920×1080 game screen. Add <a href="?split">?split</a> to the address to see the 3D/UI split drawn over it; below 700px wide it turns into the phone layout.</p>
+
+  <div class="plate"><span class="no">The counter</span><h2>Three lights on one helm</h2></div>
+  <div class="stills">
+    <figure><img src="counter-neutral.webp" alt="Neutral appraisal"><figcaption><b>Neutral.</b> The candle is the key light, three hour rings, a tenth burned. The helm and the seller came in from outside, so both carry the cold rim on the door side; the closed ledger lies on the counter. <span class="oq">M12</span></figcaption></figure>
+    <figure><img src="counter-loupe.webp" alt="The loupe"><figcaption><b>The loupe.</b> The room falls away and a tight warm circle lifts the maker's mark. The candle has melted a notch toward its first ring. <span class="oq">M5</span></figcaption></figure>
+    <figure><img src="counter-curse.webp" alt="The curse candle"><figcaption><b>The curse candle.</b> A verdigris flame takes over the key and the curse marks on the brow glow; the day's candle is past its first ring. <span class="oq">M3</span> <span class="oq">M5</span></figcaption></figure>
+    <figure><img src="ledger-scene.webp" alt="The scene behind the lifted ledger"><figcaption><b>Behind the book.</b> The same counter with the ledger lifted out of it: the view pans a little right, so the helm and the candle stay clear of the page.</figcaption></figure>
+  </div>
+
+  <div class="plate"><span class="no">Open</span><h2>What the decisions do not settle</h2></div>
+  <div class="qs">
+    <ol>
+      <li><span class="k">M1</span><span>How the book comes up: does the 3D book on the counter rise into the flat page, or does the page simply appear? And does the view pan for it, as drawn? <i>Frame; neutral still.</i></span></li>
+      <li><span class="k">M2</span><span>Who holds the book: the shopkeeper's thumbs drawn on the UI layer, as here, 3D hands, or no hands at all? <i>Frame, lower edge.</i></span></li>
+      <li><span class="k">M3</span><span>Whether a tool's light reaches the page. Here the page takes only the candle's warmth; D-N4SCF64EZZG5535L lights the book by the scene, and the review suggested exempting it from tool light. <i>Frame; curse still.</i></span></li>
+      <li><span class="k">M4</span><span>How a clue row shows its two prices, the day's candle and the tool's wear: two lines as drawn, rubric with a candle glyph for the day and iron-gall for the tool. <i>Left page.</i></span></li>
+      <li><span class="k">M5</span><span>Where a tool's remaining life shows on the counter as well as the page (storyboard Q5's remainder): the curse candle's stub shrinks in 3D; the loupe, scales and knife have no counter sign yet. <i>Loupe and curse stills.</i></span></li>
+      <li><span class="k">M6</span><span>Whether letting go of the dragged mark speaks the offer, or the player confirms it with a second stroke. <i>Right page.</i></span></li>
+      <li><span class="k">M7</span><span>What “strike the last” may undo; the review's point about striking an answered offer is with the owner and not ruled. <i>Right page.</i></span></li>
+      <li><span class="k">M8</span><span>Whether the customer's standing ask is marked on the number line, as here, or lives only in the margin. <i>Number line.</i></span></li>
+      <li><span class="k">M9</span><span>How much of the scene the book may hide: here it takes the right half and the seller's body, leaving the helm, the candle and the seller's face over its top edge. <i>Frame.</i></span></li>
+      <li><span class="k">M10</span><span>Smaller screens: at 1280×720 the spread cannot shrink with the scene without taking Fell under its floor. Does the book take more of the screen, or does the page reflow? <i>Not drawn.</i></span></li>
+      <li><span class="k">M11</span><span>Phone: the spread does not fit, so portrait shows one page at a time under a band of the counter. Is portrait played at all, or only landscape? <i>Phone render.</i></span></li>
+      <li><span class="k">M12</span><span>The cold rim here is drawn on the door side of anything from outside, the helm and the seller alike, rather than lit by a real lamp: is this the look, and does the rim fade on a warm-held item as it ages? <i>All stills.</i></span></li>
+    </ol>
+  </div>
+</section>
+
+<script>
+  // ?split shows the 3D/UI overlay; nothing else on this page is interactive.
+  if (new URLSearchParams(location.search).has('split')) document.body.classList.add('show-split');
+  document.fonts.ready.then(() => { document.body.dataset.done = '1'; });
+</script>
+</body>
+</html>
