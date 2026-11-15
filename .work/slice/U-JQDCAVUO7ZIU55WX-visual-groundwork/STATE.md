@@ -46,7 +46,7 @@ Storyboard awaits owner review, chiefly its open questions Q1–Q15 (art/storybo
 - [x] decision: owner's storyboard answers Q1–Q6: D-ZP5DV46R5P7JMJL2 (candle lit by the player), D-N4SCF64EZZG5535L (ledger is the lifted book), D-FRYXG6INJL354CU2 (static figure before S5), D-WMOVKUFJH5UB6LBE (phased day), D-5YSEEY37NHL6JFEW (finiteness per tool), D-HF6NDSJJ3ESNI7NE (drag offers, margin tells); backlog B-UM2COURKPFGCX7A4 (v1.1 mixed queue), B-S24HIJ2AC3PWDWTL (v2.0 faces)
 - [x] decision: owner's storyboard answers Q7–Q13, Q15: D-N4MCWUVLSRRCRLXV (buyer asks for a kind), D-OMRAYKUI6QF5YFBX (investor messages, no reply), D-NQ665MMLUAP6UKUA (gutter finishes the current deal), D-3Z4OUYBP2K7FM5VR (night restock and dues), D-VVGT6X32E56GODX6 (Closing Day stock choice), D-7RSGDASVALI4KMGI (board dealt per season), D-OCI62PALFSLFQQON (choose between terms), D-C6S2H7ITBOZFXCRW (ends on the shuttered shop)
 - [ ] decision: what an hour ring does beyond the light (storyboard Q4 remainder), before S2
-- [ ] decision: storyboard Q14, fired as a fourth outcome that ends the run; the owner chose it, but it conflicts with D-G5VL7QCXV5IGX4IY and the milestone's three-grade criterion, so the scope is with the owner
+- [x] backlog: storyboard Q14, fired as a fourth outcome: owner put it after the first season; the first season keeps three grades (B-OCWXWFL7ZVVK3QLN)
 - [ ] decision: the second opinion's design points (blot vs codex, what may be struck in a haggle, what the first season's board may judge, what spends candle besides inspecting), with the owner
 
 ## Log
