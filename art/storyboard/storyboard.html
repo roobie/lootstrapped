@@ -1,0 +1,837 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lootstrapped storyboard</title>
+<style>
+@font-face{font-family:"Fell";src:url(../fonts/im-fell/IMFellEnglish-Regular.woff2) format("woff2");font-weight:400;font-style:normal}
+@font-face{font-family:"Fell";src:url(../fonts/im-fell/IMFellEnglish-Italic.woff2) format("woff2");font-weight:400;font-style:italic}
+@font-face{font-family:"Fell SC";src:url(../fonts/im-fell/IMFellEnglishSC-Regular.woff2) format("woff2")}
+@font-face{font-family:"Fell Canon";src:url(../fonts/im-fell/IMFellFrenchCanon-Regular.woff2) format("woff2")}
+
+:root{
+  /* Ledger Noir */
+  --lampblack:#120e0a; --bitumen:#231810; --oak:#4a301c; --tallow:#ffe2a0; --amber:#e9a23b;
+  --vellum:#ead9b6; --foxed:#cdb485; --gall:#2a2320; --rubric:#a8321f; --verdigris:#4c8f80;
+  --gilt:#b88a2c; --jelly:#a9c43f; --doorcold:#6f8fa8;
+  /* Startup Heaven */
+  --cloud:#fbfaff; --mist:#eeeafc; --seraph:#7b5cff; --halo:#c9bcff; --mint:#8fe6c8;
+  --blush:#ffadc0; --sky:#aadcff; --butter:#ffe9a8; --slate:#22264a; --fog:#8a8fb3;
+  --wyrm:#ff6a1f;
+  --fell:"Fell","IM Fell English",Georgia,"Liberation Serif",serif;
+  --sc:"Fell SC","Fell",Georgia,serif;
+  --canon:"Fell Canon","Fell",Georgia,serif;
+  --saas:"Inter","Helvetica Neue",Helvetica,Arial,"Liberation Sans",sans-serif;
+}
+*{box-sizing:border-box}
+html{background:var(--lampblack)}
+body{margin:0;background:
+  radial-gradient(900px 520px at 50% 140px,rgba(233,162,59,.20),transparent 70%),var(--lampblack);
+  color:var(--vellum);font-family:var(--fell);font-size:17px;line-height:1.45}
+.wrap{width:1000px;margin:0 auto;padding:40px 0 60px}
+h1,h2,h3,p{margin:0}
+section{margin-top:64px}
+.plate{display:flex;align-items:baseline;gap:14px;border-bottom:1px solid rgba(234,217,182,.25);padding-bottom:8px;margin-bottom:22px}
+.plate .no{font-family:var(--sc);color:var(--amber);letter-spacing:.12em;font-size:15px;white-space:nowrap}
+.plate h2{font-family:var(--canon);font-weight:400;font-size:34px;line-height:1.1;color:var(--vellum)}
+.plate .why{margin-left:auto;font-style:italic;color:var(--foxed);font-size:15px;max-width:430px;text-align:right}
+.note{font-style:italic;color:var(--foxed);font-size:15px}
+.note b{font-style:normal;font-weight:400;font-family:var(--sc);color:var(--amber);letter-spacing:.06em}
+.vellum{background-color:var(--vellum);color:var(--gall);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .22 0 0 0 0 .08 0 0 0 .22 0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E"),
+  radial-gradient(180px 120px at 12% 88%,rgba(150,100,40,.28),transparent 70%),
+  radial-gradient(260px 200px at 95% 5%,rgba(150,100,40,.22),transparent 70%)}
+.pill{display:inline-block;font-family:var(--saas);font-size:11px;font-weight:700;padding:3px 9px;border-radius:99px;background:var(--mist);color:var(--seraph);white-space:nowrap}
+
+/* ---------- title page ---------- */
+.title{width:720px;margin:0 auto;padding:40px 56px 34px;text-align:center;border:1px solid #8a7446;outline:4px double #8a7446;outline-offset:-12px;box-shadow:0 0 90px rgba(233,162,59,.28),0 30px 60px #000}
+.title .pre{font-family:var(--sc);letter-spacing:.3em;font-size:13px}
+.title h1{font-family:var(--canon);font-weight:400;font-size:64px;line-height:1;margin:10px 0 4px}
+.title .or{font-style:italic;font-size:21px}
+.title .long{font-size:15.5px;line-height:1.4;max-width:520px;margin:12px auto 0}
+.title svg{display:block;margin:12px auto 4px}
+
+/* ---------- legend ---------- */
+.legend{display:flex;flex-wrap:wrap;gap:10px 22px;justify-content:center;margin-top:20px;font-size:15px;color:var(--foxed);font-style:italic}
+.legend span b{font-style:normal;font-family:var(--sc);font-weight:400;letter-spacing:.08em;color:var(--vellum);margin-right:4px}
+
+/* ---------- panels ---------- */
+.board{display:grid;grid-template-columns:1fr 1fr;gap:34px 26px}
+.panel{margin:0}
+.frame{position:relative;border:1px solid #3a2a1a;box-shadow:0 14px 34px #000;background:#0b0806}
+.frame svg{display:block;width:100%;height:auto}
+.frame .sk{filter:url(#wob)}
+.frame .n{position:absolute;left:-1px;top:-1px;font-family:var(--sc);font-size:15px;letter-spacing:.08em;background:var(--vellum);color:var(--gall);padding:2px 9px 1px}
+.frame.heaven{border-color:#d9d2f3;box-shadow:0 0 0 1px #fff,0 0 50px rgba(201,188,255,.35)}
+figcaption{margin-top:12px}
+figcaption h3{font-family:var(--sc);font-weight:400;letter-spacing:.08em;font-size:19px;color:var(--tallow);line-height:1.2;margin-bottom:6px}
+figcaption dl{display:grid;grid-template-columns:62px 1fr;gap:3px 10px;margin:0;font-size:15.5px;line-height:1.36}
+figcaption dt{font-family:var(--sc);letter-spacing:.06em;font-size:15px;color:var(--amber)}
+figcaption dd{margin:0}
+figcaption dd b{font-weight:400;color:var(--tallow)}
+.refs{margin-top:6px;font-size:14px;color:var(--foxed)}
+.oq{display:inline-block;font-family:var(--sc);font-style:normal;letter-spacing:.08em;font-size:13px;line-height:1.2;padding:1px 7px;border:1.5px solid var(--rubric);color:#f0a08e;background:rgba(168,50,31,.18);margin:6px 6px 0 0;text-decoration:none;white-space:nowrap}
+.act{font-style:italic;color:var(--foxed);font-size:15.5px;margin:-8px 0 22px;max-width:760px}
+
+/* ---------- open questions ---------- */
+.qs{padding:26px 34px 30px}
+.qs h3{font-family:var(--canon);font-weight:400;font-size:28px;margin-bottom:4px}
+.qs .sub{font-family:var(--sc);font-size:13px;letter-spacing:.14em;color:#6f5326;margin-bottom:12px}
+.qs ol{margin:0;padding-left:0;list-style:none;counter-reset:q}
+.qs li{display:grid;grid-template-columns:52px 1fr;gap:10px;padding:8px 0;border-bottom:1px dotted rgba(42,35,32,.4);font-size:16.5px;line-height:1.38}
+.qs li .k{font-family:var(--sc);letter-spacing:.08em;color:var(--rubric);font-size:16px}
+.qs li i{color:#5b4a37;font-size:15px}
+.foot{margin-top:60px;text-align:center;font-style:italic;color:var(--foxed);font-size:14.5px}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <filter id="wob" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency=".045" numOctaves="2" seed="11" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="2.6"/>
+    </filter>
+    <filter id="rough" x="-10%" y="-20%" width="120%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="2" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="2.2"/>
+    </filter>
+    <linearGradient id="gctop" x1="0" x2="1"><stop offset="0" stop-color="#6b4526"/><stop offset=".25" stop-color="#8a5a30"/><stop offset=".6" stop-color="#4a301c"/><stop offset="1" stop-color="#22160d"/></linearGradient>
+    <linearGradient id="gdoor" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#8fb0c8"/><stop offset="1" stop-color="#3a5368"/></linearGradient>
+    <linearGradient id="gspill" x1="1" x2="0"><stop offset="0" stop-color="#6f8fa8" stop-opacity=".4"/><stop offset="1" stop-color="#6f8fa8" stop-opacity="0"/></linearGradient>
+    <radialGradient id="gglow" cx="76" cy="120" r="330" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#e9a23b" stop-opacity=".6"/><stop offset=".3" stop-color="#b8661f" stop-opacity=".3"/><stop offset=".7" stop-color="#3a1c0a" stop-opacity=".1"/><stop offset="1" stop-color="#120e0a" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="ghalo"><stop offset="0" stop-color="#fff6d8" stop-opacity=".9"/><stop offset=".3" stop-color="#ffe2a0" stop-opacity=".45"/><stop offset="1" stop-color="#e9a23b" stop-opacity="0"/></radialGradient>
+    <radialGradient id="gloupe"><stop offset="0" stop-color="#fff2c8" stop-opacity=".55"/><stop offset=".7" stop-color="#ffe2a0" stop-opacity=".25"/><stop offset="1" stop-color="#000" stop-opacity=".55"/></radialGradient>
+    <radialGradient id="gverd" cx="76" cy="120" r="330" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#4c8f80" stop-opacity=".75"/><stop offset=".5" stop-color="#1f3a33" stop-opacity=".35"/><stop offset="1" stop-color="#0c1210" stop-opacity="0"/></radialGradient>
+    <radialGradient id="gdawn" cx="420" cy="90" r="320" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#8fb0c8" stop-opacity=".35"/><stop offset="1" stop-color="#3d4a52" stop-opacity="0"/></radialGradient>
+
+    <g id="balls">
+      <path d="M40 4v14M40 18H14v10M40 18h26v10M40 18v22" fill="none" stroke="currentColor" stroke-width="2.4"/>
+      <circle cx="14" cy="38" r="10"/><circle cx="66" cy="38" r="10"/><circle cx="40" cy="50" r="10"/>
+    </g>
+
+    <!-- the shop: back wall, shelves, a cold door top right -->
+    <g id="room">
+      <rect width="480" height="270" fill="#120e0a"/>
+      <g fill="#2c1e12"><rect x="16" y="32" width="320" height="5"/><rect x="16" y="82" width="320" height="5"/><rect x="16" y="132" width="320" height="5"/></g>
+      <g stroke="#150d07" stroke-width="1.5" stroke-linejoin="round">
+        <polygon points="36,82 42,60 56,56 64,66 60,82" fill="#3a2716"/><polygon points="42,60 56,56 52,70" fill="#6e4a25"/>
+        <polygon points="104,82 104,50 110,44 116,50 116,82" fill="#33231a"/><polygon points="104,50 110,44 110,82 104,82" fill="#5c3d20"/>
+        <polygon points="150,82 156,68 178,68 184,82" fill="#3b2a18"/>
+        <polygon points="226,82 232,62 246,62 252,82" fill="#2c2016"/>
+        <polygon points="60,32 66,14 82,14 86,32" fill="#2f2015"/><polygon points="190,32 190,10 197,6 204,10 204,32" fill="#2a1d13"/>
+        <polygon points="220,132 224,108 242,102 250,114 246,132" fill="#33241a"/>
+        <polygon points="40,132 40,114 74,114 74,132" fill="#3d2a17"/><polygon points="290,132 300,112 316,132" fill="#2a1e15"/>
+      </g>
+      <rect x="392" y="14" width="72" height="104" fill="url(#gdoor)" stroke="#0c0906" stroke-width="6"/>
+      <path d="M428 14v104M392 60h72" stroke="#0c0906" stroke-width="4"/>
+    </g>
+    <g id="counter">
+      <polygon points="0,172 480,172 480,270 0,270" fill="url(#gctop)"/>
+      <rect x="0" y="172" width="480" height="4" fill="#c98c45" opacity=".55"/>
+      <path d="M0 200h480M0 236h480M90 176l-18 94M300 176l8 94" stroke="#2a180c" stroke-width="1" opacity=".45"/>
+    </g>
+    <!-- the shopkeeper: hands only, at the near edge of the counter -->
+    <g id="hands" stroke="#24130a" stroke-width="2" stroke-linejoin="round">
+      <path d="M96 270l10-30c4-8 16-10 22-4l14 12c4 4 0 10-6 8l-10-4-6 18z" fill="#c9a079"/>
+      <path d="M96 270l10-30c4-8 16-10 22-4" fill="none" stroke="#e8c49a" stroke-width="1.4"/>
+      <path d="M90 270l-6-22" fill="none"/>
+      <path d="M90 270l-8-26 4-2" fill="#3a2716"/>
+    </g>
+    <!-- a customer: hooded skull, warm left planes, cold right rim -->
+    <g id="cust" stroke="#1c0f07" stroke-width="3" stroke-linejoin="round">
+      <polygon points="520,330 540,236 600,206 668,214 716,250 740,330" fill="#3a2a22"/>
+      <polygon points="520,330 540,236 600,206 604,330" fill="#7a4d2a"/>
+      <polygon points="668,214 716,250 740,330 704,330" fill="#55718a"/>
+      <polygon points="566,214 584,124 628,92 676,108 700,160 690,222 628,246" fill="#2d211c"/>
+      <polygon points="566,214 584,124 628,92 622,240" fill="#6b4426"/>
+      <polygon points="676,108 700,160 690,222 678,170" fill="#6f8fa8"/>
+      <polygon points="596,150 616,124 652,124 672,150 664,196 640,214 624,214 604,196" fill="#d9c9a4"/>
+      <polygon points="596,150 616,124 634,124 630,214 624,214 604,196" fill="#f3e2b8"/>
+      <polygon points="652,124 672,150 664,196 656,160" fill="#9fb0b8"/>
+      <polygon points="608,156 626,152 624,170 610,172" fill="#1c0f07"/><polygon points="642,152 660,156 658,172 644,170" fill="#1c0f07"/>
+      <polygon points="634,174 640,188 628,188" fill="#1c0f07"/>
+      <path d="M612 198h44M620 198v12M630 198v14M640 198v14M650 198v12" fill="none" stroke-width="2.2"/>
+    </g>
+    <!-- a helm, "lightly used"; low-poly with a cold rim on its right -->
+    <g id="helm" stroke="#24130a" stroke-width="2.4" stroke-linejoin="round">
+      <polygon points="0,40 4,14 26,0 50,6 60,40 50,46 8,46" fill="#7f7a6e"/>
+      <polygon points="0,40 4,14 26,0 28,46 8,46" fill="#b3ab97"/>
+      <polygon points="50,6 60,40 50,46 54,24" fill="#6f8fa8"/>
+      <polygon points="14,24 46,24 46,30 14,30" fill="#1c0f07"/>
+      <path d="M28 2v20" fill="none" stroke-width="1.6"/>
+    </g>
+    <!-- a lantern that hums -->
+    <g id="lantern" stroke="#24130a" stroke-width="2.2" stroke-linejoin="round">
+      <path d="M14 0h12M20 0v6" fill="none"/>
+      <polygon points="6,6 34,6 30,12 10,12" fill="#b88a2c"/>
+      <polygon points="10,12 30,12 32,40 8,40" fill="#4c8f80" fill-opacity=".55"/>
+      <path d="M20 12v28M14 12l-2 28M26 12l2 28" fill="none" stroke-width="1.4"/>
+      <polygon points="6,40 34,40 30,46 10,46" fill="#b88a2c"/>
+    </g>
+  </defs>
+</svg>
+
+<div class="wrap">
+
+<!-- ================= TITLE ================= -->
+<div class="title vellum">
+  <div class="pre">A STORYBOARD · S0 VISUAL GROUNDWORK</div>
+  <h1>One Day &amp; a Reckoning</h1>
+  <div class="or">or, the Seventh Day at the Counter, and the Board that came after</div>
+  <svg width="66" height="50" viewBox="0 0 80 62" style="color:#2a2320" fill="#b88a2c" stroke="#2a2320" stroke-width="2"><use href="#balls"/></svg>
+  <div class="long">Fifteen thumbnails in order: a whole shop day from the lighting of the candle to the tally by its smoke, then Closing Day, where the Angels of Wyrm Combinator read the season and say what it was worth. Drawn in the moodboard's language; rough on purpose, so the mockups have something to argue with.</div>
+</div>
+<div class="legend">
+  <span><b>Sees</b>what is on screen</span>
+  <span><b>Does</b>the player's input</span>
+  <span><b>3D</b>counter, item, customer</span>
+  <span><b>UI</b>ledger, toasts, Heaven</span>
+  <span><b>Beat</b>light &amp; sound</span>
+  <span><a class="oq" href="#questions" style="margin:0">open question</a> not settled by any decision</span>
+</div>
+
+<!-- ================= ACT I ================= -->
+<section>
+  <div class="plate"><span class="no">ACT I</span><h2>Day the Seventh, at the counter</h2><span class="why">The day is one candle long. Everything the player does is a way of spending it.</span></div>
+  <p class="act">A day is about two to three minutes (D-CHOZUNNOBQ6CITEE). This one holds a seller, two tools, a haggle, a buyer, a message from Heaven and the tally. Panels 1–10 are the S2 loop; the board only reaches the shop as a pastel tab and a toast.</p>
+
+  <div class="board">
+
+  <!-- 1 -->
+  <figure class="panel">
+    <div class="frame"><svg viewBox="0 0 480 270"><g class="sk">
+      <use href="#room"/>
+      <rect width="480" height="270" fill="url(#gdawn)"/>
+      <rect width="480" height="270" fill="url(#gglow)" opacity=".55"/>
+      <use href="#counter"/>
+      <polygon points="392,172 464,172 480,196 480,226 290,226" fill="url(#gspill)"/>
+      <polygon points="62,170 90,170 87,176 65,176" fill="#b88a2c" stroke="#24130a" stroke-width="1.6"/>
+      <rect x="70" y="78" width="12" height="92" fill="#f4e4bc" stroke="#24130a" stroke-width="1.6"/>
+      <path d="M70 100h12M70 125h12M70 150h12" stroke="#a8321f" stroke-width="1.8"/>
+      <circle cx="76" cy="62" r="34" fill="url(#ghalo)"/>
+      <path d="M76 76c-7-5-5-13 0-22 5 9 7 17 0 22z" fill="#ffe2a0" stroke="#e9a23b" stroke-width="1.5"/>
+      <use href="#hands" transform="translate(-10,0)"/>
+    </g>
+      <g transform="translate(312,124)">
+        <rect width="160" height="136" fill="#ead9b6" stroke="#24130a" stroke-width="2"/>
+        <rect x="96" y="-12" width="62" height="14" rx="2" fill="#c9bcff" transform="rotate(-4 130 -5)"/>
+        <text x="102" y="-1" font-family="Helvetica,Arial,sans-serif" font-weight="700" font-size="9" fill="#22264a" transform="rotate(-4 130 -5)">Board ✦ 5d</text>
+        <text x="10" y="26" font-family="Fell Canon,Fell,serif" font-size="19" fill="#2a2320">Day the Seventh</text>
+        <text x="10" y="42" font-family="Fell SC,Fell,serif" font-size="8.5" letter-spacing=".5" fill="#6f5326">OF TWELVE · DUES IN 3 DAYS</text>
+        <path d="M10 56h140M10 74h140M10 92h140M10 110h140" stroke="#2a2320" stroke-width=".8" opacity=".35"/>
+        <text x="10" y="128" font-family="Fell,serif" font-size="12" fill="#2a2320">Carried over 58 · Till 58</text>
+      </g>
+    </svg><span class="n">1</span></div>
+    <figcaption>
+      <h3>The candle is lit</h3>
+      <dl>
+        <dt>Sees</dt><dd>The counter at grey morning, the door open on the cold. A new, tall candle with three red hour rings. A fresh ledger page: day seven of twelve, dues in three days, and the Board's pastel sticky tab counting down to Closing Day.</dd>
+        <dt>Does</dt><dd>Begins the day.</dd>
+        <dt>3D</dt><dd>Counter, candle, the shopkeeper's hands at the near edge, nothing above the wrists.</dd>
+        <dt>UI</dt><dd>The ledger's Day page; the Board tab.</dd>
+        <dt>Beat</dt><dd>Flame catches and becomes the key light; rain at the open door; timber ticks.</dd>
+      </dl>
+      <p class="refs">D-34WHPVTJ6MRKUSXM candle clock · D-OOYE4Y67O567LLKP faceless shopkeeper · D-AW7FZBF73LOHPLXO</p>
+      <a class="oq" href="#q1">open question Q1</a><a class="oq" href="#q2">open question Q2</a>
+    </figcaption>
+  </figure>
+
+  <!-- 2 -->
+  <figure class="panel">
+    <div class="frame"><svg viewBox="0 0 480 270"><g class="sk">
+      <use href="#room"/>
+      <rect width="480" height="270" fill="url(#gglow)"/>
+      <use href="#counter"/>
+      <polygon points="392,172 464,172 480,196 480,250 150,250" fill="url(#gspill)"/>
+      <use href="#cust" transform="translate(-30,24) scale(.45)"/>
+      <polygon points="62,170 90,170 87,176 65,176" fill="#b88a2c" stroke="#24130a" stroke-width="1.6"/>
+      <rect x="70" y="84" width="12" height="86" fill="#f4e4bc" stroke="#24130a" stroke-width="1.6"/>
+      <path d="M70 100h12M70 125h12M70 150h12" stroke="#a8321f" stroke-width="1.8"/>
+      <circle cx="72" cy="68" r="34" fill="url(#ghalo)"/>
+      <path d="M76 82c-10-3-10-12-8-22 6 8 10 15 8 22z" fill="#ffe2a0" stroke="#e9a23b" stroke-width="1.5"/>
+      <g fill="none" stroke="#cfe4f2" stroke-width="1.4"><path d="M440 128c4-6 4-12 0-18M450 132c6-9 6-20 0-28"/></g>
+      <g font-family="Fell,serif" font-style="italic" font-size="13" fill="#cfe4f2"><text x="300" y="150">ting — a cracked bell</text></g>
+      <g font-family="Fell,serif" font-style="italic" font-size="13" fill="#ffe2a0"><text x="96" y="66">the flame leans</text><text x="96" y="80">away from the door</text></g>
+    </g></svg><span class="n">2</span></div>
+    <figcaption>
+      <h3>The cold arrives first</h3>
+      <dl>
+        <dt>Sees</dt><dd>Door-blue spills along the counter before anyone is visible; the flame bends away from it. Then a seller steps up, one of the Gilt Weasels, cold-rimmed on the door side: whatever came up from below, they did.</dd>
+        <dt>Does</dt><dd>Nothing yet. The light has already told them how far to trust this one.</dd>
+        <dt>3D</dt><dd>The customer at the counter; the spill and the flame are scene lighting.</dd>
+        <dt>Beat</dt><dd>The small cracked bell, rung differently by each kind of customer.</dd>
+      </dl>
+      <p class="refs">D-3ZWBI6KBBWBWWXDJ cold rim · D-H574L6YSCOZIDEGL customer in 3D · moodboard Plates VII, VIII</p>
+      <a class="oq" href="#q3">open question Q3</a><a class="oq" href="#q4">open question Q4</a>
+    </figcaption>
+  </figure>
+
+  <!-- 3 -->
+  <figure class="panel">
+    <div class="frame"><svg viewBox="0 0 480 270"><g class="sk">
+      <use href="#room"/>
+      <rect width="480" height="270" fill="url(#gglow)"/>
+      <use href="#counter"/>
+      <use href="#cust" transform="translate(-30,24) scale(.45)"/>
+      <polygon points="62,170 90,170 87,176 65,176" fill="#b88a2c" stroke="#24130a" stroke-width="1.6"/>
+      <rect x="70" y="84" width="12" height="86" fill="#f4e4bc" stroke="#24130a" stroke-width="1.6"/>
+      <path d="M70 100h12M70 125h12M70 150h12" stroke="#a8321f" stroke-width="1.8"/>
+      <circle cx="76" cy="68" r="34" fill="url(#ghalo)"/>
+      <path d="M76 82c-7-5-5-13 0-22 5 9 7 17 0 22z" fill="#ffe2a0" stroke="#e9a23b" stroke-width="1.5"/>
+      <ellipse cx="196" cy="224" rx="52" ry="7" fill="#150c06" opacity=".6"/>
+      <use href="#helm" transform="translate(162,178) scale(1.15)"/>
+      <path d="M150 248c20 12 70 12 92 0" fill="none" stroke="#ffe2a0" stroke-width="1.5" stroke-dasharray="4 4"/>
+      <path d="M242 248l-8-4M242 248l-6 6" stroke="#ffe2a0" stroke-width="1.5"/>
+      <use href="#hands" transform="translate(40,0)"/>
+    </g>
+      <g transform="translate(312,110)">
+        <rect width="160" height="150" fill="#ead9b6" stroke="#24130a" stroke-width="2"/>
+        <text x="10" y="22" font-family="Fell Canon,Fell,serif" font-size="16" fill="#2a2320">Helm, "lightly used"</text>
+        <g font-family="Fell,serif" font-size="11" fill="#7a6a55">
+          <text x="10" y="44">? Maker's mark · loupe, ⅒</text>
+          <text x="10" y="62">? Curse · curse candle, ⅓</text>
+          <text x="10" y="80">? Heft · scales, ⅒</text>
+        </g>
+        <text x="10" y="104" font-family="Fell SC,Fell,serif" font-size="9.5" letter-spacing="1" fill="#6f5326">WORTH, BY MY BLOT</text>
+        <ellipse cx="80" cy="124" rx="66" ry="10" fill="#2a2320" opacity=".14" filter="url(#rough)"/>
+        <path d="M8 124h144" stroke="#2a2320" stroke-width="1.2"/>
+        <g font-family="Fell,serif" font-size="10" fill="#2a2320"><text x="6" y="142">0</text><text x="138" y="142">100</text></g>
+      </g>
+    </svg><span class="n">3</span></div>
+    <figcaption>
+      <h3>The item on the counter</h3>
+      <dl>
+        <dt>Sees</dt><dd>The seller sets down a helm they call lightly used. It still wears the cold rim. The ledger turns to the item: every clue it could have is listed greyed, each with its price in candle; the estimate is a wide pale blot across most of the line.</dd>
+        <dt>Does</dt><dd>Turns the helm over in the hands, free; looking costs nothing, asking does.</dd>
+        <dt>3D</dt><dd>The item on the counter, turnable (skelly-assets turntable).</dd>
+        <dt>UI</dt><dd>Item page: unasked clue rows with their candle cost; the ink-blot estimate. No percentage anywhere.</dd>
+      </dl>
+      <p class="refs">D-YX3IUCV2YUN7CT7X · D-34WHPVTJ6MRKUSXM unasked clues · D-XZKESRNAOR3QIXHK ink blot · D-UB7AU7KR5QBMYH4C (a returning item would show its knot here)</p>
+    </figcaption>
+  </figure>
+
+  <!-- 4 -->
+  <figure class="panel">
+    <div class="frame"><svg viewBox="0 0 480 270"><g class="sk">
+      <use href="#room"/>
+      <rect width="480" height="270" fill="#000" opacity=".35"/>
+      <use href="#counter"/>
+      <rect width="480" height="270" fill="#000" opacity=".35"/>
+      <use href="#cust" transform="translate(-30,24) scale(.45)" opacity=".55"/>
+      <polygon points="62,170 90,170 87,176 65,176" fill="#b88a2c" stroke="#24130a" stroke-width="1.6"/>
+      <rect x="70" y="94" width="12" height="76" fill="#f4e4bc" stroke="#24130a" stroke-width="1.6"/>
+      <path d="M70 100h12M70 125h12M70 150h12" stroke="#a8321f" stroke-width="1.8"/>
+      <path d="M70 94q3 6 6 0t6 3" fill="#f4e4bc" stroke="#24130a" stroke-width="1.4"/>
+      <path d="M76 92c-7-5-5-13 0-22 5 9 7 17 0 22z" fill="#ffe2a0" stroke="#e9a23b" stroke-width="1.5"/>
+      <ellipse cx="210" cy="206" rx="56" ry="56" fill="url(#gloupe)"/>
+      <use href="#helm" transform="translate(150,178) scale(1.6)"/>
+      <circle cx="210" cy="206" r="56" fill="none" stroke="#b88a2c" stroke-width="5"/>
+      <g stroke="#a8321f" stroke-width="2" fill="none"><path d="M196 186l6 6 6-6 6 6"/></g>
+      <g font-family="Fell,serif" font-style="italic" font-size="13" fill="#ffe2a0"><text x="96" y="108">a notch melts —</text><text x="96" y="122">a tenth of the day</text></g>
+    </g>
+      <g transform="translate(312,110)">
+        <rect width="160" height="150" fill="#ead9b6" stroke="#24130a" stroke-width="2"/>
+        <text x="10" y="22" font-family="Fell Canon,Fell,serif" font-size="16" fill="#2a2320">Helm, "lightly used"</text>
+        <text x="10" y="44" font-family="Fell,serif" font-size="11" fill="#2a2320">☞ Mark of the Drowned Forge;</text>
+        <text x="22" y="58" font-family="Fell,serif" font-size="11" fill="#2a2320">its smiths sank with it.</text>
+        <g font-family="Fell,serif" font-size="11" fill="#7a6a55"><text x="10" y="78">? Curse · curse candle, ⅓</text></g>
+        <text x="10" y="104" font-family="Fell SC,Fell,serif" font-size="9.5" letter-spacing="1" fill="#6f5326">WORTH, BY MY BLOT</text>
+        <ellipse cx="80" cy="124" rx="66" ry="10" fill="#2a2320" opacity=".1" filter="url(#rough)"/>
+        <ellipse cx="104" cy="124" rx="20" ry="8" fill="#2a2320" opacity=".5" filter="url(#rough)"/>
+        <path d="M8 124h144" stroke="#2a2320" stroke-width="1.2"/>
+        <g font-family="Fell,serif" font-size="10" fill="#2a2320"><text x="6" y="142">0</text><text x="96" y="142">40</text><text x="138" y="142">100</text></g>
+      </g>
+    </svg><span class="n">4</span></div>
+    <figcaption>
+      <h3>Spending candle: the loupe</h3>
+      <dl>
+        <dt>Sees</dt><dd>The room dims except a warm circle; inside it the helm sharpens and a maker's mark surfaces. The candle melts a notch toward its next ring. On the page the clue is written in, and a tight dark blot sits inside the old pale one, which stays.</dd>
+        <dt>Does</dt><dd>Picks the loupe's greyed row; the cost was on it before choosing.</dd>
+        <dt>3D</dt><dd>The reveal is the loupe's light on the item, not an icon or popup.</dd>
+        <dt>UI</dt><dd>The clue in words, on vellum, under the legibility rules.</dd>
+        <dt>Beat</dt><dd>Quill on vellum as the clue is written.</dd>
+      </dl>
+      <p class="refs">D-MHAAIXRXHKHH4G77 tools are light · D-34WHPVTJ6MRKUSXM · D-XZKESRNAOR3QIXHK · D-2NRZXEUWY2RFLDXF</p>
+      <a class="oq" href="#q5">open question Q5</a>
+    </figcaption>
+  </figure>
+
+  <!-- 5 -->
+  <figure class="panel">
+    <div class="frame"><svg viewBox="0 0 480 270"><g class="sk">
+      <use href="#room"/>
+      <rect width="480" height="270" fill="#000" opacity=".45"/>
+      <rect width="480" height="270" fill="url(#gverd)"/>
+      <polygon points="0,172 480,172 480,270 0,270" fill="#2f4a40"/>
+      <polygon points="0,172 480,172 480,270 0,270" fill="url(#gctop)" opacity=".25"/>
+      <use href="#cust" transform="translate(-30,24) scale(.45)" opacity=".45"/>
+      <polygon points="62,170 90,170 87,176 65,176" fill="#b88a2c" stroke="#24130a" stroke-width="1.6"/>
+      <rect x="70" y="126" width="12" height="44" fill="#f4e4bc" stroke="#24130a" stroke-width="1.6"/>
+      <path d="M70 150h12" stroke="#a8321f" stroke-width="1.8"/>
+      <rect x="110" y="140" width="10" height="30" fill="#2a2a2a" stroke="#24130a" stroke-width="1.4"/>
+      <circle cx="115" cy="122" r="30" fill="#bff0df" opacity=".25"/>
+      <path d="M115 138c-6-4-4-11 0-18 4 7 6 14 0 18z" fill="#bff0df" stroke="#4c8f80" stroke-width="1.5"/>
+      <path d="M76 124c-6-4-4-11 0-18 4 7 6 14 0 18z" fill="#ffe2a0" stroke="#e9a23b" stroke-width="1.5"/>
+      <use href="#helm" transform="translate(170,182) scale(1.15)"/>
+      <g stroke="#9ff5d6" stroke-width="2.4" fill="none" opacity=".95"><path d="M180 196l6-8 6 8M200 190v10M208 192l6 6"/></g>
+      <ellipse cx="202" cy="196" rx="36" ry="18" fill="#9ff5d6" opacity=".18"/>
+      <g font-family="Fell,serif" font-style="italic" font-size="13" fill="#bff0df"><text x="140" y="30">the key itself turns verdigris;</text><text x="140" y="44">the curse fluoresces</text></g>
+      <g font-family="Fell,serif" font-style="italic" font-size="13" fill="#ffe2a0"><text x="20" y="240">past the first ring — the room is darker for good</text></g>
+    </g>
+      <g transform="translate(312,110)">
+        <rect width="160" height="150" fill="#ead9b6" stroke="#24130a" stroke-width="2"/>
+        <text x="10" y="22" font-family="Fell Canon,Fell,serif" font-size="16" fill="#2a2320">Helm, "lightly used"</text>
+        <text x="10" y="44" font-family="Fell,serif" font-size="11" fill="#2a2320">☞ Mark of the Drowned Forge</text>
+        <g transform="translate(10,54)" stroke="#2a2320" stroke-width="1.4" fill="none"><path d="M3 2l-3 8h6zM0 12h6"/></g>
+        <text x="22" y="64" font-family="Fell,serif" font-size="11" fill="#2f6b5e">A mild curse: the wearer</text>
+        <text x="22" y="78" font-family="Fell,serif" font-size="11" fill="#2f6b5e">agrees with the last speaker.</text>
+        <ellipse cx="80" cy="124" rx="66" ry="10" fill="#2a2320" opacity=".08" filter="url(#rough)"/>
+        <ellipse cx="104" cy="124" rx="20" ry="8" fill="#2a2320" opacity=".2" filter="url(#rough)"/>
+        <ellipse cx="66" cy="124" rx="14" ry="7" fill="#2a2320" opacity=".6" filter="url(#rough)"/>
+        <path d="M8 124h144" stroke="#2a2320" stroke-width="1.2"/>
+        <g font-family="Fell,serif" font-size="10" fill="#2a2320"><text x="6" y="142">0</text><text x="58" y="142">22</text><text x="138" y="142">100</text></g>
+      </g>
+    </svg><span class="n">5</span></div>
+    <figcaption>
+      <h3>A second tool: the curse candle</h3>
+      <dl>
+        <dt>Sees</dt><dd>The whole key light swaps to verdigris; curse marks on the helm glow. The day's candle has passed its first ring and the room stays darker from now on. The page records a mild curse, with its glyph beside the verdigris, and the blot moves left and tightens again.</dd>
+        <dt>Does</dt><dd>Spends a third of a curse candle on an item that might not be worth it. That is the decision.</dd>
+        <dt>3D</dt><dd>The tool's light rig replaces the key; a lighting change at run time.</dd>
+        <dt>UI</dt><dd>Clue on vellum; trait colour always with a glyph.</dd>
+      </dl>
+      <p class="refs">D-MHAAIXRXHKHH4G77 · D-34WHPVTJ6MRKUSXM room darkens · D-2NRZXEUWY2RFLDXF glyph with every trait colour</p>
+      <a class="oq" href="#q4">open question Q4</a><a class="oq" href="#q5">open question Q5</a>
+    </figcaption>
+  </figure>
+
+  <!-- 6 -->
+  <figure class="panel">
+    <div class="frame"><svg viewBox="0 0 480 270"><g class="sk">
+      <use href="#room"/>
+      <rect width="480" height="270" fill="#000" opacity=".3"/>
+      <rect width="480" height="270" fill="url(#gglow)" opacity=".8"/>
+      <use href="#counter"/>
+      <use href="#cust" transform="translate(-50,24) scale(.45)"/>
+      <polygon points="62,170 90,170 87,176 65,176" fill="#b88a2c" stroke="#24130a" stroke-width="1.6"/>
+      <rect x="70" y="128" width="12" height="42" fill="#f4e4bc" stroke="#24130a" stroke-width="1.6"/>
+      <path d="M70 150h12" stroke="#a8321f" stroke-width="1.8"/>
+      <path d="M76 126c-7-5-5-13 0-22 5 9 7 17 0 22z" fill="#ffe2a0" stroke="#e9a23b" stroke-width="1.5"/>
+      <use href="#helm" transform="translate(140,190) scale(.9)"/>
+      <g stroke="#24130a" stroke-width="1.6"><ellipse cx="110" cy="232" rx="14" ry="5" fill="#b88a2c"/><ellipse cx="110" cy="227" rx="14" ry="5" fill="#ffe2a0"/></g>
+    </g>
+      <g transform="translate(250,30)">
+        <rect width="222" height="232" fill="#ead9b6" stroke="#24130a" stroke-width="2"/>
+        <text x="10" y="24" font-family="Fell SC,Fell,serif" font-size="11" letter-spacing="1" fill="#6f5326">BOT · HELM, "LIGHTLY USED"</text>
+        <path d="M10 32h126" stroke="#2a2320" stroke-width="1"/>
+        <g font-family="Fell,serif" font-size="13" fill="#2a2320">
+          <text x="10" y="54">Worth, by my blot</text><text x="10" y="70">12 – 30, near 22</text>
+          <text x="10" y="102">Paid</text>
+        </g>
+        <g font-family="Fell,serif" font-style="italic" font-size="13.5" fill="#3b2f52" transform="rotate(3 180 100)">
+          <text x="148" y="50">she asked</text>
+          <text x="160" y="66" text-decoration="line-through" opacity=".6">40</text>
+          <text x="150" y="82">I said <tspan text-decoration="line-through" opacity=".6">6</tspan></text>
+          <text x="160" y="98" text-decoration="line-through" opacity=".6">28</text>
+          <text x="160" y="114" text-decoration="line-through" opacity=".6">10</text>
+          <text x="160" y="130" text-decoration="line-through" opacity=".6">21</text>
+          <text x="150" y="146">14, &amp; she</text>
+          <text x="150" y="162">laughed too</text>
+          <text x="150" y="178">loudly</text>
+        </g>
+        <text x="58" y="104" font-family="Fell,serif" font-size="22" fill="#2a2320">14</text>
+        <g transform="translate(26,150) rotate(-8)"><rect width="96" height="30" fill="none" stroke="#2a2320" stroke-width="3" stroke-dasharray="1 0"/><rect x="4" y="4" width="88" height="22" fill="none" stroke="#2a2320" stroke-width="1"/><text x="13" y="21" font-family="Fell SC,Fell,serif" font-size="15" letter-spacing="2" fill="#2a2320">BOUGHT</text></g>
+        <text x="10" y="220" font-family="Fell,serif" font-style="italic" font-size="12" fill="#5b4a37">ink still wet: one strike undoes it</text>
+      </g>
+    </svg><span class="n">6</span></div>
+    <figcaption>
+      <h3>The haggle, in the margin</h3>
+      <dl>
+        <dt>Sees</dt><dd>Offers stack down the margin as crossings-out in the shopkeeper's violet hand, each with room for a one-line tell. When they meet, the price is written in the column and a stamp slams; coins jump on the counter.</dd>
+        <dt>Does</dt><dd>Makes offers until one is taken or the seller walks. Undo strikes the last entry rather than erasing it; while the ink is wet a strike is free, once dry it is history.</dd>
+        <dt>3D</dt><dd>The seller's patience and pleasure, if shown at all on the figure.</dd>
+        <dt>UI</dt><dd>The ledger row, its margin and the stamp.</dd>
+        <dt>Beat</dt><dd>Quill scratch per offer, a scratchier nib on a bad one; the stamp's wet thud; coins counted, not jingled.</dd>
+      </dl>
+      <p class="refs">D-JZVD7DBPLJP2XKT2 crossings-out are the undo · D-2Q5ZKHIVF2C6ZP2C · moodboard Plates IV, VII</p>
+      <a class="oq" href="#q6">open question Q6</a>
+    </figcaption>
+  </figure>
+
+  <!-- 7 -->
+  <figure class="panel">
+    <div class="frame"><svg viewBox="0 0 480 270"><g class="sk">
+      <use href="#room"/>
+      <rect width="480" height="270" fill="#000" opacity=".3"/>
+      <rect width="480" height="270" fill="url(#gglow)" opacity=".75"/>
+      <use href="#counter"/>
+      <polygon points="392,172 464,172 480,196 480,226 300,226" fill="url(#gspill)" opacity=".7"/>
+      <g transform="translate(-30,24) scale(.45)"><use href="#cust"/><path d="M584 124c20-60 76-60 116 36" fill="none" stroke="#1c0f07" stroke-width="10"/></g>
+      <polygon points="62,170 90,170 87,176 65,176" fill="#b88a2c" stroke="#24130a" stroke-width="1.6"/>
+      <rect x="70" y="132" width="12" height="38" fill="#f4e4bc" stroke="#24130a" stroke-width="1.6"/>
+      <path d="M70 150h12" stroke="#a8321f" stroke-width="1.8"/>
+      <path d="M76 130c-7-5-5-13 0-22 5 9 7 17 0 22z" fill="#ffe2a0" stroke="#e9a23b" stroke-width="1.5"/>
+      <use href="#lantern" transform="translate(150,170) scale(1.1)"/>
+      <path d="M150 230c-30 0-30-80 0-98" fill="none" stroke="#ffe2a0" stroke-width="1.4" stroke-dasharray="4 4"/>
+      <circle cx="150" cy="132" r="5" fill="none" stroke="#ffe2a0" stroke-width="1.4"/>
+      <g font-family="Fell,serif" font-style="italic" font-size="13" fill="#ffe2a0"><text x="18" y="236">from the shelf, warm now —</text><text x="18" y="250">five days in stock</text></g>
+      <g font-family="Fell,serif" font-style="italic" font-size="13" fill="#cfe4f2"><text x="306" y="138">Widow Corbel, cold-rimmed;</text><text x="306" y="152">wants "something that glows</text><text x="306" y="166">but does not judge"</text></g>
+    </g>
+      <g transform="translate(312,196)"><rect width="160" height="64" fill="#ead9b6" stroke="#24130a" stroke-width="2"/>
+        <text x="10" y="20" font-family="Fell SC,Fell,serif" font-size="11" letter-spacing="1" fill="#6f5326">SLD · LANTERN (HUMS)</text>
+        <text x="10" y="40" font-family="Fell,serif" font-style="italic" font-size="13" fill="#3b2f52">I asked <tspan text-decoration="line-through" opacity=".6">60</tspan> <tspan text-decoration="line-through" opacity=".6">48</tspan> 40</text>
+        <text x="10" y="56" font-family="Fell,serif" font-style="italic" font-size="13" fill="#3b2f52">she paid it. worrying.</text></g>
+    </svg><span class="n">7</span></div>
+    <figcaption>
+      <h3>The other side of the counter: selling</h3>
+      <dl>
+        <dt>Sees</dt><dd>A buyer, Widow Corbel, cold from the street, wants a light. The lantern that hums comes off the shelf warm, five days held. The same margin, the other way round: now the shopkeeper asks and gets struck down.</dd>
+        <dt>Does</dt><dd>Fetches stock to the counter and haggles to sell.</dd>
+        <dt>3D</dt><dd>Customer, the item lifted from the shelf to the counter; stock lit warm, a still-cold item on the shelf would be a tell.</dd>
+        <dt>UI</dt><dd>A sale row with its margin.</dd>
+      </dl>
+      <p class="refs">D-3ZWBI6KBBWBWWXDJ stock warms as it ages · D-JZVD7DBPLJP2XKT2 · DESIGN.md "Two sides of the counter" (bounce)</p>
+      <a class="oq" href="#q7">open question Q7</a>
+    </figcaption>
+  </figure>
+
+  <!-- 8 -->
+  <figure class="panel">
+    <div class="frame"><svg viewBox="0 0 480 270"><g class="sk">
+      <use href="#room"/>
+      <rect width="480" height="270" fill="#000" opacity=".35"/>
+      <rect width="480" height="270" fill="url(#gglow)" opacity=".6"/>
+      <use href="#counter"/>
+      <rect width="480" height="270" fill="#000" opacity=".15"/>
+      <polygon points="62,170 90,170 87,176 65,176" fill="#b88a2c" stroke="#24130a" stroke-width="1.6"/>
+      <rect x="70" y="136" width="12" height="34" fill="#f4e4bc" stroke="#24130a" stroke-width="1.6"/>
+      <path d="M70 150h12" stroke="#a8321f" stroke-width="1.8"/>
+      <path d="M76 134c-7-5-5-13 0-22 5 9 7 17 0 22z" fill="#ffe2a0" stroke="#e9a23b" stroke-width="1.5"/>
+      <g transform="translate(150,60)"><rect width="300" height="200" fill="#ead9b6" stroke="#24130a" stroke-width="2"/>
+        <text x="14" y="30" font-family="Fell Canon,Fell,serif" font-size="20" fill="#2a2320">Day the Seventh</text>
+        <path d="M14 50h270M14 72h270M14 94h270M14 116h270M14 138h270M14 160h270" stroke="#2a2320" stroke-width=".8" opacity=".35"/>
+        <ellipse cx="200" cy="80" rx="140" ry="80" fill="#c9bcff" opacity=".35"/>
+      </g>
+    </g>
+    <g transform="translate(206,34)">
+      <rect x="-8" y="-8" width="252" height="112" rx="20" fill="#c9bcff" opacity=".35"/>
+      <rect width="236" height="96" rx="12" fill="#fbfaff" stroke="#c9bcff"/>
+      <circle cx="20" cy="20" r="9" fill="#c9bcff" stroke="#ffe9a8" stroke-width="2.5"/>
+      <g font-family="Helvetica,Arial,sans-serif" fill="#22264a">
+        <text x="36" y="24" font-weight="700" font-size="12">Ophaniel</text>
+        <rect x="94" y="13" width="44" height="15" rx="7.5" fill="#eeeafc"/><text x="100" y="24" font-size="9.5" font-weight="700" fill="#7b5cff">Growth</text>
+        <text x="190" y="24" font-size="9.5" fill="#8a8fb3">just now</text>
+        <text x="12" y="48" font-size="11.5">quick q — why did we spend 400 on</text>
+        <text x="12" y="63" font-size="11.5">candles this sprint? no worries if not!</text>
+        <text x="12" y="78" font-size="11.5">just want to be intentional about burn</text>
+      </g>
+    </g></svg><span class="n">8</span></div>
+    <figcaption>
+      <h3>A message from Heaven</h3>
+      <dl>
+        <dt>Sees</dt><dd>A rounded, soft-shadowed toast bounces into the manuscript, from another product entirely, and casts lilac light on the page. Sans type in the shop: one of the two deliberate border crossings.</dd>
+        <dt>Does</dt><dd>Reads it. It is about the candles they just watched burn.</dd>
+        <dt>UI</dt><dd>The toast only; nothing in the 3D scene changes except the page's light.</dd>
+        <dt>Beat</dt><dd>A choir sting compressed into a notification chirp.</dd>
+      </dl>
+      <p class="refs">D-AW7FZBF73LOHPLXO investor messages are Heaven · D-OOYE4Y67O567LLKP three angels · moodboard Plates II, IV</p>
+      <a class="oq" href="#q8">open question Q8</a>
+    </figcaption>
+  </figure>
+
+  <!-- 9 -->
+  <figure class="panel">
+    <div class="frame"><svg viewBox="0 0 480 270"><g class="sk">
+      <use href="#room"/>
+      <rect width="480" height="270" fill="#000" opacity=".6"/>
+      <rect width="480" height="270" fill="url(#gglow)" opacity=".35"/>
+      <use href="#counter"/>
+      <rect width="480" height="270" fill="#000" opacity=".45"/>
+      <polygon points="392,172 464,172 480,196 480,226 300,226" fill="url(#gspill)"/>
+      <g transform="translate(-30,24) scale(.45)" opacity=".5"><use href="#cust"/></g>
+      <polygon points="62,170 90,170 87,176 65,176" fill="#b88a2c" stroke="#24130a" stroke-width="1.6"/>
+      <rect x="70" y="160" width="12" height="10" fill="#f4e4bc" stroke="#24130a" stroke-width="1.6"/>
+      <path d="M70 162q3 4 6 0t6 2" fill="none" stroke="#24130a" stroke-width="1.2"/>
+      <circle cx="76" cy="150" r="20" fill="url(#ghalo)" opacity=".7"/>
+      <path d="M76 158c-4-3-4-7 0-12 3 5 4 9 0 12z" fill="#e9a23b" stroke="#a8321f" stroke-width="1.2"/>
+      <g font-family="Fell,serif" font-style="italic" font-size="13" fill="#ffe2a0"><text x="100" y="146">the last ring; the flame</text><text x="100" y="160">gutters and leans</text></g>
+      <g font-family="Fell,serif" font-style="italic" font-size="13" fill="#cfe4f2"><text x="270" y="40">one more at the door,</text><text x="270" y="54">and no candle to spend on them</text></g>
+    </g></svg><span class="n">9</span></div>
+    <figcaption>
+      <h3>The candle gutters</h3>
+      <dl>
+        <dt>Sees</dt><dd>A stub below the last ring; the warm pool has shrunk to the candle and the page. Someone is still at the door, cold-rimmed and out of luck.</dd>
+        <dt>Does</dt><dd>Whatever the last of the candle allows.</dd>
+        <dt>3D</dt><dd>The lighting is the clock: the room is at its darkest.</dd>
+        <dt>Beat</dt><dd>The candle's gutter; rain from the door.</dd>
+      </dl>
+      <p class="refs">D-34WHPVTJ6MRKUSXM the room darkens as the day's options run out</p>
+      <a class="oq" href="#q9">open question Q9</a>
+    </figcaption>
+  </figure>
+
+  <!-- 10 -->
+  <figure class="panel">
+    <div class="frame"><svg viewBox="0 0 480 270"><g class="sk">
+      <rect width="480" height="270" fill="#0b0806"/>
+      <polygon points="0,172 480,172 480,270 0,270" fill="#160e08"/>
+      <polygon points="62,170 90,170 87,176 65,176" fill="#3a2716" stroke="#24130a" stroke-width="1.6"/>
+      <rect x="70" y="164" width="12" height="6" fill="#4a3a2a"/>
+      <path d="M76 162c-8-12 10-18 2-30s10-18 2-34" fill="none" stroke="#8a8072" stroke-width="1.6" opacity=".7"/>
+      <rect x="140" y="30" width="300" height="220" fill="#ead9b6" opacity=".12" transform="scale(1.03) translate(-6,-4)"/>
+    </g>
+      <g transform="translate(140,30)"><rect width="300" height="220" fill="#ead9b6" stroke="#24130a" stroke-width="2"/>
+        <text x="14" y="30" font-family="Fell Canon,Fell,serif" font-size="20" fill="#2a2320">Day the Seventh — closed</text>
+        <g font-family="Fell,serif" font-size="13.5" fill="#2a2320">
+          <text x="14" y="58">BOT Helm, "lightly used"</text><text x="250" y="58">14</text>
+          <text x="14" y="78">SLD Lantern (hums)</text><text x="250" y="78">40</text>
+          <text x="14" y="98">Curse candle, a third</text><text x="250" y="98" fill="#a8321f">−9</text>
+        </g>
+        <path d="M14 108h272" stroke="#2a2320" stroke-width="1.4"/>
+        <g font-family="Fell,serif" font-size="13.5" fill="#2a2320">
+          <text x="14" y="128">Carried over <tspan text-decoration="line-through" opacity=".6">58</tspan> 58</text>
+          <text x="14" y="148">Dues owing, Day 10</text><text x="250" y="148" fill="#a8321f">120</text>
+          <text x="14" y="182" font-family="Fell SC,Fell,serif" font-size="11" letter-spacing="1" fill="#6f5326">IN THE TILL</text>
+          <text x="14" y="206" font-size="28">75</text><text x="52" y="206">gp</text>
+        </g>
+        <g transform="translate(170,170) rotate(-8)"><rect width="110" height="30" fill="none" stroke="#a8321f" stroke-width="3"/><rect x="4" y="4" width="102" height="22" fill="none" stroke="#a8321f" stroke-width="1"/><text x="10" y="21" font-family="Fell SC,Fell,serif" font-size="13" letter-spacing="1.5" fill="#a8321f">45 SHORT</text></g>
+      </g>
+    </svg><span class="n">10</span></div>
+    <figcaption>
+      <h3>Night: the tally</h3>
+      <dl>
+        <dt>Sees</dt><dd>Candle out, a thread of smoke; the page is the only light. The day closes as a ledger: bought, sold, tools spent, carried over, dues owing in rubric, the till in large figures. Every struck offer of the day is still there.</dd>
+        <dt>Does</dt><dd>Reads the day back and closes it; the ink dries.</dd>
+        <dt>3D</dt><dd>Barely: smoke and a dark counter.</dd>
+        <dt>UI</dt><dd>The day's closing page.</dd>
+        <dt>Beat</dt><dd>Coins counted on oak, fewer sound lonelier. Under it, the sub-bass breath that was the room tone all along.</dd>
+      </dl>
+      <p class="refs">S2 "close the day's ledger" · D-JZVD7DBPLJP2XKT2 · D-2NRZXEUWY2RFLDXF figures on vellum · moodboard Plates III, VIII</p>
+      <a class="oq" href="#q10">open question Q10</a>
+    </figcaption>
+  </figure>
+
+  </div>
+</section>
+
+<!-- ================= ACT II ================= -->
+<section>
+  <div class="plate"><span class="no">ACT II</span><h2>Closing Day: the Wyrm Combinator board</h2><span class="why">Five days later the candle goes out for the season and the player is cut, without warning, to Heaven.</span></div>
+  <p class="act">The last shop day ends like panel 10, and then the hard cut. Everything from here is UI in Startup Heaven's palette and type; no 3D, no Fell, no candle except as a KPI.</p>
+
+  <div class="board">
+
+  <!-- 11 -->
+  <figure class="panel">
+    <div class="frame"><svg viewBox="0 0 480 270">
+      <rect width="96" height="270" fill="#150d08"/><circle cx="48" cy="120" r="40" fill="#e9a23b" opacity=".45"/><path d="M48 140c-7-5-5-13 0-22 5 9 7 17 0 22z" fill="#ffe2a0" stroke="#e9a23b" stroke-width="1.5"/>
+      <rect x="96" width="96" height="270" fill="#0b0806"/><path d="M140 200c-8-12 10-18 2-30s10-18 2-34" fill="none" stroke="#8a8072" stroke-width="2" opacity=".8"/>
+      <rect x="192" width="96" height="270" fill="#000"/>
+      <rect x="288" width="96" height="270" fill="#fbfaff"/>
+      <g fill="#e6e1f7"><rect x="300" y="40" width="64" height="10" rx="5"/><rect x="300" y="58" width="40" height="10" rx="5"/><circle cx="314" cy="110" r="12"/><rect x="304" y="124" width="20" height="10" rx="2"/><rect x="334" y="100" width="40" height="7" rx="3.5"/><rect x="334" y="114" width="40" height="7" rx="3.5"/><rect x="334" y="128" width="28" height="7" rx="3.5"/></g>
+      <defs><linearGradient id="gsyn" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#c9bcff"/><stop offset=".5" stop-color="#aadcff"/><stop offset="1" stop-color="#ffe9a8"/></linearGradient></defs>
+      <rect x="384" width="96" height="270" fill="url(#gsyn)"/>
+      <text x="392" y="138" font-family="Helvetica,Arial,sans-serif" font-weight="800" font-size="15" fill="#22264a" letter-spacing="-.4">Be not</text><text x="392" y="156" font-family="Helvetica,Arial,sans-serif" font-weight="800" font-size="15" fill="#22264a" letter-spacing="-.4">afraid.</text>
+      <g font-family="Fell,serif" font-style="italic" font-size="12.5" fill="#cdb485"><text x="8" y="256">last flame</text><text x="104" y="242">smoke; a far</text><text x="104" y="256">choir tuning</text></g>
+      <g font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#666"><text x="200" y="256">0.4 s of nothing</text></g>
+      <g font-family="Helvetica,Arial,sans-serif" font-size="11" fill="#8a8fb3"><text x="296" y="256">skeleton loaders</text></g>
+      <path d="M96 0v270M192 0v270M288 0v270M384 0v270" stroke="#3a2a1a" stroke-width="1"/>
+    </svg><span class="n">11</span></div>
+    <figcaption>
+      <h3>The cut</h3>
+      <dl>
+        <dt>Sees</dt><dd>The season's last flame snuffs; smoke; black; fluorescent flicker; skeleton loaders, literally skeletons; then a synergy gradient: "Be not afraid." About two seconds.</dd>
+        <dt>Does</dt><dd>Nothing. It happens to them.</dd>
+        <dt>Beat</dt><dd>A far choir tuning under the smoke, then the dead silence of a room with no noise floor. A hard cut, never a cross-fade.</dd>
+      </dl>
+      <p class="refs">D-AW7FZBF73LOHPLXO hard cut through skeleton loaders · D-CSQFNAVMFBMTACBM the season's fixed end · moodboard Plate V</p>
+      <a class="oq" href="#q11">open question Q11</a>
+    </figcaption>
+  </figure>
+
+  <!-- 12 -->
+  <figure class="panel">
+    <div class="frame heaven"><svg viewBox="0 0 480 270" font-family="Helvetica,Arial,sans-serif">
+      <rect width="480" height="270" fill="#fbfaff"/>
+      <rect width="96" height="270" fill="#f4f0ff"/><path d="M96 0v270" stroke="#e6e1f7"/>
+      <rect x="10" y="12" width="18" height="18" fill="#ff6a1f"/><text x="14" y="26" font-family="Georgia,serif" font-size="13" fill="#fff">W</text>
+      <text x="32" y="20" font-weight="800" font-size="8.5" fill="#22264a">Wyrm</text><text x="32" y="30" font-weight="800" font-size="8.5" fill="#22264a">Combinator</text>
+      <rect x="8" y="44" width="80" height="16" rx="5" fill="#fff"/>
+      <g font-size="9" fill="#4b5075"><text x="14" y="55" fill="#7b5cff" font-weight="700">Overview</text><text x="14" y="76">Charter</text><text x="14" y="94">Mandates</text><text x="14" y="112">Deaths</text><rect x="46" y="104" width="26" height="10" rx="3" fill="#ffadc0"/><text x="49" y="112" font-size="7" fill="#7a1436" font-weight="700">2 new</text><text x="14" y="130">Souls</text></g>
+      <text x="108" y="22" font-size="8.5" fill="#8a8fb3">Portfolio / The Three Balls / Closing Day</text>
+      <g><circle cx="368" cy="18" r="7" fill="#c9bcff" stroke="#ffe9a8" stroke-width="2"/><circle cx="380" cy="18" r="7" fill="#8fe6c8" stroke="#ffe9a8" stroke-width="2"/><circle cx="392" cy="18" r="7" fill="#ffadc0" stroke="#ffe9a8" stroke-width="2"/><circle cx="404" cy="18" r="7" fill="#ff6a1f" stroke="#2a1206" stroke-width="2"/></g>
+      <text x="414" y="16" font-size="6.5" fill="#b24a12" font-weight="700">1 anonymous</text><text x="414" y="24" font-size="6.5" fill="#b24a12" font-weight="700">wyrm is viewing</text>
+      <text x="108" y="50" font-weight="800" font-size="18" fill="#22264a" letter-spacing="-.5">Be not afraid, Founder.</text>
+      <text x="108" y="64" font-size="9" fill="#4b5075">Here's your season at a glance. Let's unpack the learnings together.</text>
+      <g>
+        <rect x="108" y="74" width="114" height="62" rx="9" fill="#fff" stroke="#ebe7f8"/><text x="116" y="88" font-size="7" font-weight="700" fill="#8a8fb3">GROSS LOOT VOLUME</text><text x="116" y="110" font-size="18" font-weight="800" fill="#22264a">1,906</text><path d="M116 128l20-4 20 2 20-8 20-6 18-6" fill="none" stroke="#7b5cff" stroke-width="2"/>
+        <rect x="230" y="74" width="114" height="62" rx="9" fill="#fff" stroke="#ebe7f8"/><text x="238" y="88" font-size="7" font-weight="700" fill="#8a8fb3">ADVENTURER CHURN</text><text x="238" y="110" font-size="18" font-weight="800" fill="#22264a">12%</text><text x="238" y="128" font-size="7.5" fill="#4b5075">2 users dissolved. Win-back?</text>
+        <rect x="352" y="74" width="116" height="62" rx="9" fill="#fff" stroke="#ebe7f8"/><text x="360" y="88" font-size="7" font-weight="700" fill="#8a8fb3">RUNWAY</text><text x="360" y="110" font-size="18" font-weight="800" fill="#22264a">0.5 <tspan font-size="9" fill="#8a8fb3">candles</tspan></text><rect x="360" y="118" width="96" height="5" rx="2.5" fill="#eeeafc"/><rect x="360" y="118" width="12" height="5" rx="2.5" fill="#ff6a1f"/><text x="360" y="132" font-size="7.5" fill="#4b5075">Burn rate: literal.</text>
+      </g>
+      <rect x="108" y="146" width="236" height="112" rx="9" fill="#fff" stroke="#ebe7f8"/><text x="116" y="162" font-size="9" font-weight="700" fill="#22264a">Daily Active Adventurers</text>
+      <path d="M116 220l20-6 20 2 20-10 20 4 20-8 20 30 20-2 20 4 20-6 20 2" fill="none" stroke="#7b5cff" stroke-width="2"/><circle cx="236" cy="226" r="4" fill="#fff" stroke="#ff7f9f" stroke-width="2.5"/>
+      <rect x="352" y="146" width="116" height="112" rx="9" fill="#fff" stroke="#ebe7f8"/><text x="360" y="162" font-size="9" font-weight="700" fill="#22264a">Attachments</text>
+      <g transform="translate(372,172) rotate(-3)"><rect width="56" height="66" fill="#ead9b6" stroke="#ebe7f8"/><path d="M6 12h40M6 20h44M6 28h36M6 36h42M6 44h30" stroke="#2a2320" stroke-width="1" opacity=".5"/><path d="M30 44h14" stroke="#a8321f" stroke-width="1.5"/></g>
+      <text x="360" y="252" font-size="7.5" fill="#8a8fb3">ledger.pdf · 0 views</text>
+    </svg><span class="n">12</span></div>
+    <figcaption>
+      <h3>The dashboard</h3>
+      <dl>
+        <dt>Sees</dt><dd>A SaaS product someone could really ship. The season as KPIs: loot volume up and to the right, churn in polite pink (two of the shop's dead), runway in candles. Four presence dots, the last one orange and faceless: "1 anonymous wyrm is viewing". The player's own ledger sits in Attachments, as a thumbnail nobody opened.</dd>
+        <dt>Does</dt><dd>Reads the season in the other dialect. Percentages appear for the first time.</dd>
+        <dt>UI</dt><dd>All of it; the ledger thumbnail is the second deliberate border crossing.</dd>
+        <dt>Beat</dt><dd>Explainer ukulele; tiles count up with a marimba tick; the loop ducks for one bar when the orange dot appears.</dd>
+      </dl>
+      <p class="refs">D-AW7FZBF73LOHPLXO · D-OOYE4Y67O567LLKP dragon as presence, two names for every death · D-XZKESRNAOR3QIXHK percentages belong to Heaven · D-34WHPVTJ6MRKUSXM runway</p>
+    </figcaption>
+  </figure>
+
+  <!-- 13 -->
+  <figure class="panel">
+    <div class="frame heaven"><svg viewBox="0 0 480 270" font-family="Helvetica,Arial,sans-serif">
+      <rect width="480" height="270" fill="#fbfaff"/>
+      <text x="50" y="32" font-weight="800" font-size="16" fill="#22264a" letter-spacing="-.4">Your board</text>
+      <rect x="140" y="20" width="118" height="16" rx="8" fill="#eeeafc"/><text x="148" y="31" font-size="8.5" font-weight="700" fill="#7b5cff">3 angels · 1 limited partner</text>
+      <g>
+        <rect x="20" y="48" width="440" height="62" rx="11" fill="#fff" stroke="#ebe7f8"/>
+        <circle cx="46" cy="79" r="15" fill="#c9bcff" stroke="#ffe9a8" stroke-width="3"/><g fill="#22264a"><circle cx="41" cy="77" r="2"/><circle cx="51" cy="77" r="2"/><circle cx="46" cy="84" r="2"/></g>
+        <text x="72" y="70" font-size="11" font-weight="700" fill="#22264a">Ophaniel <tspan font-weight="400" fill="#8a8fb3">· Growth</tspan></text>
+        <text x="72" y="86" font-size="9.5" fill="#4b5075">"Volume is great. Can we 10× the delves? Ask them."</text>
+        <rect x="72" y="94" width="280" height="5" rx="2.5" fill="#eeeafc"/><rect x="72" y="94" width="240" height="5" rx="2.5" fill="#7b5cff"/>
+        <rect x="380" y="70" width="64" height="17" rx="8.5" fill="#d9f7ec"/><text x="389" y="82" font-size="9" font-weight="700" fill="#167a58">Delighted</text>
+      </g>
+      <g>
+        <rect x="20" y="118" width="440" height="62" rx="11" fill="#fff" stroke="#ebe7f8"/>
+        <circle cx="46" cy="149" r="15" fill="#ffadc0" stroke="#ffe9a8" stroke-width="3"/><g fill="#22264a"><circle cx="41" cy="147" r="2"/><circle cx="51" cy="147" r="2"/><circle cx="46" cy="154" r="2"/></g>
+        <text x="72" y="140" font-size="11" font-weight="700" fill="#22264a">Sr. Temperance <tspan font-weight="400" fill="#8a8fb3">· Piety &amp; Compliance</tspan></text>
+        <text x="72" y="156" font-size="9.5" fill="#4b5075">"We need to talk about the helm that agrees with people."</text>
+        <rect x="72" y="164" width="280" height="5" rx="2.5" fill="#eeeafc"/><rect x="72" y="164" width="130" height="5" rx="2.5" fill="#7b5cff"/>
+        <rect x="368" y="140" width="80" height="17" rx="8.5" fill="#fff3cf"/><text x="375" y="152" font-size="9" font-weight="700" fill="#8a6200">Has concerns</text>
+      </g>
+      <g>
+        <rect x="20" y="188" width="440" height="62" rx="11" fill="#fff" stroke="#ebe7f8"/>
+        <circle cx="46" cy="219" r="15" fill="#8fe6c8" stroke="#ffe9a8" stroke-width="3"/><g fill="#22264a"><circle cx="41" cy="217" r="2"/><circle cx="51" cy="217" r="2"/><circle cx="46" cy="224" r="2"/></g>
+        <text x="72" y="210" font-size="11" font-weight="700" fill="#22264a">Azrael (they/them) <tspan font-weight="400" fill="#8a8fb3">· Seraphic ESG</tspan></text>
+        <text x="72" y="226" font-size="9.5" fill="#4b5075">"Two. I was there for both."</text>
+        <rect x="72" y="234" width="280" height="5" rx="2.5" fill="#eeeafc"/><rect x="72" y="234" width="70" height="5" rx="2.5" fill="#7b5cff"/>
+        <rect x="358" y="210" width="96" height="17" rx="8.5" fill="#ffe3ea"/><text x="365" y="222" font-size="9" font-weight="700" fill="#b53359">Praying for you</text>
+      </g>
+    </svg><span class="n">13</span></div>
+    <figcaption>
+      <h3>The three angels</h3>
+      <dl>
+        <dt>Sees</dt><dd>Three angels, each a ring of eyes with a halo for an online ring, each with a mandate, a satisfaction bar and a status pill. Each quote points at something the player actually did: the cursed helm from panel 5 is a compliance issue now.</dd>
+        <dt>Does</dt><dd>Reads why each one feels how they feel. Profit pleases only one of them.</dd>
+        <dt>UI</dt><dd>Cards in Heaven's type; no Fell.</dd>
+        <dt>Beat</dt><dd>Angel voices: a warm many-voiced chord with a mouse-click on top.</dd>
+      </dl>
+      <p class="refs">D-G5VL7QCXV5IGX4IY the board's judgement must be legible · D-OOYE4Y67O567LLKP three balls, three angels · DESIGN.md angels with mandates (bounce)</p>
+      <a class="oq" href="#q12">open question Q12</a>
+    </figcaption>
+  </figure>
+
+  <!-- 14 -->
+  <figure class="panel">
+    <div class="frame heaven"><svg viewBox="0 0 480 270" font-family="Helvetica,Arial,sans-serif">
+      <defs>
+        <linearGradient id="gverdict" x1="0" x2="1"><stop offset="0" stop-color="#efe9ff"/><stop offset=".55" stop-color="#e3f4ff"/><stop offset="1" stop-color="#fff1d9"/></linearGradient>
+        <radialGradient id="gscorch" cx=".3" cy="0" r="1.3"><stop offset=".5" stop-color="#fbfaff"/><stop offset=".62" stop-color="#ffd9b0"/><stop offset=".72" stop-color="#ff6a1f"/><stop offset=".84" stop-color="#3a1404"/><stop offset=".96" stop-color="#120e0a"/></radialGradient>
+      </defs>
+      <rect width="480" height="270" fill="#fbfaff"/>
+      <rect x="20" y="16" width="440" height="150" rx="12" fill="url(#gverdict)" stroke="#ddd4fb"/>
+      <rect x="34" y="28" width="52" height="15" rx="7.5" fill="#fff3cf"/><text x="40" y="39" font-size="8.5" font-weight="700" fill="#8a6200">Decision</text>
+      <text x="34" y="64" font-weight="800" font-size="17" fill="#22264a" letter-spacing="-.4">Charter renewed, with terms</text>
+      <text x="34" y="80" font-size="9.5" fill="#4b5075">The board is aligned-ish. A few asks before next season:</text>
+      <g font-size="9.5" fill="#4b5075"><text x="40" y="98">1. No cursed headwear on display.</text><text x="40" y="114">2. 15% of the till tithed to the Hoard.</text><text x="40" y="130">3. A compliance cherub will sit in. It won't be weird.</text></g>
+      <rect x="340" y="62" width="104" height="28" rx="8" fill="#7b5cff"/><text x="358" y="80" font-size="10" font-weight="700" fill="#fff">Accept terms</text>
+      <rect x="340" y="98" width="104" height="26" rx="8" fill="none" stroke="#cfc8ea" stroke-dasharray="3 3"/><text x="362" y="115" font-size="10" font-weight="700" fill="#8a8fb3" text-decoration="line-through">Circle back</text>
+      <rect x="318" y="130" width="138" height="20" rx="5" fill="#22264a"/><text x="326" y="143" font-size="8.5" fill="#fff">There is no circling back.</text>
+      <circle cx="40" cy="156" r="5" fill="#ff6a1f"/><text x="50" y="159" font-size="8.5" fill="#b24a12">Wyrm is typing ··· <tspan fill="#8a8fb3">(has been typing for 1 season)</tspan></text>
+      <g>
+        <rect x="20" y="180" width="140" height="78" rx="11" fill="#fbfaff" stroke="#ebe7f8"/><rect x="30" y="190" width="72" height="15" rx="7.5" fill="#d9f7ec"/><text x="36" y="201" font-size="8.5" font-weight="700" fill="#167a58">Clean renewal</text><text x="30" y="222" font-size="10.5" font-weight="800" fill="#22264a">You're crushing it.</text><text x="30" y="238" font-size="8" fill="#4b5075">feather confetti; choir</text><text x="30" y="249" font-size="8" fill="#4b5075">as a notification chirp</text>
+        <rect x="170" y="180" width="140" height="78" rx="11" fill="#fbfaff" stroke="#7b5cff" stroke-width="2"/><rect x="180" y="190" width="58" height="15" rx="7.5" fill="#fff3cf"/><text x="186" y="201" font-size="8.5" font-weight="700" fill="#8a6200">With terms</text><text x="180" y="222" font-size="10.5" font-weight="800" fill="#22264a">A few asks.</text><text x="180" y="238" font-size="8" fill="#4b5075">the fine print grows;</text><text x="180" y="249" font-size="8" fill="#4b5075">each term becomes a sticker</text>
+        <rect x="320" y="180" width="140" height="78" rx="11" fill="url(#gscorch)"/><rect x="330" y="190" width="68" height="15" rx="7.5" fill="#ffe3ea"/><text x="336" y="201" font-size="8.5" font-weight="700" fill="#b53359">Probation</text><text x="330" y="222" font-size="10.5" font-weight="800" fill="#22264a">Let's take this offline.</text><text x="330" y="238" font-size="8" fill="#fff">scorch from the edges;</text><text x="330" y="249" font-size="8" fill="#fff">the wyrm stops typing</text>
+      </g>
+    </svg><span class="n">14</span></div>
+    <figcaption>
+      <h3>The verdict</h3>
+      <dl>
+        <dt>Sees</dt><dd>One decision card, graded: clean, with terms, or probation; this season's is "with terms", each term traceable to the season. The one dishonest control is struck through and its tooltip tells the truth. Below, the three grades as they would play.</dd>
+        <dt>Does</dt><dd>Accepts the terms.</dd>
+        <dt>UI</dt><dd>All of it. Probation scorches the dashboard from the edge inward, the scorch kept for the wyrm.</dd>
+        <dt>Beat</dt><dd>Clean: confetti and the compressed choir. Terms: nothing but longer fine print. Probation: the typing indicator's three talon taps stop.</dd>
+      </dl>
+      <p class="refs">D-G5VL7QCXV5IGX4IY graded renewal, terms carry over · D-OOYE4Y67O567LLKP · moodboard Plate V</p>
+      <a class="oq" href="#q13">open question Q13</a><a class="oq" href="#q14">open question Q14</a>
+    </figcaption>
+  </figure>
+
+  <!-- 15 -->
+  <figure class="panel">
+    <div class="frame"><svg viewBox="0 0 480 270"><g class="sk">
+      <rect width="480" height="270" fill="#3a3530"/>
+      <g fill="#d8d2c4" opacity=".75"><rect x="16" y="32" width="320" height="5"/><rect x="16" y="82" width="320" height="5"/><rect x="16" y="132" width="320" height="5"/></g>
+      <g fill="#ece8de" stroke="#8a8072" stroke-width="1.2"><path d="M30 82c4-24 30-30 40-24s14 16 10 24z"/><path d="M100 82c0-30 20-36 30-30 8 6 6 22 4 30z"/><path d="M150 82c4-14 30-16 36 0z"/><path d="M216 132c4-24 30-30 36-6l2 6z"/></g>
+      <rect x="392" y="14" width="72" height="104" fill="#5a4a3a" stroke="#0c0906" stroke-width="6"/>
+      <g stroke="#ffe9c8" stroke-width="2" opacity=".8"><path d="M396 30h64M396 48h64M396 66h64M396 84h64M396 102h64"/></g>
+      <g fill="#fff2d6" opacity=".18"><polygon points="396,30 460,30 300,172 160,172"/><polygon points="396,66 460,66 360,172 250,172"/></g>
+      <polygon points="0,172 480,172 480,270 0,270" fill="#8a6b4c"/>
+      <rect x="0" y="172" width="480" height="4" fill="#d8b98a" opacity=".6"/>
+      <polygon points="62,170 90,170 87,176 65,176" fill="#b88a2c" stroke="#24130a" stroke-width="1.6"/>
+      <rect x="70" y="164" width="12" height="6" fill="#4a3a2a"/>
+      <g transform="translate(180,188)"><rect width="110" height="44" fill="#6b4526" stroke="#24130a" stroke-width="2"/><text x="36" y="28" font-family="Fell SC,Fell,serif" font-size="13" fill="#ead9b6" letter-spacing="1">TILL</text></g>
+      <g transform="translate(250,178) rotate(8)"><rect width="104" height="18" rx="2" fill="#c9bcff"/><text x="6" y="13" font-family="Helvetica,Arial,sans-serif" font-weight="700" font-size="9" fill="#22264a">15% → HOARD ✦</text></g>
+      <g transform="translate(222,110) rotate(-6)"><rect width="104" height="18" rx="2" fill="#8fe6c8"/><text x="6" y="13" font-family="Helvetica,Arial,sans-serif" font-weight="700" font-size="9" fill="#22264a">NO CURSED HATS ✦</text></g>
+      <g font-family="Fell,serif" font-style="italic" font-size="13" fill="#2a2320"><text x="20" y="236">shutters closed, daylight in the cracks;</text><text x="20" y="252">the room is smaller than you thought</text></g>
+    </g></svg><span class="n">15</span></div>
+    <figcaption>
+      <h3>Afterwards: the shutters and the stickers</h3>
+      <dl>
+        <dt>Sees</dt><dd>Back in the shop, but not by candle: shutters closed, daylight leaking through, dust sheets over the stock. The season's terms are now pastel stickers on the till and the shelf, and will still be there next season.</dd>
+        <dt>Does</dt><dd>Looks at what the board did to their shop.</dd>
+        <dt>3D</dt><dd>The counter scene in the vacation's third look.</dd>
+        <dt>UI</dt><dd>None, or the bare minimum to go on.</dd>
+        <dt>Beat</dt><dd>No flame, no rain; birdsong through the shutters, perhaps. Not specified anywhere yet.</dd>
+      </dl>
+      <p class="refs">D-OOYE4Y67O567LLKP terms as stickers · D-AW7FZBF73LOHPLXO vacation look · D-CSQFNAVMFBMTACBM</p>
+      <a class="oq" href="#q15">open question Q15</a>
+    </figcaption>
+  </figure>
+
+  </div>
+</section>
+
+<!-- ================= QUESTIONS ================= -->
+<section id="questions">
+  <div class="plate"><span class="no">FOR THE OWNER</span><h2>Open questions</h2><span class="why">Each is something a panel had to show and no decision yet settles. They are left open here on purpose.</span></div>
+  <div class="qs vellum">
+    <h3>What the storyboard could not decide</h3>
+    <div class="sub">IN PANEL ORDER · EACH TAGGED WHERE IT ARISES</div>
+    <ol>
+      <li id="q1"><span class="k">Q1</span><span>What opens the day: does the player light the candle, and so choose when the clock starts, or does each day begin already lit? <i>Panel 1.</i></span></li>
+      <li id="q2"><span class="k">Q2</span><span>Where the ledger sits while the counter is in view: a page laid over the scene (drawn here, provisionally), a split screen, or the book lifted into view from the counter. The mockups are where this gets tested. <i>Panel 1 and every shop panel.</i></span></li>
+      <li id="q3"><span class="k">Q3</span><span>Who stands at the counter before S5 brings skelly mobs with clips: a static low-poly figure, a flat cut-out, or only the cold spill, the bell and a hand on the counter? <i>Panel 2.</i></span></li>
+      <li id="q4"><span class="k">Q4</span><span>Is the day phased, sellers in the morning and buyers at midday as the day-loop bounce has it, or one mixed queue? And does passing an hour ring change anything besides the light? <i>Panels 2, 5.</i></span></li>
+      <li id="q5"><span class="k">Q5</span><span>Which form of finiteness each tool has (charges, durability, consumables, or a mix per tool; DESIGN.md's open question), and how a tool's remaining life shows on the counter as opposed to only on the page. <i>Panels 4, 5.</i></span></li>
+      <li id="q6"><span class="k">Q6</span><span>How the player states an offer (writing a figure, dragging on the number line, picking a step), and where a customer's tells and patience show: on the 3D figure, as the note in the margin, or both. <i>Panel 6.</i></span></li>
+      <li id="q7"><span class="k">Q7</span><span>How a buyer comes to an item: asks for a kind of thing, points at the shelf, or is offered something by the player. <i>Panel 7.</i></span></li>
+      <li id="q8"><span class="k">Q8</span><span>Do investor messages arrive during shop days in the first season, what sets one off, and can the player answer? <i>Panel 8.</i></span></li>
+      <li id="q9"><span class="k">Q9</span><span>What happens to a customer, or a haggle, still open when the candle gutters? <i>Panel 9.</i></span></li>
+      <li id="q10"><span class="k">Q10</span><span>Is there anything to do at night beyond the tally (restocking tools and reagents, paying dues, upgrades), and where do tools come from in the first season? <i>Panel 10.</i></span></li>
+      <li id="q11"><span class="k">Q11</span><span>What Closing Day does with unsold stock and the season's last dues (storage at a cost or dumped, as the Closing Day bounce has it), and whether the player does that in the shop before the cut. <i>Panel 11.</i></span></li>
+      <li id="q12"><span class="k">Q12</span><span>How each angel's judgement is made legible: which ledger facts feed which mandate, and is the board the same three every season or dealt per season? <i>Panel 13.</i></span></li>
+      <li id="q13"><span class="k">Q13</span><span>Can the player act in the meeting (present, plead, choose between terms), or only read and accept? <i>Panel 14.</i></span></li>
+      <li id="q14"><span class="k">Q14</span><span>Is probation the floor, or is being fired from your own shop a fourth outcome that ends the run, as the board-meeting bounce has it? <i>Panel 14.</i></span></li>
+      <li id="q15"><span class="k">Q15</span><span>Does a first-season session end on the verdict, or does it show the shuttered shop with its new stickers? <i>Panel 15.</i></span></li>
+    </ol>
+  </div>
+</section>
+
+<p class="foot">Finis. Thumbnails in HTML, CSS and SVG, no scripts, no external fetches; the look is the moodboard's (art/moodboard/moodboard.html). Fonts: IM Fell (Igino Marini), SIL Open Font License, see art/fonts/im-fell/OFL.txt.</p>
+</div>
+</body>
+</html>
