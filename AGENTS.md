@@ -11,7 +11,7 @@ Work runs through dev-proc (`.work/`); start from its `status`.
 - After a fresh clone: `mise trust`. Setup, check and test commands arrive with the skeleton slice (S1).
 
 ## Drive
-- parallel: 2
+- parallel: 1
 - setup: `mise trust` (more arrives with S1)
 - test: none yet; arrives with S1
 - owner-only: feel, visuals, the S0 moodboard and mockup choices, balance taste, and reshaping the flexible slices after each playtest
