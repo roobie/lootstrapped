@@ -1,0 +1,833 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lootstrapped moodboard</title>
+<style>
+@font-face{font-family:"Fell";src:url(../fonts/im-fell/IMFellEnglish-Regular.woff2) format("woff2");font-weight:400;font-style:normal}
+@font-face{font-family:"Fell";src:url(../fonts/im-fell/IMFellEnglish-Italic.woff2) format("woff2");font-weight:400;font-style:italic}
+@font-face{font-family:"Fell SC";src:url(../fonts/im-fell/IMFellEnglishSC-Regular.woff2) format("woff2")}
+@font-face{font-family:"Fell Canon";src:url(../fonts/im-fell/IMFellFrenchCanon-Regular.woff2) format("woff2")}
+
+:root{
+  /* Ledger Noir */
+  --lampblack:#120e0a; --bitumen:#231810; --oak:#4a301c; --tallow:#ffe2a0; --amber:#e9a23b;
+  --vellum:#ead9b6; --foxed:#cdb485; --gall:#2a2320; --rubric:#a8321f; --verdigris:#4c8f80;
+  --gilt:#b88a2c; --jelly:#a9c43f; --doorcold:#6f8fa8;
+  /* Startup Heaven */
+  --cloud:#fbfaff; --mist:#eeeafc; --seraph:#7b5cff; --halo:#c9bcff; --mint:#8fe6c8;
+  --blush:#ffadc0; --sky:#aadcff; --butter:#ffe9a8; --slate:#22264a; --fog:#8a8fb3;
+  --wyrm:#ff6a1f;
+  --fell:"Fell","IM Fell English",Georgia,"Liberation Serif",serif;
+  --sc:"Fell SC","Fell",Georgia,serif;
+  --canon:"Fell Canon","Fell",Georgia,serif;
+  --saas:"Inter","Helvetica Neue",Helvetica,Arial,"Liberation Sans",sans-serif;
+}
+*{box-sizing:border-box}
+html{background:var(--lampblack)}
+body{margin:0;background:
+  radial-gradient(900px 520px at 50% 140px,rgba(233,162,59,.20),transparent 70%),var(--lampblack);
+  color:var(--vellum);font-family:var(--fell);font-size:17px;line-height:1.45}
+.wrap{width:1000px;margin:0 auto;padding:40px 0 60px}
+h1,h2,h3,p{margin:0}
+section{margin-top:64px}
+.plate{display:flex;align-items:baseline;gap:14px;border-bottom:1px solid rgba(234,217,182,.25);padding-bottom:8px;margin-bottom:22px}
+.plate .no{font-family:var(--sc);color:var(--amber);letter-spacing:.12em;font-size:15px;white-space:nowrap}
+.plate h2{font-family:var(--canon);font-weight:400;font-size:34px;line-height:1.1;color:var(--vellum)}
+.plate .why{margin-left:auto;font-style:italic;color:var(--foxed);font-size:15px;max-width:430px;text-align:right}
+.note{font-style:italic;color:var(--foxed);font-size:15px}
+.note b{font-style:normal;font-weight:400;font-family:var(--sc);color:var(--amber);letter-spacing:.06em}
+.cols{display:grid;gap:22px}
+.vellum{background-color:var(--vellum);color:var(--gall);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .22 0 0 0 0 .08 0 0 0 .22 0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E"),
+  radial-gradient(180px 120px at 12% 88%,rgba(150,100,40,.28),transparent 70%),
+  radial-gradient(260px 200px at 95% 5%,rgba(150,100,40,.22),transparent 70%)}
+
+/* ---------- title page ---------- */
+.title{width:720px;margin:0 auto;padding:44px 56px 38px;text-align:center;border:1px solid #8a7446;outline:4px double #8a7446;outline-offset:-12px;box-shadow:0 0 90px rgba(233,162,59,.28),0 30px 60px #000}
+.title .pre{font-family:var(--sc);letter-spacing:.3em;font-size:13px}
+.title h1{font-family:var(--canon);font-weight:400;font-size:86px;line-height:1;margin:10px 0 4px;letter-spacing:.01em}
+.title .or{font-style:italic;font-size:22px}
+.title .tag{font-family:var(--sc);font-size:27px;letter-spacing:.14em;color:var(--rubric);margin:10px 0 12px}
+.title .long{font-size:15.5px;line-height:1.4;max-width:500px;margin:0 auto}
+.title .rule{height:1px;background:var(--gall);margin:16px 60px;opacity:.6}
+.title .imprint{font-size:13.5px;font-style:italic}
+.title svg{display:block;margin:14px auto 6px}
+
+/* ---------- palette ---------- */
+.sw{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+.sw div{height:118px;padding:8px 9px;display:flex;flex-direction:column;justify-content:flex-end;font-size:13.5px;line-height:1.2;border:1px solid rgba(255,255,255,.08)}
+.sw div b{font-family:var(--sc);font-weight:400;letter-spacing:.05em;font-size:14.5px}
+.sw div i{font-size:12px;opacity:.85}
+.sw.heaven div{font-family:var(--saas);font-size:11.5px;border-radius:14px;border:0;color:var(--slate)}
+.sw.heaven div b{font-family:var(--saas);font-weight:700;letter-spacing:0;font-size:12.5px}
+.sw.heaven div i{font-style:normal}
+.ratio{display:flex;height:26px;margin:12px 0 6px;border:1px solid rgba(255,255,255,.1)}
+.ratio span{display:block}
+.hingebox{display:grid;grid-template-columns:1fr 150px 1fr;align-items:stretch;margin-top:26px;border:1px solid rgba(234,217,182,.25)}
+.hingebox>div{padding:16px 18px}
+.hingebox .l{background:var(--bitumen)}
+.hingebox .m{background:linear-gradient(90deg,var(--amber),var(--wyrm));color:#1a0d04;text-align:center;display:flex;flex-direction:column;justify-content:center;font-family:var(--sc);letter-spacing:.06em;font-size:15px;line-height:1.25}
+.hingebox .r{background:var(--cloud);color:var(--slate);font-family:var(--saas);font-size:13px;line-height:1.45}
+
+/* ---------- type ---------- */
+.typegrid{grid-template-columns:1.25fr 1fr}
+.spec{padding:26px 30px}
+.spec .lbl{font-family:var(--sc);font-size:12.5px;letter-spacing:.16em;color:#7a5c2c;margin:14px 0 2px}
+.spec .lbl:first-child{margin-top:0}
+.spec .d1{font-family:var(--canon);font-size:50px;line-height:1.02}
+.spec .d2{font-family:var(--sc);font-size:23px;letter-spacing:.1em}
+.spec .b{font-size:18px}
+.dc::first-letter{font-family:var(--canon);font-size:58px;float:left;line-height:.82;padding:5px 7px 0 0;color:var(--rubric)}
+.spec .hand{font-style:italic;font-size:20px;color:#3b2f52}
+.spec .fig{font-size:30px;letter-spacing:.04em}
+.red{color:var(--rubric)}
+.hspec{background:var(--cloud);color:var(--slate);font-family:var(--saas);border-radius:18px;padding:26px 28px}
+.hspec .lbl{font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--fog);margin:14px 0 3px}
+.hspec .lbl:first-child{margin-top:0}
+.hspec .d1{font-size:36px;font-weight:800;letter-spacing:-.03em;line-height:1.05}
+.hspec .d1 em{font-style:normal;background:linear-gradient(90deg,var(--seraph),#ff7fb0);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hspec .b{font-size:14px;line-height:1.5;color:#4b5075}
+.hspec .fig{font-size:32px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.pill{display:inline-block;font-family:var(--saas);font-size:11px;font-weight:700;padding:3px 9px;border-radius:99px;background:var(--mist);color:var(--seraph);white-space:nowrap}
+.pill.mint{background:#d9f7ec;color:#167a58}.pill.blush{background:#ffe3ea;color:#b53359}.pill.butter{background:#fff3cf;color:#8a6200}
+.rules{margin:14px 0 0;padding-left:20px;color:var(--foxed);font-size:15.5px}
+.rules li{margin:3px 0}
+.rules b{font-weight:400;color:var(--vellum)}
+
+/* ---------- counter ---------- */
+.scene{border:1px solid #3a2a1a;box-shadow:0 20px 50px #000}
+.scene svg{display:block;width:100%;height:auto}
+.phases{grid-template-columns:repeat(5,1fr);margin-top:14px;gap:10px}
+.phase{height:176px;position:relative;border:1px solid #3a2a1a;overflow:hidden}
+.phase .cap{position:absolute;left:8px;right:8px;bottom:6px;font-size:13px;line-height:1.2;color:var(--vellum);text-shadow:0 1px 3px #000}
+.phase .cap b{font-family:var(--sc);font-weight:400;letter-spacing:.06em;display:block;font-size:14px}
+.phase .counter{position:absolute;left:0;right:0;bottom:0;height:52px;background:linear-gradient(#5a3a20,#1c120a)}
+.phase .cand{position:absolute;left:38px;bottom:52px;width:13px;background:repeating-linear-gradient(#f1dfb4 0 9px,#b99b63 9px 10px);border-radius:2px 2px 0 0}
+.phase .fl{position:absolute;left:39px;width:11px;height:19px;border-radius:50% 50% 50% 50%/65% 65% 35% 35%;background:radial-gradient(circle at 50% 70%,#fff,var(--tallow) 40%,var(--amber) 80%)}
+
+/* ---------- ledger ---------- */
+.bookwrap{position:relative;padding:34px 18px 18px;background:linear-gradient(#3a2415,#1d120a);border-radius:6px;box-shadow:0 10px 30px #000,0 0 120px rgba(233,162,59,.16)}
+.bookwrap+.rules,.dash+.grades+.rules{margin-top:26px}
+.tabs{position:absolute;top:6px;left:40px;display:flex;gap:6px}
+.tabs span{font-family:var(--sc);font-size:14px;letter-spacing:.08em;padding:4px 14px 12px;background:#6d1f16;color:#f3dcb4;border-radius:3px 3px 0 0}
+.tabs span.on{background:var(--vellum);color:var(--gall)}
+.tabs span.g{background:#274a43}.tabs span.b{background:#3c3458}.tabs span.o{background:#5a4420}
+.tabs span.sticky{font-family:var(--saas);font-weight:700;font-size:11px;letter-spacing:0;background:var(--halo);color:var(--slate);transform:rotate(-3deg) translateY(-1px);border-radius:2px;box-shadow:0 0 14px rgba(201,188,255,.6)}
+.spread{display:grid;grid-template-columns:1.12fr 1fr;position:relative}
+.page{padding:26px 30px 30px;min-height:700px;position:relative}
+.page.l{box-shadow:inset -34px 0 34px -22px rgba(60,35,10,.55)}
+.page.r{box-shadow:inset 34px 0 34px -22px rgba(60,35,10,.55)}
+.page h3{font-family:var(--canon);font-weight:400;font-size:28px;line-height:1.1}
+.page .sub{font-family:var(--sc);font-size:13px;letter-spacing:.14em;color:#6f5326;margin-bottom:10px}
+table.led{width:calc(100% - 104px);border-collapse:collapse;font-size:15.5px;margin-top:6px}
+table.led th{font-family:var(--sc);font-weight:400;font-size:12.5px;letter-spacing:.1em;text-align:left;border-bottom:1.5px solid var(--gall);padding:2px 4px}
+table.led td{padding:5px 4px;border-bottom:1px solid rgba(42,35,32,.28);vertical-align:top;line-height:1.25}
+table.led td.n,table.led th.n{text-align:right;white-space:nowrap}
+table.led .k{font-family:var(--sc);font-size:12.5px;letter-spacing:.08em;color:#6f5326}
+table.led small{font-style:italic;font-size:13px;color:#5b4a37}
+.strike{text-decoration:line-through;text-decoration-thickness:1.5px;opacity:.6}
+.blot{display:inline-block;height:9px;border-radius:50%;background:radial-gradient(ellipse,rgba(42,35,32,.75),rgba(42,35,32,.35) 60%,transparent 72%);vertical-align:middle}
+.stamp{display:inline-block;font-family:var(--sc);letter-spacing:.14em;color:var(--rubric);border:3px double var(--rubric);padding:3px 10px 2px;transform:rotate(-7deg);opacity:.95;mix-blend-mode:multiply;filter:url(#rough);white-space:nowrap;font-size:17px;line-height:1.1}
+.stamp.gr{color:#2f6b5e;border-color:#2f6b5e}.stamp.bk{color:var(--gall);border-color:var(--gall)}
+.stamp.round{border-radius:50%;padding:14px 10px;text-align:center;white-space:normal;width:112px;height:112px;font-size:13px;letter-spacing:.06em;line-height:1.25;display:inline-flex;align-items:center;justify-content:center}
+.haggle{position:absolute;right:22px;top:112px;width:88px;font-style:italic;font-size:14px;line-height:1.2;color:#3b2f52;transform:rotate(3deg);text-align:right}
+.totals{width:calc(100% - 104px);display:flex;justify-content:space-between;align-items:flex-end;margin-top:14px;font-size:16px}
+.totals .big{font-size:30px;line-height:1}
+.tools{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:18px;border-top:1.5px solid var(--gall);padding-top:10px;font-size:13.5px;line-height:1.25}
+.tools b{font-family:var(--sc);font-weight:400;letter-spacing:.07em;font-size:14px;display:block}
+.tools svg{display:block;margin-bottom:3px}
+.itemfig{float:right;width:150px;margin:0 0 6px 12px;border:1px solid rgba(42,35,32,.5);padding:4px;background:rgba(255,250,235,.35)}
+.clues{list-style:none;padding:0;margin:8px 0 0;font-size:15px;line-height:1.3}
+.clues li{padding:4px 0 4px 26px;position:relative;border-bottom:1px dotted rgba(42,35,32,.35)}
+.clues li::before{content:"\261E";position:absolute;left:0;top:1px;color:var(--rubric);font-size:17px}
+.clues li.q::before{content:"?";font-family:var(--canon);color:#7a6a55;left:5px}
+.clues b{font-family:var(--sc);font-weight:400;letter-spacing:.06em}
+.est{margin:14px 0 4px;position:relative;height:50px}
+.est .axis{position:absolute;left:0;right:0;top:24px;height:1.5px;background:var(--gall)}
+.est .wash{position:absolute;top:13px;height:24px;border-radius:50%;background:radial-gradient(ellipse,rgba(42,35,32,.55),rgba(42,35,32,.25) 60%,transparent 74%);filter:url(#rough)}
+.est .wash.old{background:radial-gradient(ellipse,rgba(42,35,32,.16),rgba(42,35,32,.1) 60%,transparent 74%)}
+.est span{position:absolute;top:34px;font-size:13px;transform:translateX(-50%)}
+.est span.t{top:0;font-style:italic}
+.prov{font-size:14.5px;line-height:1.32;margin-top:8px;padding:8px 10px;background:rgba(255,250,235,.4);border-left:3px solid var(--rubric);transform:rotate(-.6deg)}
+.prov b{font-family:var(--sc);font-weight:400;letter-spacing:.06em}
+.toast{position:absolute;right:-26px;top:-20px;width:292px;background:var(--cloud);color:var(--slate);font-family:var(--saas);font-size:12.5px;line-height:1.4;border-radius:14px;padding:12px 14px;box-shadow:0 0 0 1px rgba(123,92,255,.25),0 0 44px 10px rgba(201,188,255,.55),0 10px 24px rgba(0,0,0,.45);z-index:3}
+.toast .who{display:flex;align-items:center;gap:8px;font-weight:700;margin-bottom:4px}
+.toast .who i{font-style:normal;font-weight:400;color:var(--fog);margin-left:auto;font-size:11px}
+.av{width:26px;height:26px;border-radius:50%;flex:none;border:2.5px solid var(--butter);background:var(--halo);box-shadow:0 0 0 1.5px #f2c94c}
+.av.m{background:var(--mint)}.av.p{background:var(--blush)}.av.w{background:var(--wyrm);border-color:#2a1206;box-shadow:none}
+.toast .react{margin-top:7px;display:flex;gap:6px}
+
+/* ---------- heaven ---------- */
+.cut{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-bottom:18px;border:1px solid #3a2a1a}
+.cut div{height:92px;display:flex;align-items:flex-end;padding:7px 9px;font-size:13px;line-height:1.2}
+.dash{background:var(--cloud);color:var(--slate);font-family:var(--saas);border-radius:16px;display:grid;grid-template-columns:186px 1fr;overflow:hidden;box-shadow:0 0 0 1px #fff,0 0 110px rgba(201,188,255,.5);font-size:13px;line-height:1.4}
+.side{background:linear-gradient(180deg,#f4f0ff,#eef6ff);padding:18px 14px;display:flex;flex-direction:column;gap:3px;border-right:1px solid #e6e1f7}
+.logo{display:flex;align-items:center;gap:9px;font-weight:800;font-size:13.5px;letter-spacing:-.01em;line-height:1.1;margin-bottom:16px}
+.logo i{width:30px;height:30px;background:var(--wyrm);color:#fff;font-style:normal;font-weight:400;font-size:21px;display:flex;align-items:center;justify-content:center;flex:none;font-family:Georgia,serif}
+.side a{display:block;padding:7px 10px;border-radius:9px;color:#4b5075;font-weight:500}
+.side a.on{background:#fff;color:var(--seraph);font-weight:700;box-shadow:0 1px 4px rgba(34,38,74,.08)}
+.side a sup{font-size:9px;background:var(--blush);color:#7a1436;border-radius:6px;padding:1px 5px;margin-left:4px;font-weight:700}
+.side .up{margin-top:auto;background:linear-gradient(135deg,var(--halo),var(--sky));border-radius:12px;padding:12px;font-size:11.5px;line-height:1.35}
+.side .up b{display:block;font-size:12.5px}
+.main{padding:18px 22px 22px}
+.top{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--fog)}
+.top .pres{margin-left:auto;display:flex;align-items:center}
+.top .pres .av{margin-left:-7px}
+.top .pres span{margin-left:10px;color:#b24a12;font-weight:600}
+.hello{font-size:27px;font-weight:800;letter-spacing:-.03em;margin:12px 0 2px}
+.hello+p{color:#4b5075;margin-bottom:14px}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:11px}
+.kpi{background:#fff;border:1px solid #ebe7f8;border-radius:14px;padding:12px 14px;box-shadow:0 2px 8px rgba(34,38,74,.04)}
+.kpi .k{font-size:11px;font-weight:700;color:var(--fog);text-transform:uppercase;letter-spacing:.07em;display:flex;justify-content:space-between;gap:6px}
+.kpi .v{font-size:28px;font-weight:800;letter-spacing:-.03em;font-variant-numeric:tabular-nums;margin:2px 0}
+.kpi .v small{font-size:13px;font-weight:600;color:var(--fog);letter-spacing:0}
+.kpi .f{font-size:11.5px;color:#4b5075}
+.row2{display:grid;grid-template-columns:1.25fr 1fr;gap:11px;margin-top:11px}
+.card{background:#fff;border:1px solid #ebe7f8;border-radius:14px;padding:14px 16px}
+.card h4{margin:0 0 8px;font-size:13px;font-weight:700;display:flex;justify-content:space-between;align-items:center}
+.angel{display:grid;grid-template-columns:38px 1fr auto;gap:10px;align-items:center;padding:8px 0;border-top:1px solid #f0edf9}
+.angel:first-of-type{border-top:0}
+.angel .av{width:36px;height:36px}
+.angel b{display:block;font-size:12.5px}
+.angel small{color:var(--fog);font-size:11px;display:block}
+.bar{height:6px;border-radius:9px;background:var(--mist);margin-top:5px;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:9px;background:linear-gradient(90deg,var(--seraph),var(--sky))}
+.verdict{margin-top:11px;border-radius:14px;padding:16px 18px;background:linear-gradient(120deg,#efe9ff,#e3f4ff 55%,#fff1d9);display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center;border:1px solid #ddd4fb}
+.verdict h4{margin:0 0 3px;font-size:19px;font-weight:800;letter-spacing:-.02em}
+.verdict ol{margin:6px 0 0;padding-left:18px;font-size:12px;color:#4b5075}
+.btn{display:block;font-weight:700;font-size:12.5px;padding:9px 16px;border-radius:10px;background:var(--seraph);color:#fff;text-align:center;box-shadow:0 4px 12px rgba(123,92,255,.35);white-space:nowrap}
+.btn.ghost{background:transparent;color:var(--fog);box-shadow:none;border:1px dashed #cfc8ea;margin-top:7px;text-decoration:line-through}
+.typing{margin-top:12px;font-size:11.5px;color:#b24a12;display:flex;align-items:center;gap:8px}
+.typing .dots{display:inline-flex;gap:3px}.typing .dots i{width:5px;height:5px;border-radius:50%;background:var(--wyrm);opacity:.5}
+.typing .dots i:nth-child(2){opacity:.75}.typing .dots i:nth-child(3){opacity:1}
+.grades{grid-template-columns:repeat(3,1fr);margin-top:18px}
+.grade{border-radius:14px;padding:14px 16px;font-family:var(--saas);font-size:12.5px;line-height:1.4;color:var(--slate);background:var(--cloud);position:relative;overflow:hidden;min-height:128px}
+.grade b{display:block;font-size:15px;font-weight:800;letter-spacing:-.02em;margin:5px 0 2px}
+.grade.scorch{background:radial-gradient(125% 150% at 30% 0%,var(--cloud) 52%,#ffd9b0 62%,var(--wyrm) 72%,#3a1404 84%,var(--lampblack) 96%)}
+
+/* ---------- marginalia ---------- */
+.marg{padding:26px 28px 30px}
+.doodles{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;align-items:end}
+.doodles figure{margin:0;text-align:center;font-size:13.5px;font-style:italic;line-height:1.25}
+.doodles svg{display:block;margin:0 auto 4px;filter:url(#wob)}
+.stamps{display:flex;flex-wrap:wrap;gap:26px 30px;align-items:center;margin-top:26px;padding-top:22px;border-top:1.5px solid var(--gall)}
+.stamps .stamp{font-size:21px}
+.bottom{display:grid;grid-template-columns:330px 1fr;gap:26px;margin-top:28px}
+.obit{border:2px solid var(--gall);outline:1px solid var(--gall);outline-offset:3px;padding:14px 16px 16px;text-align:center;position:relative;background:rgba(255,250,235,.35)}
+.obit .hd{font-family:var(--sc);letter-spacing:.2em;font-size:13px}
+.obit h4{font-family:var(--canon);font-weight:400;font-size:27px;line-height:1.05;margin:6px 0}
+.obit p{font-size:14.5px;line-height:1.32}
+.obit{margin-bottom:22px}
+.obit .stamp{position:absolute;right:-14px;bottom:-20px;font-size:16px;background:rgba(234,217,182,.6)}
+.codex{font-size:15px;line-height:1.36}
+.codex h4{font-family:var(--sc);font-weight:400;letter-spacing:.12em;font-size:15px;margin:0 0 6px;border-bottom:1px solid var(--gall)}
+.codex .entry{display:grid;grid-template-columns:54px 1fr;gap:10px;align-items:start;padding:7px 0;border-bottom:1px dotted rgba(42,35,32,.4)}
+.codex .entry svg{filter:url(#wob)}
+.codex .entry b{font-family:var(--sc);font-weight:400;letter-spacing:.06em}
+.codex .entry.unk{opacity:.45}
+
+/* ---------- lists ---------- */
+.two{grid-template-columns:1fr 1fr}
+.three{grid-template-columns:repeat(3,1fr)}
+.box{border:1px solid rgba(234,217,182,.22);background:rgba(35,24,16,.7);padding:18px 20px}
+.box h3{font-family:var(--sc);font-weight:400;letter-spacing:.1em;font-size:17px;color:var(--amber);margin-bottom:8px}
+.box.h{background:var(--cloud);color:var(--slate);font-family:var(--saas);font-size:13px;border:0;border-radius:16px}
+.box.h h3{font-family:var(--saas);font-weight:800;letter-spacing:-.01em;color:var(--seraph);font-size:15px}
+.box ul{margin:0;padding-left:18px}
+.box li{margin:5px 0;line-height:1.36}
+.box li b{font-weight:400;color:var(--tallow)}
+.box.h li b{font-weight:700;color:var(--slate)}
+.motif{border:1px solid rgba(234,217,182,.22);background:rgba(35,24,16,.7);padding:16px 18px;font-size:15.5px;line-height:1.36}
+.motif h3{font-family:var(--sc);font-weight:400;letter-spacing:.08em;font-size:17px;color:var(--tallow);margin-bottom:5px}
+.motif .vis{height:84px;margin-bottom:10px;display:flex;align-items:center;justify-content:center;gap:10px;background:rgba(0,0,0,.3);overflow:hidden}
+.euph{width:100%;border-collapse:collapse;font-size:15px}
+.euph td{padding:6px 10px;border-bottom:1px solid rgba(234,217,182,.18);vertical-align:middle}
+.euph td:first-child{font-style:italic;color:var(--vellum);width:40%}
+.euph td:nth-child(2){width:28px;color:var(--amber);text-align:center}
+.foot{margin-top:60px;text-align:center;font-style:italic;color:var(--foxed);font-size:14.5px}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <filter id="rough" x="-10%" y="-20%" width="120%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="2" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="2.6" result="d"/>
+      <feTurbulence type="fractalNoise" baseFrequency="1.6" numOctaves="1" seed="3" result="g"/>
+      <feColorMatrix in="g" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.5 1.75" result="m"/>
+      <feComposite in="d" in2="m" operator="in"/>
+    </filter>
+    <filter id="wob" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency=".045" numOctaves="2" seed="11" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="3.2"/>
+    </filter>
+    <pattern id="hatch" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(38)">
+      <line x1="0" y1="0" x2="0" y2="5" stroke="#2a2320" stroke-width="1.3"/>
+    </pattern>
+    <pattern id="hatch2" width="3.4" height="3.4" patternUnits="userSpaceOnUse" patternTransform="rotate(-40)">
+      <line x1="0" y1="0" x2="0" y2="3.4" stroke="#2a2320" stroke-width="1.2"/>
+    </pattern>
+    <g id="balls">
+      <path d="M40 4v14M40 18H14v10M40 18h26v10M40 18v22" fill="none" stroke="currentColor" stroke-width="2.4"/>
+      <circle cx="14" cy="38" r="10"/><circle cx="66" cy="38" r="10"/><circle cx="40" cy="50" r="10"/>
+    </g>
+    <g id="sword">
+      <polygon points="8,34 150,22 176,31 150,40" fill="#c9c2b2"/>
+      <polygon points="8,34 150,22 176,31" fill="#efe6d0"/>
+      <polygon points="70,29 84,28 80,34 66,35" fill="#8c5a2e"/>
+      <polygon points="104,26 112,25.4 108,32 100,32.6" fill="#8c5a2e"/>
+      <polygon points="-2,14 10,14 12,54 0,54" fill="#b88a2c"/>
+      <polygon points="-2,14 10,14 11,34 -1,34" fill="#e3b54a"/>
+      <polygon points="-38,28 -2,27 -2,41 -38,40" fill="#4a301c"/>
+      <polygon points="-38,28 -2,27 -2,34 -38,34" fill="#7a4f2c"/>
+      <polygon points="-52,34 -44,24 -36,34 -44,44" fill="#b88a2c"/>
+      <path d="M8,34 150,22 176,31 150,40Z M-2,14h12l2,40h-12Z M-38,28-2,27v14l-36,-1Z M-52,34-44,24-36,34-44,44Z" fill="none" stroke="#24130a" stroke-width="2.6" stroke-linejoin="round"/>
+    </g>
+  </defs>
+</svg>
+
+<div class="wrap">
+
+<!-- ================= TITLE PAGE ================= -->
+<div class="title vellum">
+  <div class="pre">A MOODBOARD · S0 VISUAL GROUNDWORK</div>
+  <h1>Lootstrapped</h1>
+  <div class="or">or, the Pawnbroker's Progreſs</div>
+  <svg width="92" height="70" viewBox="0 0 80 62" style="color:#2a2320" fill="#b88a2c" stroke="#2a2320" stroke-width="2"><use href="#balls"/></svg>
+  <div class="tag">Make Something People Loot</div>
+  <div class="long">Being a true &amp; faithful Ledger of Goods bought, sold, lent &amp; lost at the Guild's counter; with an Account of the Persons lately dissolved, and of the <span class="red">Angels</span> to whom all is owed.</div>
+  <div class="rule"></div>
+  <div class="imprint">Printed by candle for <span style="font-family:var(--saas);font-style:normal;font-weight:700;font-size:12px;background:#ff6a1f;color:#fff;padding:1px 6px">W</span> Wyrm Combinator, and are to be sold at the Sign of the Three Balls. One seaſon only.</div>
+</div>
+<p class="note" style="text-align:center;margin-top:18px">The whole board is set in real IM Fell (English roman, italic, small caps; French Canon for display), from art/fonts/im-fell. Heaven's sans is a system fallback standing in for Inter.</p>
+
+<!-- ================= I PALETTE ================= -->
+<section>
+  <div class="plate"><span class="no">PLATE I</span><h2>Two palettes &amp; one hinge</h2><span class="why">The joke is a cut, so the two worlds share exactly one colour and nothing else.</span></div>
+
+  <p class="note" style="margin-bottom:8px"><b>Ledger Noir</b> — everything the candle can reach. Values do the work; hue is rationed.</p>
+  <div class="sw">
+    <div style="background:#120e0a"><b>Lampblack</b>#120e0a<i>the room; never pure black</i></div>
+    <div style="background:#231810"><b>Bitumen</b>#231810<i>shelves, book leather</i></div>
+    <div style="background:#4a301c"><b>Counter Oak</b>#4a301c<i>lit wood</i></div>
+    <div style="background:#e9a23b;color:#1a0d04"><b>Candle Amber</b>#e9a23b<i>the key light; the hinge</i></div>
+    <div style="background:#ffe2a0;color:#1a0d04"><b>Tallow</b>#ffe2a0<i>flame core, coin glint</i></div>
+    <div style="background:#ead9b6;color:#2a2320"><b>Vellum</b>#ead9b6<i>the UI surface</i></div>
+    <div style="background:#cdb485;color:#2a2320"><b>Foxed</b>#cdb485<i>old pages, disabled</i></div>
+    <div style="background:#2a2320"><b>Iron-gall</b>#2a2320<i>all writing</i></div>
+    <div style="background:#a8321f"><b>Rubric</b>#a8321f<i>loss, death, stamps, capitals</i></div>
+    <div style="background:#b88a2c;color:#1a0d04"><b>Old Gilt</b>#b88a2c<i>money, the three balls</i></div>
+    <div style="background:#4c8f80"><b>Verdigris</b>#4c8f80<i>curse &amp; enchantment only</i></div>
+    <div style="background:#a9c43f;color:#1a0d04"><b>Jelly</b>#a9c43f<i>dungeon residue; a stain, never a fill</i></div>
+  </div>
+  <div class="ratio"><span style="flex:46;background:#120e0a"></span><span style="flex:16;background:#231810"></span><span style="flex:8;background:#4a301c"></span><span style="flex:18;background:#ead9b6"></span><span style="flex:5;background:#2a2320"></span><span style="flex:3;background:#e9a23b"></span><span style="flex:2;background:#a8321f"></span><span style="flex:1;background:#b88a2c"></span><span style="flex:.6;background:#4c8f80"></span><span style="flex:.4;background:#a9c43f"></span></div>
+  <p class="note">Screen share in the shop. Two-thirds darkness; the page is the only large light thing, so the eye lives in the ledger.</p>
+
+  <p class="note" style="margin:26px 0 8px"><b>Startup Heaven</b> — shadowless, fluorescent, no value contrast to speak of. Hue does all the work, which is the opposite rule.</p>
+  <div class="sw heaven">
+    <div style="background:#fbfaff;box-shadow:inset 0 0 0 1px #e6e1f7"><b>Cloud</b>#fbfaff<i>canvas</i></div>
+    <div style="background:#c9bcff"><b>Halo</b>#c9bcff<i>avatars, glows</i></div>
+    <div style="background:#7b5cff;color:#fff"><b>Seraph</b>#7b5cff<i>primary action</i></div>
+    <div style="background:#8fe6c8"><b>Runway Mint</b>#8fe6c8<i>"up and to the right"</i></div>
+    <div style="background:#ffadc0"><b>Churn Blush</b>#ffadc0<i>death, politely</i></div>
+    <div style="background:#aadcff"><b>Blue-Sky</b>#aadcff<i>charts, gradients</i></div>
+    <div style="background:#ffe9a8"><b>Halo Butter</b>#ffe9a8<i>halo rings, warnings</i></div>
+    <div style="background:#22264a;color:#fff"><b>Deck Slate</b>#22264a<i>text; never black</i></div>
+    <div style="background:#8a8fb3;color:#fff"><b>Fine Print</b>#8a8fb3<i>labels, the terms</i></div>
+    <div style="background:#ff6a1f;color:#fff"><b>Wyrm Orange</b>#ff6a1f<i>the logo; the dragon; the hinge</i></div>
+    <div style="background:linear-gradient(120deg,#c9bcff,#aadcff,#ffe9a8)"><b>Synergy</b>gradient<i>hero cards, upsells</i></div>
+    <div style="background:#fff;box-shadow:inset 0 0 0 1px #e6e1f7"><b>Card</b>#ffffff<i>the only pure white in the game</i></div>
+  </div>
+
+  <div class="hingebox">
+    <div class="l"><p>In the shop the only saturated warm thing is the flame. You stare at it all session: it is your clock, your light, your comfort.</p></div>
+    <div class="m">Candle Amber<br>→<br>Wyrm Orange</div>
+    <div class="r">In Heaven the only warm thing is the fund's logo and the dragon's presence dot. Same hue, pushed hotter. The player should slowly realise whose fire they have been working by.</div>
+  </div>
+</section>
+
+<!-- ================= II TYPE ================= -->
+<section>
+  <div class="plate"><span class="no">PLATE II</span><h2>Type: a 1670s jobbing printer vs. a pitch deck</h2><span class="why">Fell's types are worn and slightly drunk; that wobble is the shop's honesty. Heaven's type is flawless and says nothing.</span></div>
+  <div class="cols typegrid">
+    <div class="spec vellum">
+      <div class="lbl">DISPLAY · IM FELL FRENCH CANON</div>
+      <div class="d1">Day the Seventh</div>
+      <div class="lbl">HEADS, LABELS, STAMPS · IM FELL ENGLISH SC</div>
+      <div class="d2">Bought · Sold · Lent · <span class="red">Lost</span></div>
+      <div class="lbl">BODY · IM FELL ENGLISH, RUBRIC DROP CAPITAL</div>
+      <p class="b dc">The Ashwardens came up at first light, three of the five, carrying between them one notched shortsword and a helm they called lightly used. I gave twelve for the sword. Nobody asked after the helm's last owner.</p>
+      <div class="lbl">THE SHOPKEEPER'S OWN HAND · FELL ITALIC IN VIOLET-GALL</div>
+      <p class="hand">weighs more than it ought — ask the candle before lending this to anyone I like</p>
+      <div class="lbl">FIGURES · OLD-STYLE, NEVER TABULAR; ERRORS STRUCK, NOT ERASED</div>
+      <div class="fig">1234567890 &nbsp; <span class="strike">61</span> 58 gp &nbsp; <span class="red">−120</span></div>
+    </div>
+    <div class="hspec">
+      <div class="lbl">Hero · tight, heavy, one gradient word</div>
+      <div class="d1">Be not afraid.<br>Let's talk <em>growth.</em></div>
+      <div class="lbl">Body · friendly, hedged, lower-case energy</div>
+      <p class="b">Quick sync on your charter! We love what you're building. A few of your users were dissolved this quarter, which we see as a retention opportunity.</p>
+      <div class="lbl">Figures · tabular, enormous, always with a delta</div>
+      <div class="fig">4,812 <span class="pill mint">+18% QoQ*</span></div>
+      <p class="b" style="font-size:11px;color:var(--fog)">*quest-over-quest</p>
+      <div class="lbl">Status language · pills</div>
+      <p><span class="pill mint">Delighted</span> <span class="pill butter">Has concerns</span> <span class="pill blush">Praying for you</span> <span class="pill">Churned</span></p>
+    </div>
+  </div>
+  <ul class="rules">
+    <li><b>Border control.</b> Fell never appears in Heaven; sans never appears in the shop. The two exceptions are the jokes: an investor message is a sans toast wedged into the manuscript, and your ledger appears in Heaven as an "uploaded attachment" thumbnail nobody opened.</li>
+    <li><b>The long ſ is a spice.</b> Only on stamps, title pages and death notices; never in anything the player must read to make a decision.</li>
+    <li><b>Mistakes stay visible.</b> The ledger strikes through; Heaven silently refreshes. Old offers, old estimates and old prices remain as crossings-out, which is also the haggle history and the undo log.</li>
+  </ul>
+</section>
+
+<!-- ================= III COUNTER ================= -->
+<section>
+  <div class="plate"><span class="no">PLATE III</span><h2>The counter: one flame, and a cold door</h2><span class="why">Warm is yours; cold is whatever came up from below. The lighting tells you who to trust before any clue does.</span></div>
+  <div class="scene">
+  <svg viewBox="0 0 1000 470" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="glow" cx="255" cy="250" r="520" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#e9a23b" stop-opacity=".62"/><stop offset=".3" stop-color="#b8661f" stop-opacity=".32"/><stop offset=".7" stop-color="#3a1c0a" stop-opacity=".12"/><stop offset="1" stop-color="#120e0a" stop-opacity="0"/>
+      </radialGradient>
+      <radialGradient id="halo2" cx="255" cy="232" r="70" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#fff6d8" stop-opacity=".95"/><stop offset=".25" stop-color="#ffe2a0" stop-opacity=".5"/><stop offset="1" stop-color="#e9a23b" stop-opacity="0"/>
+      </radialGradient>
+      <linearGradient id="ctop" x1="0" x2="1"><stop offset="0" stop-color="#6b4526"/><stop offset=".25" stop-color="#8a5a30"/><stop offset=".6" stop-color="#4a301c"/><stop offset="1" stop-color="#22160d"/></linearGradient>
+      <linearGradient id="door" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#8fb0c8"/><stop offset="1" stop-color="#3a5368"/></linearGradient>
+      <linearGradient id="spill" x1="1" x2="0"><stop offset="0" stop-color="#6f8fa8" stop-opacity=".35"/><stop offset="1" stop-color="#6f8fa8" stop-opacity="0"/></linearGradient>
+    </defs>
+    <rect width="1000" height="470" fill="#120e0a"/>
+    <!-- back wall shelves -->
+    <g stroke="#1b130c" stroke-width="2">
+      <rect x="40" y="40" width="560" height="10" fill="#2c1e12"/><rect x="40" y="130" width="560" height="10" fill="#2c1e12"/><rect x="40" y="218" width="560" height="10" fill="#2a1c11"/>
+    </g>
+    <!-- shelf stock: low-poly silhouettes, warm edge only -->
+    <g stroke="#150d07" stroke-width="2" stroke-linejoin="round">
+      <polygon points="80,130 92,84 120,78 134,96 128,130" fill="#3a2716"/><polygon points="92,84 120,78 112,104" fill="#6e4a25"/>
+      <polygon points="170,130 170,70 182,60 194,70 194,130" fill="#33231a"/><polygon points="170,70 182,60 182,130 170,130" fill="#5c3d20"/>
+      <polygon points="240,130 252,100 296,100 308,130" fill="#3b2a18"/><polygon points="252,100 296,100 290,112 258,112" fill="#75502a"/>
+      <polygon points="350,130 362,86 388,86 400,130" fill="#2c2016"/><polygon points="362,86 375,70 388,86" fill="#4f3720"/>
+      <polygon points="450,130 450,96 500,90 520,130" fill="#2a1e15"/>
+      <polygon points="96,40 110,10 142,10 150,40" fill="#2f2015"/><polygon points="200,40 214,18 246,22 250,40" fill="#34241a"/><polygon points="330,40 330,6 344,0 358,6 358,40" fill="#2a1d13"/>
+      <polygon points="430,218 436,170 470,160 486,180 480,218" fill="#33241a"/><polygon points="520,218 540,176 572,218" fill="#2a1e15"/>
+      <polygon points="70,218 70,186 130,186 130,218" fill="#3d2a17"/><polygon points="70,186 130,186 124,196 76,196" fill="#7a5229"/>
+    </g>
+    <circle cx="112" cy="96" r="2.2" fill="#ffe2a0"/><circle cx="268" cy="106" r="1.8" fill="#ffe2a0"/><circle cx="182" cy="66" r="1.6" fill="#ffe2a0"/><circle cx="456" cy="176" r="1.5" fill="#e9a23b"/>
+    <!-- door, cold -->
+    <rect x="770" y="30" width="170" height="300" fill="url(#door)" stroke="#0c0906" stroke-width="10"/>
+    <path d="M855 30v300M770 150h170" stroke="#0c0906" stroke-width="7"/>
+    <g transform="translate(800,34) scale(1.35)" fill="#0c0906" color="#0c0906"><use href="#balls"/></g>
+    <polygon points="770,330 940,330 1000,420 1000,470 560,470" fill="url(#spill)"/>
+    <rect width="1000" height="470" fill="url(#glow)"/>
+    <!-- customer: low-poly, skull under hood. warm left planes, cold right rim -->
+    <g stroke="#1c0f07" stroke-width="3" stroke-linejoin="round">
+      <polygon points="520,330 540,236 600,206 668,214 716,250 740,330" fill="#3a2a22"/>
+      <polygon points="520,330 540,236 600,206 604,330" fill="#7a4d2a"/>
+      <polygon points="668,214 716,250 740,330 704,330" fill="#55718a"/>
+      <polygon points="566,214 584,124 628,92 676,108 700,160 690,222 628,246" fill="#2d211c"/>
+      <polygon points="566,214 584,124 628,92 622,240" fill="#6b4426"/>
+      <polygon points="676,108 700,160 690,222 678,170" fill="#6f8fa8"/>
+      <polygon points="596,150 616,124 652,124 672,150 664,196 640,214 624,214 604,196" fill="#d9c9a4"/>
+      <polygon points="596,150 616,124 634,124 630,214 624,214 604,196" fill="#f3e2b8"/>
+      <polygon points="652,124 672,150 664,196 656,160" fill="#9fb0b8"/>
+      <polygon points="608,156 626,152 624,170 610,172" fill="#1c0f07"/><polygon points="642,152 660,156 658,172 644,170" fill="#1c0f07"/>
+      <polygon points="634,174 640,188 628,188" fill="#1c0f07"/>
+      <path d="M612 198h44M620 198v12M630 198v14M640 198v14M650 198v12" fill="none" stroke-width="2.2"/>
+    </g>
+    <!-- counter -->
+    <polygon points="0,330 1000,330 1000,470 0,470" fill="url(#ctop)"/>
+    <polygon points="0,330 1000,330 1000,338 0,338" fill="#c98c45" opacity=".55"/>
+    <g stroke="#2a180c" stroke-width="1.2" opacity=".45"><path d="M0 372h1000M0 420h1000M150 338l-30 132M520 338l10 132M820 338l50 132"/></g>
+    <ellipse cx="255" cy="352" rx="210" ry="34" fill="#ffd27a" opacity=".26"/>
+    <!-- candle clock -->
+    <ellipse cx="255" cy="352" rx="34" ry="8" fill="#1c0f07" opacity=".7"/>
+    <polygon points="228,346 282,346 276,356 234,356" fill="#b88a2c" stroke="#24130a" stroke-width="2.5"/>
+    <polygon points="243,270 267,270 267,348 243,348" fill="#f4e4bc" stroke="#24130a" stroke-width="2.5"/>
+    <polygon points="259,270 267,270 267,348 259,348" fill="#c9a86a"/>
+    <path d="M243 290h24M243 310h24M243 330h24" stroke="#a8321f" stroke-width="2"/>
+    <path d="M243 270q4 12 8 2t8 6 8-8" fill="#f4e4bc" stroke="#24130a" stroke-width="2"/>
+    <circle cx="255" cy="238" r="70" fill="url(#halo2)"/>
+    <path d="M255 268c-13-10-9-24 0-42 9 18 13 32 0 42z" fill="#ffe2a0" stroke="#e9a23b" stroke-width="2.5"/>
+    <path d="M255 266c-5-5-4-11 0-18 4 7 5 13 0 18z" fill="#fff"/>
+    <!-- the item -->
+    <ellipse cx="470" cy="398" rx="128" ry="12" fill="#150c06" opacity=".6"/>
+    <g transform="translate(400,356) rotate(4) scale(1.08)"><use href="#sword"/></g>
+    <!-- loupe -->
+    <g stroke="#24130a" stroke-width="2.6"><polygon points="676,410 718,426 714,434 672,418" fill="#4a301c"/><circle cx="650" cy="398" r="27" fill="#ffe2a0" fill-opacity=".14"/><circle cx="650" cy="398" r="27" fill="none" stroke="#b88a2c" stroke-width="5"/><path d="M636 384l14 16-6 14" fill="none" stroke="#fff" stroke-width="1.5" opacity=".7"/></g>
+    <!-- coins -->
+    <g stroke="#24130a" stroke-width="2"><ellipse cx="150" cy="400" rx="17" ry="6" fill="#b88a2c"/><ellipse cx="150" cy="394" rx="17" ry="6" fill="#d9a93c"/><ellipse cx="150" cy="388" rx="17" ry="6" fill="#ffe2a0"/><ellipse cx="186" cy="408" rx="17" ry="6" fill="#d9a93c"/></g>
+    <!-- ledger corner -->
+    <g transform="rotate(-5 880 430)"><polygon points="760,392 1010,392 1010,490 760,490" fill="#ead9b6" stroke="#24130a" stroke-width="3"/>
+      <g stroke="#2a2320" stroke-width="1.4" opacity=".7"><path d="M780 412h150M780 426h190M780 440h170M780 454h120"/></g><path d="M936 452h40" stroke="#a8321f" stroke-width="3"/></g>
+    <!-- annotations -->
+    <g font-family="Fell, Georgia, serif" font-style="italic" font-size="15.5" fill="#ffe2a0">
+      <path d="M210 236H96" stroke="#ffe2a0" stroke-width="1" fill="none"/><text x="20" y="232">key: one tallow flame,</text><text x="20" y="250">low &amp; left, ~1900 K</text>
+      <path d="M243 310H190" stroke="#ffe2a0" stroke-width="1"/><text x="20" y="306">hour-rings: the candle</text><text x="20" y="324">IS the day's time budget</text>
+      <text x="420" y="64" fill="#cdb485">stock is silhouette + one warm edge;</text><text x="420" y="82" fill="#cdb485">a glint means "worth a look"</text>
+      <text x="320" y="446">toon outline: 2–3 px, burnt umber #24130a, never black</text>
+      <text x="800" y="366" fill="#ead9b6">the page is the brightest</text><text x="800" y="384" fill="#ead9b6">value in frame</text>
+    </g>
+    <g font-family="Fell, Georgia, serif" font-style="italic" font-size="15.5" fill="#cfe4f2">
+      <rect x="716" y="118" width="230" height="64" fill="#120e0a" opacity=".72"/>
+      <text x="726" y="138">rim: door-cold #6f8fa8, only</text><text x="726" y="156">on what came from outside:</text><text x="726" y="174">customers, and fresh loot</text>
+    </g>
+  </svg>
+  </div>
+
+  <div class="cols phases">
+    <div class="phase" style="background:linear-gradient(100deg,#2a1c10 0%,#3d4a52 100%)"><div class="counter"></div><div class="cand" style="height:60px"></div><div class="fl" style="bottom:113px;opacity:.55"></div><div class="cap"><b>Morning</b>door open, grey spill; candle tall. Parties return.</div></div>
+    <div class="phase" style="background:radial-gradient(160px 130px at 44px 60px,rgba(233,162,59,.6),transparent),#1a120b"><div class="counter"></div><div class="cand" style="height:42px"></div><div class="fl" style="bottom:95px"></div><div class="cap"><b>Midday</b>the house look. Customers.</div></div>
+    <div class="phase" style="background:radial-gradient(130px 110px at 44px 78px,rgba(233,130,40,.6),transparent),#150d08"><div class="counter"></div><div class="cand" style="height:24px"></div><div class="fl" style="bottom:77px"></div><div class="cap"><b>Evening</b>pool shrinks, redder. Lending.</div></div>
+    <div class="phase" style="background:radial-gradient(150px 120px at 44px 70px,rgba(76,143,128,.75),transparent),#0c1210"><div class="counter" style="background:linear-gradient(#2f4a40,#0f1512)"></div><div class="cand" style="height:32px;background:#1d1d1d"></div><div class="fl" style="bottom:85px;background:radial-gradient(circle at 50% 70%,#fff,#bff0df 40%,#4c8f80 80%)"></div><div class="cap"><b>Curse candle</b>the key itself turns verdigris. Tools are light sources.</div></div>
+    <div class="phase" style="background:#0b0806"><div class="counter" style="background:linear-gradient(#20150c,#0b0806)"></div><div class="cand" style="height:5px"></div><svg style="position:absolute;left:34px;bottom:58px" width="30" height="70" viewBox="0 0 30 70"><path d="M10 68c-8-12 10-18 2-30s10-18 2-34" fill="none" stroke="#8a8072" stroke-width="2" opacity=".7"/></svg><div class="cap"><b>Night</b>candle out: only the page glows. Dues, ledger.</div></div>
+  </div>
+  <ul class="rules">
+    <li><b>The candle is the clock.</b> "Time is the budget" needs no HUD: each inspection melts the tallow a notch toward the next red ring. When it gutters, the day is over. The room physically darkens as your options run out.</li>
+    <li><b>Tools are lights, not icons.</b> Loupe: a circular warm vignette that sharpens a patch. Curse candle: swaps the key to verdigris so curses fluoresce. Scrying bowl: lights the item from below, wrongly. The reveal is always a lighting change, so the 3D earns its keep.</li>
+    <li><b>Cold rim is information.</b> Fresh loot arrives with the cold edge still on it and warms over days in stock. Something on your shelf that is <i>still</i> cold-rimmed after a week is telling you something.</li>
+  </ul>
+</section>
+
+<!-- ================= IV LEDGER ================= -->
+<section>
+  <div class="plate"><span class="no">PLATE IV</span><h2>The ledger is the interface</h2><span class="why">A bookkeeper's page already has columns, sums, margins and corrections. Every UI need has a period-true form, so nothing has to be invented, only found.</span></div>
+  <div class="bookwrap">
+    <div class="tabs"><span class="on">Day</span><span>Stock</span><span class="g">Codex</span><span class="b">Guild</span><span class="o">Dues</span><span class="sticky">Board ✦ 3d</span></div>
+    <div class="spread">
+      <div class="page l vellum">
+        <h3>Day the Seventh</h3>
+        <div class="sub">OF TWELVE · EVENING · DUES IN THREE DAYS</div>
+        <table class="led">
+          <tr><th></th><th>Article</th><th class="n">Gp</th><th class="n">Worth</th></tr>
+          <tr><td class="k">BOT</td><td>Shortsword, notched<br><small>of the Ashwardens</small></td><td class="n">12</td><td class="n">20 <span class="blot" style="width:26px"></span> 45</td></tr>
+          <tr><td class="k">BOT</td><td>Helm <small>"lightly used"</small><br><small>of a wet man</small></td><td class="n">3</td><td class="n">2 <span class="blot" style="width:44px"></span> 60</td></tr>
+          <tr><td class="k">SLD</td><td>Lantern <small>(hums)</small><br><small>to Widow Corbel</small></td><td class="n">40</td><td class="n">—</td></tr>
+          <tr><td class="k">LNT</td><td>Tower shield<br><small>to the Gilt Weasels</small></td><td class="n"><small>on credit</small></td><td class="n"><span class="stamp gr" style="font-size:12px;transform:rotate(-4deg)">OUT</span></td></tr>
+          <tr><td class="k red">LST</td><td class="red"><span class="strike">Rope, fifty foot</span><br><small class="red">with the Ashwardens</small> &nbsp;<span class="stamp" style="font-size:12.5px;transform:rotate(-5deg)">LOST TO THE JELLY</span></td><td class="n red">−6</td><td class="n"></td></tr>
+          <tr><td class="k">BOT</td><td>Shortsword, notched <small>— again</small><br><small>of a stranger</small></td><td class="n">19</td><td class="n">38 <span class="blot" style="width:10px"></span> 45</td></tr>
+        </table>
+        <div class="haggle">he asked <span class="strike">30</span><br>I said <span class="strike">8</span><br><span class="strike">24</span><br><span class="strike">11</span><br><span class="strike">20</span><br>19, &amp; he<br>would not<br>meet my eye</div>
+        <div class="totals">
+          <div>Carried over <span class="strike">61</span> 58<br>Dues owing <span class="red">120</span></div>
+          <div style="text-align:right"><span class="sub" style="margin:0">IN THE TILL</span><br><span class="big">70</span> gp</div>
+        </div>
+        <div class="tools">
+          <div><svg width="60" height="34" viewBox="0 0 60 34"><circle cx="16" cy="16" r="12" fill="none" stroke="#2a2320" stroke-width="2.5"/><path d="M25 25l14 8" stroke="#2a2320" stroke-width="4"/><path d="M9 10l8 7-3 9M17 17l8-3" stroke="#a8321f" stroke-width="1.5" fill="none"/></svg><b>Loupe</b>cracked twice; one strong enchantment from done</div>
+          <div><svg width="60" height="34" viewBox="0 0 60 34"><rect x="8" y="20" width="9" height="12" fill="#4c8f80" stroke="#2a2320" stroke-width="2"/><path d="M12.5 19c-4-4-2-8 0-12 2 4 4 8 0 12z" fill="none" stroke="#2a2320" stroke-width="1.8"/><path d="M28 8v24M35 8v24M42 8v24" stroke="#2a2320" stroke-width="2" opacity=".25"/><path d="M28 22v10" stroke="#2a2320" stroke-width="2"/></svg><b>Curse candle</b>a stub; two burnt, a third of one left</div>
+          <div><svg width="60" height="34" viewBox="0 0 60 34"><path d="M4 12h34c0 12-8 18-17 18S4 24 4 12z" fill="none" stroke="#2a2320" stroke-width="2.5"/><path d="M46 8v22M51 8v22" stroke="#2a2320" stroke-width="2.4"/><path d="M56 8v22" stroke="#2a2320" stroke-width="2.4" opacity=".25"/></svg><b>Scrying bowl</b>reagent: two drams, tallied</div>
+        </div>
+      </div>
+
+      <div class="page r vellum">
+        <div class="toast">
+          <div class="who"><span class="av"></span>Ophaniel <span class="pill">Growth</span><i>just now</i></div>
+          quick q — why did we spend <b>400</b> on candles this sprint? no worries if not! just want to make sure we're being intentional about burn
+          <div class="react"><span class="pill butter">✦ 2</span><span class="pill blush">praying 1</span></div>
+        </div>
+        <h3 style="margin-top:104px">Shortsword, notched</h3>
+        <div class="sub">ITS LIFE, SO FAR AS KNOWN</div>
+        <div class="itemfig"><svg viewBox="-60 0 250 70" width="140"><use href="#sword"/></svg></div>
+        <ul class="clues">
+          <li><b>Rust</b> along the fuller, not the edge: stored wet, never fought wet.</li>
+          <li><b>Runes</b>, three; the middle one scratched out on purpose.</li>
+          <li><b>Blood</b>, but it is not red. <span class="hand" style="font-style:italic;color:#3b2f52">see Codex: Jelly</span></li>
+          <li class="q" style="color:#7a6a55"><b>Heft</b> — not weighed. <i>Scales: a tenth of the candle.</i></li>
+          <li class="q" style="color:#7a6a55"><b>Curse</b> — not asked. <i>Curse candle: the last third.</i></li>
+        </ul>
+        <div class="sub" style="margin:16px 0 0">WHAT I THINK IT IS WORTH</div>
+        <div class="est">
+          <div class="wash old" style="left:14%;width:56%"></div>
+          <div class="wash" style="left:44%;width:16%"></div>
+          <div class="axis"></div>
+          <span class="t" style="left:28%;opacity:.55">before the loupe</span><span class="t" style="left:66%">after</span>
+          <span style="left:2%">0</span><span style="left:20%">20</span><span style="left:46%">38</span><span style="left:58%">45</span><span style="left:98%">100</span>
+        </div>
+        <div class="prov">
+          <b>Day 2.</b> Bought of the Ashwardens, 12.<br>
+          <b>Day 4.</b> Lent to the Ashwardens, against my judgement.<br>
+          <b class="red">Day 6.</b> <span class="red">The Ashwardens did not come up.</span><br>
+          <b>Day 7.</b> Bought of a stranger, 19. It is the same sword. I have paid for it twice and it has been further down than I ever will.
+        </div>
+        <div style="position:absolute;right:26px;bottom:22px"><span class="stamp bk" style="font-size:16px;transform:rotate(5deg)">MINE AGAIN</span></div>
+      </div>
+    </div>
+  </div>
+  <ul class="rules">
+    <li><b>Uncertainty is ink.</b> An estimate is a blot on a number line: wide and pale when you know nothing, tight and dark after a tool. No percentage ever appears in the shop; percentages belong to Heaven.</li>
+    <li><b>Unasked questions are listed.</b> Greyed "?" clue lines show what a tool <i>would</i> tell you and what it costs in candle, so the decision is on the page.</li>
+    <li><b>Haggling is marginal arithmetic.</b> Offers stack as crossings-out in the margin with a one-line tell in the shopkeeper's hand. The patience meter is how hard the customer's quill-strokes get.</li>
+    <li><b>The pastel tab.</b> The Board is a sticky flag someone else stuck in <i>your</i> book. It counts down. It is the only rounded corner in the shop.</li>
+  </ul>
+</section>
+
+<!-- ================= V HEAVEN ================= -->
+<section>
+  <div class="plate"><span class="no">PLATE V</span><h2>Closing Day: Startup Heaven</h2><span class="why">Play it completely straight. The screen must be a SaaS product someone could really ship; the horror is only in the nouns.</span></div>
+
+  <p class="note" style="margin-bottom:8px"><b>The cut</b> — snuff, black, a held breath, fluorescent flicker, skeleton loaders (literal), then the dashboard. About two seconds; no cross-fade, ever.</p>
+  <div class="cut">
+    <div style="background:radial-gradient(60px 50px at 50% 40%,rgba(233,162,59,.7),transparent),#150d08">last flame</div>
+    <div style="background:#0b0806;color:#8a8072"><svg width="26" height="56" viewBox="0 0 30 70" style="margin-right:6px"><path d="M10 68c-8-12 10-18 2-30s10-18 2-34" fill="none" stroke="#8a8072" stroke-width="2"/></svg>smoke; a far choir tuning</div>
+    <div style="background:#000;color:#555;font-family:var(--saas);font-size:11px">0.4 s of nothing</div>
+    <div style="background:#fbfaff;color:#8a8fb3;font-family:var(--saas);font-size:11px;display:block;padding-top:14px"><div style="height:10px;width:70%;background:#e6e1f7;border-radius:6px"></div><div style="height:10px;width:45%;background:#e6e1f7;border-radius:6px;margin:6px 0"></div><svg width="60" height="22" viewBox="0 0 60 22"><circle cx="11" cy="9" r="8" fill="#e6e1f7"/><rect x="5" y="15" width="12" height="6" rx="1.5" fill="#e6e1f7"/><path d="M26 5h30M26 11h30M26 17h22" stroke="#e6e1f7" stroke-width="4" stroke-linecap="round"/></svg>skeleton loaders</div>
+    <div style="background:linear-gradient(120deg,#c9bcff,#aadcff,#ffe9a8);color:#22264a;font-family:var(--saas);font-weight:800;font-size:15px;letter-spacing:-.02em">Be not afraid.</div>
+  </div>
+
+  <div class="dash">
+    <div class="side">
+      <div class="logo"><i>W</i>Wyrm<br>Combinator</div>
+      <a class="on">Overview</a><a>Charter</a><a>Mandates</a><a>Portfolio</a><a>Deaths <sup>7 new</sup></a><a>Souls <sup>beta</sup></a><a>Settings</a>
+      <div class="up"><b>Upgrade to Seraph tier</b>Unlock mercy, priority intercession and SSO.</div>
+    </div>
+    <div class="main">
+      <div class="top">Portfolio / The Three Balls / <b style="color:var(--slate)">Closing Day · Spring Season 3</b>
+        <div class="pres"><span class="av"></span><span class="av m"></span><span class="av p"></span><span class="av w"></span><span>1 anonymous wyrm is viewing</span></div>
+      </div>
+      <div class="hello">Be not afraid, Founder.</div>
+      <p>Here's your season at a glance. Let's unpack the learnings together.</p>
+      <div class="kpis">
+        <div class="kpi"><div class="k">Gross Loot Volume <span class="pill mint">+18%</span></div><div class="v">4,812 <small>gp</small></div><svg width="100%" height="26" viewBox="0 0 200 26" preserveAspectRatio="none"><path d="M0 22 20 20 40 21 60 16 80 17 100 12 120 13 140 8 160 9 180 4 200 3" fill="none" stroke="#7b5cff" stroke-width="2.5"/></svg><div class="f">Up and to the right. Love to see it.</div></div>
+        <div class="kpi"><div class="k">Adventurer Churn <span class="pill blush">+9 pts</span></div><div class="v">31<small>%</small></div><svg width="100%" height="26" viewBox="0 0 200 26" preserveAspectRatio="none"><path d="M0 22 40 21 80 20 120 19 140 18 150 5 160 6 200 4" fill="none" stroke="#ff7f9f" stroke-width="2.5"/><circle cx="150" cy="5" r="4" fill="#ff7f9f"/></svg><div class="f">7 users dissolved (jelly). Let's reframe as a win-back opportunity.</div></div>
+        <div class="kpi"><div class="k">Runway <span class="pill butter">low</span></div><div class="v">2.5 <small>candles</small></div><div class="bar" style="margin:10px 0 8px"><i style="width:21%;background:linear-gradient(90deg,#ffb86b,#ff6a1f)"></i></div><div class="f">Burn rate: literal.</div></div>
+        <div class="kpi"><div class="k">Net Plunderer Score</div><div class="v">+42</div><div class="f">"Would you recommend this shop to a surviving friend?"</div></div>
+        <div class="kpi"><div class="k">Relics Under Management</div><div class="v">37 <small>· 4 cursed</small></div><div class="f">Curse exposure within mandate. Barely!</div></div>
+        <div class="kpi"><div class="k">Seraphic ESG <span class="pill">B−</span></div><div class="v">61<small>/100</small></div><div class="f">Necromantic holdings: 2. Halo-neutral by Season 6?</div></div>
+      </div>
+      <div class="row2">
+        <div class="card">
+          <h4>Your board <span class="pill">3 angels · 1 limited partner</span></h4>
+          <div class="angel"><span class="av"></span><div><b>Ophaniel <span style="font-weight:400;color:var(--fog)">· Growth</span></b><small>"Loot volume is on fire. Can we 10× the delves?"</small><div class="bar"><i style="width:88%"></i></div></div><span class="pill mint">Delighted</span></div>
+          <div class="angel"><span class="av p"></span><div><b>Sr. Temperance <span style="font-weight:400;color:var(--fog)">· Piety &amp; Compliance</span></b><small>"We need to talk about the lantern that hums."</small><div class="bar"><i style="width:46%"></i></div></div><span class="pill butter">Has concerns</span></div>
+          <div class="angel"><span class="av m"></span><div><b>Azrael (they/them) <span style="font-weight:400;color:var(--fog)">· Seraphic ESG</span></b><small>"Seven. I was there for all seven."</small><div class="bar"><i style="width:24%"></i></div></div><span class="pill blush">Praying for you</span></div>
+        </div>
+        <div class="card">
+          <h4>Daily Active Adventurers <span class="pill">12 days</span></h4>
+          <svg width="100%" height="128" viewBox="0 0 300 128" preserveAspectRatio="none">
+            <defs><linearGradient id="ar" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#c9bcff" stop-opacity=".9"/><stop offset="1" stop-color="#c9bcff" stop-opacity="0"/></linearGradient></defs>
+            <path d="M0 110h300M0 76h300M0 42h300" stroke="#f0edf9"/>
+            <path d="M0 40 27 34 54 36 81 28 108 30 135 22 162 26 189 70 216 74 243 80 270 78 300 92V128H0Z" fill="url(#ar)"/>
+            <path d="M0 40 27 34 54 36 81 28 108 30 135 22 162 26 189 70 216 74 243 80 270 78 300 92" fill="none" stroke="#7b5cff" stroke-width="2.5"/>
+            <circle cx="189" cy="70" r="5" fill="#fff" stroke="#ff7f9f" stroke-width="3"/>
+          </svg>
+          <div style="margin-top:-74px;margin-left:44%;position:relative;width:132px;background:var(--slate);color:#fff;border-radius:9px;padding:6px 9px;font-size:11px;line-height:1.3">Day 6 · <b>Jelly incident</b><br>a learning moment</div>
+          <div style="height:26px"></div>
+        </div>
+      </div>
+      <div class="verdict">
+        <div><span class="pill butter">Decision</span>
+          <h4>Charter renewed, with terms</h4>
+          <div style="color:#4b5075">The board is aligned-ish. A few asks before next season:</div>
+          <ol><li>No necromantic goods on display. <span class="pill">Piety</span></li><li>15% of the till tithed to the Hoard. <span class="pill" style="background:#ffe6d6;color:#b24a12">Wyrm</span></li><li>A compliance cherub will sit in. It won't be weird.</li></ol>
+        </div>
+        <div><span class="btn">Accept terms</span><span class="btn ghost">Circle back</span></div>
+      </div>
+      <div class="typing"><span class="av w" style="width:18px;height:18px;border-width:2px"></span>Wyrm is typing <span class="dots"><i></i><i></i><i></i></span> <span style="color:var(--fog)">(has been typing for 3 seasons)</span></div>
+    </div>
+  </div>
+
+  <div class="cols grades">
+    <div class="grade"><span class="pill mint">Clean renewal</span><b>You're crushing it.</b>Feather confetti. A choir sting compressed to a notification chirp. One angel sends a GIF of itself.</div>
+    <div class="grade"><span class="pill butter">With terms</span><b>A few asks.</b>Nothing changes on screen but the fine print gets longer. Each term then appears in the shop as a pastel sticker on something you own.</div>
+    <div class="grade scorch"><span class="pill blush">Probation / fired</span><b>Let's take this offline.</b>The dashboard scorches from the edge inward. The wyrm stops typing.</div>
+  </div>
+  <ul class="rules">
+    <li><b>The dragon is a presence indicator.</b> Offstage means: an orange avatar with no face, "1 anonymous wyrm is viewing", a typing indicator that never resolves. It only ever sends one message, on the day you lose the board. Fear by collaboration-software.</li>
+    <li><b>Angels are biblically accurate and nobody mentions it.</b> Avatars are rings of eyes with a halo for a status ring; the copy is pure partner-speak. Their halo ring <i>is</i> the "online" ring.</li>
+    <li><b>Death is a metric here and a person there.</b> The same seven adventurers are a pink 31% in Heaven and seven named death notices in the shop. Never soften the shop side to match.</li>
+    <li><b>Disabled honesty.</b> One control per Heaven screen is struck out with a tooltip that tells the truth ("There is no circling back").</li>
+  </ul>
+</section>
+
+<!-- ================= VI MARGINALIA ================= -->
+<section>
+  <div class="plate"><span class="no">PLATE VI</span><h2>Woodcut marginalia</h2><span class="why">The margins are where the shopkeeper is allowed to have feelings. Also where the game keeps its dead.</span></div>
+  <div class="marg vellum">
+    <div class="doodles">
+      <figure><svg width="170" height="120" viewBox="0 0 170 120" fill="none" stroke="#2a2320" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+        <path d="M22 96c22 6 60 6 84 0l10-20c4-10 0-16-8-14l-6 12"/><circle cx="62" cy="62" r="34" fill="#ead9b6"/><path d="M62 62c0-8 12-8 12 2s-18 14-22 0 8-26 24-22 22 22 12 36"/><path d="M110 64l6-22M118 66l12-18"/><circle cx="116" cy="40" r="2.5" fill="#2a2320"/><circle cx="131" cy="46" r="2.5" fill="#2a2320"/>
+        <path d="M150 60v36M142 96h16M150 60l-8-8v-8h16v8zM150 70l-18-6" /><path d="M36 86c10 6 44 8 62 2" stroke-width="1.6"/><path d="M8 104h156" stroke-width="2"/>
+      </svg>The snail always wins. <span class="red">Rule of the margins.</span></figure>
+
+      <figure><svg width="150" height="130" viewBox="0 0 150 130" fill="none" stroke="#2a2320" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+        <path d="M24 44 80 26l48 16v62l-52 20-52-18z" fill="#dfe6a8" fill-opacity=".7"/><path d="M24 44l52 18 52-20M76 62v62"/><path d="M24 44v62l52 18V62z" fill="url(#hatch)" stroke="none" opacity=".35"/>
+        <path d="M88 76c0-10 20-10 20 0v8h-4v6h-12v-6h-4z" fill="#ead9b6"/><circle cx="94" cy="78" r="2.4" fill="#2a2320"/><circle cx="102" cy="78" r="2.4" fill="#2a2320"/><path d="M40 74l22 26M44 96l12-10" /><path d="M96 100l14 8M98 110l10-8" stroke-width="2.2"/>
+      </svg>The Great Jelly, with client. <span class="red">Another day on the job.</span></figure>
+
+      <figure><svg width="160" height="110" viewBox="0 0 160 110" fill="none" stroke="#2a2320" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+        <path d="M6 44h30v34H6z" fill="url(#hatch2)"/><path d="M36 46h20c8-10 22-10 30-6h62c8 0 8 12 0 12H96c6 0 6 10 0 10 6 0 6 10-2 10 4 2 2 10-6 10H60c-10 0-14-4-24-6z" fill="#ead9b6"/><path d="M96 52H86M96 62H84M94 72H84"/><path d="M12 38v-8M20 38V26M28 38v-8" stroke-width="2"/>
+      </svg>The manicule: cursor, bullet, and "look here".</figure>
+
+      <figure><svg width="150" height="130" viewBox="0 0 150 130" fill="none" stroke="#2a2320" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round">
+        <ellipse cx="75" cy="66" rx="42" ry="42"/><ellipse cx="75" cy="66" rx="42" ry="15" transform="rotate(35 75 66)"/><ellipse cx="75" cy="66" rx="42" ry="15" transform="rotate(-35 75 66)"/>
+        <g fill="#ead9b6"><path d="M64 66c6-8 16-8 22 0-6 8-16 8-22 0z"/><path d="M38 44c4-5 10-5 14 0-4 5-10 5-14 0z"/><path d="M98 44c4-5 10-5 14 0-4 5-10 5-14 0z"/><path d="M38 90c4-5 10-5 14 0-4 5-10 5-14 0z"/><path d="M98 90c4-5 10-5 14 0-4 5-10 5-14 0z"/><path d="M68 26c4-5 10-5 14 0-4 5-10 5-14 0z"/><path d="M68 106c4-5 10-5 14 0-4 5-10 5-14 0z"/></g>
+        <g fill="#2a2320" stroke="none"><circle cx="75" cy="66" r="4"/><circle cx="45" cy="44" r="2.4"/><circle cx="105" cy="44" r="2.4"/><circle cx="45" cy="90" r="2.4"/><circle cx="105" cy="90" r="2.4"/><circle cx="75" cy="26" r="2.4"/><circle cx="75" cy="106" r="2.4"/></g>
+        <path d="M33 58C14 50 6 34 4 20c10 6 22 10 34 22M117 58c19-8 27-24 29-38-10 6-22 10-34 22"/><path d="M14 32l14 14M136 32l-14 14" stroke-width="1.6"/>
+        <ellipse cx="75" cy="10" rx="20" ry="5" stroke="#a8321f"/>
+      </svg>An investor, as the shopkeeper draws them.</figure>
+
+      <figure><svg width="130" height="130" viewBox="0 0 130 130" fill="none" stroke="#2a2320" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+        <path d="M34 60c0-40 62-40 62 0 0 14-6 20-12 24v14H46V84c-6-4-12-10-12-24z" fill="#ead9b6"/><circle cx="52" cy="62" r="8" fill="#2a2320"/><circle cx="78" cy="62" r="8" fill="#2a2320"/><path d="M65 72l-4 10h8zM54 90v8M62 90v8M70 90v8M78 90v8"/>
+        <circle cx="52" cy="62" r="13" stroke="#b88a2c" stroke-width="2.4"/><path d="M40 68l-14 22" stroke="#b88a2c" stroke-width="2.4"/>
+        <path d="M20 112h90M30 120h70" stroke-width="2"/>
+      </svg>Memento mori, with loupe. Our house device.</figure>
+    </div>
+
+    <div class="stamps">
+      <span class="stamp">LOST TO THE JELLY</span>
+      <span class="stamp bk" style="transform:rotate(4deg)">Paid in Full</span>
+      <span class="stamp gr" style="transform:rotate(-2deg)">Out on Loan</span>
+      <span class="stamp" style="transform:rotate(6deg)">Returned · Partially</span>
+      <span class="stamp round bk" style="transform:rotate(-12deg)">Guild of Delvers · Dues Rec'd</span>
+      <span class="stamp" style="transform:rotate(-4deg)">Diſſolved</span>
+      <span class="stamp gr" style="transform:rotate(3deg)">Curſe: None Found*</span>
+      <span class="stamp bk" style="transform:rotate(-5deg)">Mine Again</span>
+      <span class="stamp round" style="transform:rotate(9deg);font-family:var(--saas);font-weight:800;letter-spacing:0;color:#7b5cff;border:3px solid #7b5cff;filter:none;mix-blend-mode:normal;opacity:1;background:#fbfaff;font-size:12px;line-height:1.2">APPROVED ✦ by the Board</span>
+    </div>
+    <p style="font-style:italic;font-size:14px;margin-top:12px">Stamps slam: they are the game's main feedback verb. Rubric for loss, verdigris for anything arcane, black for money. The last one is not ours; it arrives pre-applied, perfectly registered, and will not smudge.</p>
+
+    <div class="bottom">
+      <div class="obit">
+        <div class="hd">✠ GUILD NOTICE ✠</div>
+        <svg width="70" height="54" viewBox="20 20 90 84" fill="none" stroke="#2a2320" stroke-width="3" stroke-linejoin="round" style="filter:url(#wob)"><path d="M34 60c0-40 62-40 62 0 0 14-6 20-12 24v14H46V84c-6-4-12-10-12-24z"/><circle cx="52" cy="62" r="8" fill="#2a2320"/><circle cx="78" cy="62" r="8" fill="#2a2320"/><path d="M65 72l-4 10h8zM54 90v8M62 90v8M70 90v8M78 90v8"/></svg>
+        <h4>The Aſhwardens</h4>
+        <p>a Company of five, lately three, now none; who went down on the Fourth day with <i>one tower-shield, the property of this Shop,</i> and did not come up.</p>
+        <p style="margin-top:6px;font-family:var(--sc);letter-spacing:.1em;font-size:13px">THEY ARE SURVIVED BY THEIR TAB</p>
+        <span class="stamp">Account Cloſed</span>
+      </div>
+      <div class="codex">
+        <h4>FROM THE CODEX · WHAT I HAVE LEARNT, IN PICTURES</h4>
+        <div class="entry"><svg width="50" height="40" viewBox="0 0 50 40" fill="none" stroke="#2a2320" stroke-width="2.4"><path d="M4 30 44 12l2 6L8 36z"/><path d="M16 24l4 6M24 20l4 7M32 17l3 6" stroke="#a8321f"/></svg><div><b>Rust on the fuller, edge clean.</b> Stored wet. The seller was not its user. Knock a third off whatever story comes with it.</div></div>
+        <div class="entry"><svg width="50" height="40" viewBox="0 0 50 40" fill="none" stroke="#2a2320" stroke-width="2.4"><path d="M10 6v28M10 8l10 8-10 8M30 6v28M30 12l10-6M30 22l10-6"/><path d="M4 20h18" stroke="#a8321f" stroke-width="3"/></svg><div><b>A rune struck out.</b> Somebody wanted it to stop doing something. Find out what before lending.</div></div>
+        <div class="entry"><svg width="50" height="40" viewBox="0 0 50 40" fill="none" stroke="#2a2320" stroke-width="2.4"><path d="M25 4c8 12 12 18 12 24a12 12 0 0 1-24 0c0-6 4-12 12-24z" fill="#a9c43f" fill-opacity=".6"/></svg><div><b>Blood that is not red.</b> Jelly. The item is fine. The seller's story about "finding" it is not.</div></div>
+        <div class="entry unk"><svg width="50" height="40" viewBox="0 0 50 40" fill="url(#hatch)" stroke="#2a2320" stroke-width="2"><rect x="6" y="5" width="38" height="30"/></svg><div><b>— — — — —</b> A clue seen twice but not yet understood shows as a hatched block: the codex has a shape before it has knowledge.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= VII MOTIFS ================= -->
+<section>
+  <div class="plate"><span class="no">PLATE VII</span><h2>Motifs, transitions &amp; jokes that are drawn, not written</h2><span class="why">A comic tone carried by copy wears out by season three; carried by a visual system it compounds.</span></div>
+  <div class="cols three">
+    <div class="motif"><div class="vis"><svg width="80" height="62" viewBox="0 0 80 62" style="color:#ead9b6" fill="#b88a2c" stroke="#24130a" stroke-width="2"><use href="#balls"/></svg><span style="color:var(--amber);font-size:22px">=</span><span class="av" style="width:22px;height:22px"></span><span class="av m" style="width:22px;height:22px"></span><span class="av p" style="width:22px;height:22px"></span></div><h3>Three balls, three angels</h3>The pawnbroker's sign is the logo, the favicon and the loading mark. In Heaven it flattens into three pastel avatar dots. Three is the game's number: three balls, three angels, three grades, three tools.</div>
+    <div class="motif"><div class="vis"><div style="width:14px;height:58px;background:repeating-linear-gradient(#f4e4bc 0 13px,#a8321f 13px 15px)"></div><div style="width:14px;height:36px;background:repeating-linear-gradient(#f4e4bc 0 13px,#a8321f 13px 15px);align-self:flex-end;margin-bottom:13px"></div><div style="width:14px;height:12px;background:#f4e4bc;align-self:flex-end;margin-bottom:13px"></div><span style="font-family:var(--saas);font-size:11px;color:#22264a;background:#fbfaff;border-radius:8px;padding:5px 8px;margin-left:10px"><b>Runway</b> 2.5 candles</span></div><h3>Candle = clock = runway</h3>One object is the day timer, the tool charge, the lighting rig and, in Heaven, the "runway" KPI. "Burn rate" is never explained.</div>
+    <div class="motif"><div class="vis" style="background:linear-gradient(90deg,#231810 50%,#fbfaff 50%)"><span class="stamp" style="font-size:14px;mix-blend-mode:normal;filter:none;background:#ead9b6">Diſſolved</span><span class="pill blush" style="margin-left:26px">Churned</span></div><h3>Every death has two names</h3>A fixed translation table between shop words and board words. The player learns to read each in the other. See the glossary below.</div>
+    <div class="motif"><div class="vis"><div style="width:120px;height:60px;background:#4a301c;border:2px solid #24130a;position:relative"><span style="position:absolute;right:-12px;top:-8px;transform:rotate(8deg);font-family:var(--saas);font-size:9.5px;font-weight:700;background:#c9bcff;color:#22264a;padding:4px 7px;border-radius:3px;box-shadow:0 0 12px rgba(201,188,255,.7)">NO NECROMANCY ✦</span><span style="position:absolute;left:8px;bottom:-9px;transform:rotate(-5deg);font-family:var(--saas);font-size:9.5px;font-weight:700;background:#8fe6c8;color:#22264a;padding:4px 7px;border-radius:3px">15% → HOARD</span></div></div><h3>Terms are stickers</h3>Each term carried into next season is a pastel label stuck on the shop: on the shelf, the till, the candle. A long career visibly accretes them, like a laptop lid. Your shop's mess is legible at a glance.</div>
+    <div class="motif"><div class="vis"><svg width="210" height="70" viewBox="0 0 210 70"><g transform="translate(60,14) scale(.5)"><use href="#sword"/></g><path d="M20 58h170" stroke="#6f8fa8" stroke-width="3"/><path d="M20 58h56" stroke="#e9a23b" stroke-width="3"/><g fill="#ead9b6" stroke="#24130a" stroke-width="1.5"><circle cx="20" cy="58" r="5"/><circle cx="76" cy="58" r="5"/><circle cx="130" cy="58" r="5" fill="#a8321f"/><circle cx="190" cy="58" r="5"/></g></svg></div><h3>Things come back</h3>An item you have owned before returns with a tiny knotted thread drawn through its provenance, one knot per time. The first buy-back should feel like recognising a face.</div>
+    <div class="motif"><div class="vis" style="background:#fbfaff"><svg width="200" height="60" viewBox="0 0 200 60"><circle cx="30" cy="24" r="14" fill="#e6e1f7"/><rect x="20" y="34" width="20" height="10" rx="2" fill="#e6e1f7"/><path d="M60 16h120M60 30h120M60 44h80" stroke="#e6e1f7" stroke-width="8" stroke-linecap="round"/></svg></div><h3>Skeleton screens</h3>Heaven's loading placeholders are literal skeletons in the grey-bar style. The only place the two worlds' vocabularies accidentally agree.</div>
+  </div>
+
+  <div class="cols two" style="margin-top:22px">
+    <div class="box">
+      <h3>The glossary (shop → board)</h3>
+      <table class="euph">
+        <tr><td>dissolved, eaten, did not come up</td><td>→</td><td><span class="pill blush">churned</span></td></tr>
+        <tr><td>the last of the Ashwardens</td><td>→</td><td><span class="pill">power user</span></td></tr>
+        <tr><td>a cursed helm on the shelf</td><td>→</td><td><span class="pill butter">tail-risk inventory</span></td></tr>
+        <tr><td>bought back my own sword</td><td>→</td><td><span class="pill mint">circular economy</span></td></tr>
+        <tr><td>fleeced a desperate party</td><td>→</td><td><span class="pill mint">margin expansion</span></td></tr>
+        <tr><td>the dungeon</td><td>→</td><td><span class="pill">the market</span></td></tr>
+        <tr><td>the guild's vacation</td><td>→</td><td><span class="pill">a planned downtime window</span></td></tr>
+      </table>
+    </div>
+    <div class="box">
+      <h3>Transitions &amp; feedback verbs</h3>
+      <ul>
+        <li><b>Page turn</b> between ledger tabs; the candle flame leans with the draught.</li>
+        <li><b>Stamp slam</b> for every committed decision; ink bleeds for half a second, the coins on the counter jump.</li>
+        <li><b>Ink dries</b> as the confirm: wet entries can be struck, dry ones are history.</li>
+        <li><b>The cold arrives first.</b> Before a customer is visible the door-blue spills along the counter and the flame bends away from it.</li>
+        <li><b>Toast intrusion.</b> Investor messages slide in with a soft-shadowed bounce that belongs to another product, and cast lilac light on the page.</li>
+        <li><b>Scorch</b> is reserved for the wyrm: paper browning from the edges, used once per lost career.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= VIII SOUND ================= -->
+<section>
+  <div class="plate"><span class="no">PLATE VIII</span><h2>Sound mood</h2><span class="why">Same split as the picture: the shop is close-miked and dry; Heaven is reverb and licensing-free optimism.</span></div>
+  <div class="cols three" style="align-items:start">
+    <div class="box">
+      <h3>The shop</h3>
+      <ul>
+        <li><b>Room tone</b>, no music by default: flame, timber ticking, rain when the door is open.</li>
+        <li><b>Quill</b> on vellum for every UI write; a scratchier nib when the news is bad.</li>
+        <li><b>Coins on oak</b>: counted, never jingled. Fewer coins sound lonelier.</li>
+        <li><b>The door bell</b> is a small cracked one. Each customer type rings it differently.</li>
+        <li><b>Stamp</b>: a wet thud with a desk rattle. The same thud lands on the notice board when a party dies.</li>
+        <li><b>Loupe crack</b> when it meets a strong enchantment; <b>the candle gutters</b> when the day runs out.</li>
+        <li><b>Under the floor</b>: once or twice a day, something large and far down. Never explained, never louder.</li>
+        <li>A single <b>hurdy-gurdy or viol drone</b> creeps in only during the pre-vacation rush.</li>
+      </ul>
+    </div>
+    <div class="box h">
+      <h3>Startup Heaven</h3>
+      <ul>
+        <li><b>Explainer-video ukulele</b>, claps and glockenspiel. Major key, 120 bpm, royalty-free forever.</li>
+        <li><b>A choir</b>, but side-chained and bit-crushed into a notification chirp.</li>
+        <li><b>Harp glissando</b> as hold music while the board "aligns".</li>
+        <li><b>KPI tiles</b> count up with a soft marimba tick.</li>
+        <li><b>Angel voice</b>: not speech, a warm many-voiced chord with a mouse-click on top.</li>
+        <li>Everything is <b>too clean</b>: no room, no noise floor. After 25 minutes of candle hiss the silence itself is the punchline.</li>
+      </ul>
+    </div>
+    <div class="box" style="border-color:#7a3410;background:linear-gradient(#2a1206,#120e0a)">
+      <h3 style="color:var(--wyrm)">The wyrm</h3>
+      <ul>
+        <li>No voice. A <b>sub-bass breath</b> so low the coins on the counter buzz.</li>
+        <li>In Heaven: the ukulele loop <b>ducks</b> for one bar whenever the orange dot appears, then resumes as if nothing happened.</li>
+        <li>The <b>typing indicator</b> has a sound: three slow talon taps on a very large keyboard.</li>
+        <li>When the candle goes out at night, the last thing audible is the same breath. It was the room tone all along.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= IX GAPS ================= -->
+<section>
+  <div class="plate"><span class="no">PLATE IX</span><h2>Rules the direction was missing</h2><span class="why">Things the direction implied but did not yet answer; all three are now rules.</span></div>
+  <div class="cols two">
+    <div class="box"><h3>Legibility under candlelight</h3><ul>
+      <li>Noir fails when players squint. Rule: <b>no decision text ever sits on wood or darkness</b>; it sits on vellum at iron-gall contrast (about 11:1). Darkness is for mood, the page is for reading.</li>
+      <li>Fell is rough below about 15 px. Table figures and small labels need a floor size, and the italic "hand" must never carry numbers the player acts on.</li>
+      <li>Verdigris vs. jelly-green vs. amber fails for some colour-blind players: every trait colour needs a paired <b>woodcut glyph</b> (drop, rune, eye, chain).</li>
+    </ul></div>
+    <div class="box"><h3>Who the shopkeeper is, visually</h3><ul>
+      <li>The player has no stats and should have <b>no face</b>: only hands at the counter edge and a handwriting. The violet-gall italic is the character.</li>
+      <li>A cover image for itch.io: the title page above, cropped to the three balls with one pastel sticker on it. The whole pitch in one frame.</li>
+      <li>The vacation between seasons needs its own third look. Suggestion: the shop with the <b>shutters closed and daylight leaking in</b>; dust-sheet white, the first un-candlelit view of the room, and it is smaller than you thought.</li>
+    </ul></div>
+  </div>
+</section>
+
+<!-- ================= X REFERENCES ================= -->
+<section>
+  <div class="plate"><span class="no">PLATE X</span><h2>References</h2><span class="why">What each look borrows from, so the mockups can be checked against something outside ourselves.</span></div>
+  <div class="cols three">
+    <div class="box"><h3>The shop</h3><ul>
+      <li><b>Papers, Please</b>: inspection at a desk.</li>
+      <li><b>Return of the Obra Dinn</b>: reasoning from a ledger.</li>
+      <li><b>Darkest Dungeon</b>: grim-comic narration in ink.</li>
+    </ul></div>
+    <div class="box h"><h3>Startup Heaven</h3><ul>
+      <li><b>Severance</b>: corporate eeriness.</li>
+      <li><b>Hades</b>: portrait-led dialogue.</li>
+      <li>Any <b>Series A pitch deck</b>.</li>
+    </ul></div>
+    <div class="box"><h3>The margins</h3><ul>
+      <li>Medieval <b>manuscript marginalia</b>: snails versus knights.</li>
+      <li><b>Monty Python</b> cut-outs.</li>
+      <li>Woodcut <b>chapbooks</b>.</li>
+    </ul></div>
+  </div>
+</section>
+
+<p class="foot">Finis. All figures are mock-ups in HTML, CSS and SVG; no scripts, no external fetches. Fonts: IM Fell (Igino Marini), SIL Open Font License, see art/fonts/im-fell/OFL.txt.</p>
+</div>
+</body>
+</html>

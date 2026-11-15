@@ -1,5 +1,5 @@
 ---
-phase: initialize
+phase: execute
 parent: U-GABIZCVEAFSYLQFN
 owner:
   - BR
@@ -25,11 +25,11 @@ S0 of the fixed slices, about day 1. Presentation is a mix: 3D where it carries 
 
 
 ## Next
-<!-- The cursor of the unit being worked: what is about to happen, and for a held unit the reason first.
-     Rewrite it freely. A unit with open children keeps none: its present is its children. -->
+Record the decisions the owner took on the moodboard (visual direction, the gameplay ideas, legibility), then storyboard one shop day and the board meeting.
 
 ## Evidence
 <!-- Proof against success_criteria: test runs, commits, measurements. -->
+- Moodboard: art/moodboard/moodboard.html (static, IM Fell from art/fonts/im-fell with its OFL), render art/moodboard/moodboard.webp. Base is the second pass (Fable) with the first pass's references and sounds folded in; owner reviewed both and chose it.
 
 ## Harvest
 <!-- Candidates found along the way. Finalize promotes or drops every unchecked item:
@@ -41,3 +41,5 @@ S0 of the fixed slices, about day 1. Presentation is a mix: 3D where it carries 
 
 ## Log
 - 2026-11-15 initialized
+- 2026-11-15 phase initialize → execute
+- 2026-11-15 moodboard landed in art/moodboard: second pass as base, first pass's unique bits folded in
