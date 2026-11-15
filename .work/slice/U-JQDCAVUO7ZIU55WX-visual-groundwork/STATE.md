@@ -32,6 +32,7 @@ Storyboard awaits owner review, chiefly its open questions Q1–Q15 (art/storybo
 - Moodboard: art/moodboard/moodboard.html (static, IM Fell from art/fonts/im-fell with its OFL), render art/moodboard/moodboard.webp. Base is the second pass (Fable) with the first pass's references and sounds folded in; owner reviewed both and chose it.
 - Owner's moodboard choices recorded: D-AW7FZBF73LOHPLXO (look), D-OOYE4Y67O567LLKP (motifs), D-34WHPVTJ6MRKUSXM (candle clock), D-MHAAIXRXHKHH4G77 (tools as light), D-3ZWBI6KBBWBWWXDJ (cold rim), D-XZKESRNAOR3QIXHK (ink-blot uncertainty), D-JZVD7DBPLJP2XKT2 (haggle crossings-out), D-UB7AU7KR5QBMYH4C (knotted provenance), D-2NRZXEUWY2RFLDXF (legibility).
 - Storyboard: art/storyboard/storyboard.html (static, moodboard's look and IM Fell), render art/storyboard/storyboard.webp. Fifteen panels: one shop day (open, seller, inspect, loupe, curse candle, haggle, sale, investor toast, candle gutters, tally) then Closing Day (cut, dashboard, three angels, graded verdict, shuttered shop with stickers); each caption names what the player sees and does, what is 3D and what UI, and the light/sound beat, with the decisions it rests on. Fifteen open questions tagged on their panels and listed at the end for the owner.
+- Counter renders: art/mockups/counter-neutral.webp, counter-loupe.webp, counter-curse.webp (1920×1080, three.js r186 on skelly-assets meshes: helmet_barbute on the counter, player_bust + jacket_leather_worn_body + hood_ninja as the static customer, shelf stock; candle and curse candle are primitives). Candle key light, cold rim on what came in through the door, depth-edge ink outline; loupe as a tight warm circle lifting a maker's mark, curse candle swapping the key to verdigris.
 
 ## Harvest
 <!-- Candidates found along the way. Finalize promotes or drops every unchecked item:
@@ -56,3 +57,4 @@ Storyboard awaits owner review, chiefly its open questions Q1–Q15 (art/storybo
 - 2026-11-15 owner's moodboard choices recorded as nine decisions
 - 2026-11-15 storyboard of one shop day and the board meeting landed in art/storyboard, with fifteen open questions for the owner
 - 2026-11-15 storyboard contradictions fixed after the second opinion: no percentage in the shop, offers in upright figures, the buyer's request on vellum, the day's candle and a tool's charge told apart on clue rows
+- 2026-11-15 counter scene rendered from skelly-assets meshes: neutral appraisal, loupe, curse candle
