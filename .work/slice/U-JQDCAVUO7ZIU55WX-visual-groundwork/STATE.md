@@ -55,3 +55,4 @@ Storyboard awaits owner review, chiefly its open questions Q1–Q15 (art/storybo
 - 2026-11-15 moodboard landed in art/moodboard: second pass as base, first pass's unique bits folded in
 - 2026-11-15 owner's moodboard choices recorded as nine decisions
 - 2026-11-15 storyboard of one shop day and the board meeting landed in art/storyboard, with fifteen open questions for the owner
+- 2026-11-15 storyboard contradictions fixed after the second opinion: no percentage in the shop, offers in upright figures, the buyer's request on vellum, the day's candle and a tool's charge told apart on clue rows
